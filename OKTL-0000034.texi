@@ -3,18 +3,21 @@
 @c
 @c C Source Code Style Guide
 @c
-@c Copyright (C) 1999, 2003 OKTET Labs, St.-Petersburg, Russia
+@c Copyright (C) 1999 Terkom, St.-Petersburg, Russia
+@c Copyright (C) 2003 OKTET Ltd., St.-Petersburg, Russia
+@c Copyright (C) 2004 OKTET Labs, St.-Petersburg, Russia
 @c
-@c Author: Victor V. Vengerov <Victor.Vengerov@oktetlabs.ru>
+@c Author: Andrew Rybchenko <Andrew.Rybchenko@oktetlabs.ru>
 @c Author: Dmitry V. Semyonov <Dmitry.Semyonov@oktet.ru>
+@c Author: Victor V. Vengerov <Victor.Vengerov@oktetlabs.ru>
 @c
 @c @(#) $Id: OKTL-0000034.texi,v 1.1 2004/03/18 17:18:09 helen Exp $
 @c
 
 @c Use A-Z letters for different versions of document drafts.
 @c Use 1-N numbers for different versions of document issues.
-@set REV    C
-@set DATE   4 Mar 2003
+@set REV    E
+@set DATE   2 Aug 2004
 
 @c Identifier of this document
 @set ID     OKTL-0000034
@@ -26,7 +29,7 @@
 @set STATUS Draft
 
 @c Comma-separated list of years to be used in copyright notices
-@set YEARS 1999, 2003
+@set YEARS 1999, 2003, 2004
 
 
 @c -*%header%
@@ -47,9 +50,13 @@
 
 
 @copying
-Copyright @copyright{} @value{YEARS} OKTET Labs, St.-Petersburg, Russia
+Copyright @copyright{} 1999 Terkom, St.-Petersburg, Russia
 
-This document is the property of Oktet Labs Nevertheless, there are no
+Copyright @copyright{} 2003 OKTET Ltd., St.-Petersburg, Russia
+
+Copyright @copyright{} 2004 OKTET Labs, St.-Petersburg, Russia
+
+This document is the property of OKTET Labs. Nevertheless, there are no
 special restrictions regarding confidentiality which limit the audience
 or distribution of this memo.
 @end copying
@@ -87,7 +94,11 @@ language constructs, naming conventions and coding style.
 
 @unnumbered Copyright Notice
 
-Copyright @copyright{} @value{YEARS} OKTET Labs
+Copyright @copyright{} 1999 Terkom,  St.-Petersburg, Russia
+
+Copyright @copyright{} 2003 OKTET Ltd., St.-Petersburg, Russia
+
+Copyright @copyright{} 2004 OKTET Labs, St.-Petersburg, Russia
 
 
 @unnumbered Audience
@@ -106,9 +117,9 @@ It is assumed that a reader is familiar with the C programming language.
 @unnumbered Contact Information
 
 @display
-Ulianovskaya 1, Peterhoff, 198504, St.-Petersburg, Russia
-Phone: +7(812) 428-4384
-Fax: +7(812) 428-4389
+Unit 3H, Universitetsky pr., 18/2, Petrodvorets, St.-Petersburg, Russia
+Phone: +7(812) 428-6709
+Fax: +7(812) 428-7715
 @end display
 
 For more information, call the above office or visit our web site at
@@ -136,8 +147,11 @@ Feb, 23  B    Dmitry V. Semyonov  Typos fixed.
 Mar, 4   C    Dmitry V. Semyonov  Fixes after review
 2003
 
-Mar,18   D    Elena A. Vengerova  OKTET Labs identifier is assigned
-2004                              
+Mar, 18  D    Elena A. Vengerova  OKTET Labs identifier is assigned
+2004
+
+Aug, 2   E    Andrew Rybchenko    Contact information updated. Typos fixed.
+2004                              Victor V. Vengerov notes applied.
 ----------------------------------------------------------------------------
 @end example
 
@@ -225,6 +239,8 @@ formatting and common issues will be described a separate document.
 @section Contributors
 
 @itemize @bullet
+@item
+Victor V. Vengerov @email{Victor.Vengerov@@oktetlabs.ru}
 @item
 Elena A. Vengerova @email{Elena.Vengerova@@oktetlabs.ru}
 @item
@@ -679,7 +695,7 @@ have multiple @samp{@@author} sections if principal developer has been
 changed; put a name of the last principal developer first. OKTET Labs
 employees shall use <Name.Surname@@oktetlabs.ru> form of e-mail address.
 
-Unnecessary part @samp{license term notice} may be added to provide
+Optional part @samp{license term notice} may be added to provide
 information about licensing terms for this source file, about distribution
 permissions or restrictions, or to refer to a particular license text.
 
@@ -818,7 +834,7 @@ lies within a limited set of constants, then each constant should be
 described using @samp{@@retval} tag.
 
 If a parameter is used to deliver values out from a function, it is
-recommended to add @samp{(IN/OUT)} or @samp{(OUT)} (depending on whether
+allowed to add @samp{(IN/OUT)} or @samp{(OUT)} (depending on whether
 the parameter is used or not as input at the same time accordingly) hint
 to the end of parameter description. @samp{(IN)} is assumed by default,
 and should not be used.
@@ -835,8 +851,9 @@ related functions and documentation blocks.
 Optional @samp{@@bug} and @samp{@@todo} sections may be used to identify
 found bugs or things that need to be done accordingly.
 
-@samp{@@alg} (algorithm) part must be provided only when a function is
-not obvious, and some tricky approaches are used for its implementation.
+@samp{@@alg} (algorithm) part must be provided only when it is not enough
+to define @emph{what} function does; it is necessary to explain @emph{how}
+this achieved.
 
 
 @subsection Indentation inside function header
@@ -992,43 +1009,53 @@ particular, local variables must not be redeclared in nested blocks.
 @section Local variables naming conventions
 
 It is recommended to give short but clear names to local variables. Here are
-some recommended names for local variables.
+some recommended names for local variables. All these names may be used with
+possible digit suffixes.
 
-Names @code{i}, @code{j}, @code{k}, with possible digit suffix must be used
-as names for loop variables.
+Names @code{i}, @code{j}, @code{k} must be used as names for loop variables.
 
-Names @code{n}, @code{m} with possible digit suffixes must be used as a names
-for variables which contain a number of some entities. Variable name
-@code{l} (with a possible digit suffix) may be used for length of something.
+Names @code{n}, @code{m} must be used as a names for variables which contain
+a number of some entities. Variable name @code{l} may be used for length of
+something.
 
-Names @code{s} or @code{str} (only one of them in one function!) with
-possible digit suffixes must be used as a pointer to character strings.
+Names @code{s} or @code{str} (only one of them in one function!) may be used
+as a pointer to character strings.
 
-Names @code{p}, @code{q} with possible digit suffixes must be used as a
-pointer to some data element (structures, elements of array, etc). It is
-acceptable to use @code{p} and @code{q} identifiers as pointers to
-character arrays too.
+Names @code{s} or @code{sock} may be used for a socket file descriptors.
 
-Names @code{t}, @code{tmp} with possible digit suffixes must be used as
-temporary variables.
+Name @code{fd} may be used to refer to a file descriptor variable.
+
+Name @code{f} may be used for a file descriptor or @code{FILE} variable
+associated with file (@emph{not} socket or device).
+
+Name @code{fn} may be used for a string constanting the file name.
+
+Names @code{p}, @code{q} must be used as a pointer to some data element
+(structures, elements of array, etc). It is acceptable to use @code{p} and
+@code{q} identifiers as pointers to character arrays too.
+
+Names @code{t}, @code{tmp} must be used as temporary variables.
 
 Name @code{src} may be used as a pointer to source of string, buffer,
 structure, etc. Name @code{dst} may be used as a pointer to destination.
 
-Name @code{c} with possible digit suffixes may be used as a temporary
-variable for character.
+Names @code{in} and @code{out} must be used for pointers or indexes in
+input and output data.
 
-Name @code{que} with possible digit suffixes may be associated with some kind
-of queue.
+Name @code{c} may be used as a temporary variable for character.
 
-Names @code{x}, @code{y}, and @code{z} with possible digit suffixes may
-be associated with coordinates.
+Name @code{que} may be associated with some kind of queue.
 
-Names @code{w} and @code{h} with possible digit suffixes may be associated
-with width and height of something.
+Names @code{x}, @code{y}, and @code{z} may be associated with coordinates.
 
-Name @code{fd} may be used to refer to file (file descriptor or @code{FILE}
-variable).
+Names @code{w} and @code{h} may be associated with width and height of
+something.
+
+Name @code{a} may be used for a some kind of addresses. Names @code{pa} and
+@code{va} may be used for physical and virtual addresses accordingly.
+
+Name @code{conn} may be used for a file descriptor or other entity
+representing connection.
 
 @emph{Example:}
 
@@ -1047,7 +1074,7 @@ variable).
     {
         p->data = NULL;
         p->id = i;
-        p->next = p+1;
+        p->next = p + 1;
         p++
     }
 @end verbatim
@@ -1195,8 +1222,9 @@ serious subtle error. Save your time and think every time when
 specifier to types, fields, variables which do not require it, because it
 may lead to misunderstanding and make your code worse.
 
-Give @code{const} specifier when it is possible, because it may make compiler
-output better and help you to avoid some errors.
+It's @emph{highly} recommended to give @code{const} specifier
+when it is applicable, because it may make compiler output better and
+help you to avoid some errors.
 
 
 @chapter Variable declaration formatting
@@ -1248,7 +1276,7 @@ When multiline string constant is used, it is recommended to insert
 void
 usage_information_print(void)
 {
-    printf("check -- check C source code to the C Source Code Style"
+    printf("check -- check C source code to the C Source Code Style "
            "conformance\n"
            "Usage:\n"
            "    check <filename>\n");
@@ -1299,9 +1327,9 @@ Operator @samp{[]} must be coupled to the left and inner operands.
 
 Syntactic components of conditional operator @samp{a ? b : c}
 must be separated by one space character. It is recommended to enclose
-conditional operator into the round brackets.
+conditional operator into the parenthesis.
 
-Grouping round brackets must be coupled with the contents inside brackets.
+Grouping parenthesis must be coupled with the contents inside brackets.
 
 In function call no delimiters must be added between function name
 or function expression and left round bracket. Also, no delimiters
@@ -1338,10 +1366,10 @@ should not be replaced by
     printf("Internal error: %d\\n", (class << 8) | errno);
     scsi_freq = (freq_multiplier ? freq * 2 : freq);
     list = hash_tab[hash_func(key) % hash_mod];
-    memcpy((char *)dest, (char *)src, n);
+    memcpy(dest, src, n);
 @end verbatim
 
-It is recommended to insert additional unnecessary round brackets to
+It is recommended to insert additional unnecessary parenthesis to
 expression to make it more readable. It is recommended to assume only that
 unary operators have higher priority than binary and that multiplication
 operators has higher priority that addition.
@@ -1531,7 +1559,7 @@ deallocation function exists and may be used) @code{goto} must not be used.
 @section Preprocessor directives formatting
 
 Preprocessor directives must be started at column zero. It is not allowed
-spaces between @samp{#} sign and directive name.
+to have spaces between @samp{#} sign and directive name.
 
 
 @section @code{#include} usage
@@ -1550,13 +1578,18 @@ In some cases it is more convenient than @code{enum}, but @code{enum} is a
 preferred method for constant definitions (at least, because many debuggers
 couldn't use preprocessing information).
 
+@code{#define} must be used for a constant definition when the constant is
+used in preprocessor expressions. Also, for example, hardware register
+definitions may be included in the assembler source, so it is better to
+use @code{#define} to define them.
+
 
 @section Macros
 
-It is required to around all macro parameters with parentheses, because
+It is required to around all macro parameters with parenthesis, because
 complex expressions can be used as macro parameters, and operator-precedence
 problems can arise. Body of function-like macros must be arounded with
-parentheses too.
+parenthesis too.
 
 Lets consider the next code fragment:
 
@@ -1590,12 +1623,39 @@ all statement-like macros must be arounded by
     } while (0)
 @end verbatim
 
+Also, lets consider the following example:
+
+@verbatim
+#define INC(i) \
+    do {                                                \
+        printf("Loop counter new value is %d\n", ++i);  \
+    } while (0)
+
+    ...
+
+    for (i = 0; i < 5; ({INC(i);}))
+    {
+        ...
+    }
+@end verbatim
+
+The example states how macros arounded by @code{do @{ @dots{} @} while (0)}
+statement may be used in @code{for()} statement components. The macro call
+is arounded by curly and, then, round brackets.
+
 It is recommended to hold macros on one line if it is possible. If no,
 format macros as it is shown in a bad example above. Line up all
 continuation backslashes on right side of macro body. Check that backslash
 is a last character in this string. Do not put any code in first line where
 macros name and parameters given. Follow to the indentation rules in body of
 macros.
+
+Function-like macros must be commented like functions. Types of parameters
+should be stated in macro description.
+
+It's recommented to use inline functions instead of function-like macros,
+if it is applicable. Compiler can help to avoid some errors and its output
+in the case of compilation errors more friendly, if inline function is used.
 
 
 @section Conditional compilation
@@ -1617,10 +1677,10 @@ allocation might look like:
 @verbatim
 #ifdef DEBUG
     extern void *mm_malloc(size_t bytes);
-#   define MALLOC(size) (mm_malloc(size))
+#define MALLOC(size) (mm_malloc(size))
 #else
     extern void *malloc(size_t bytes);
-#   define MALLOC(size) (mm_malloc(size))
+#define MALLOC(size) (malloc(size))
 #endif
 @end verbatim
 
@@ -1628,9 +1688,10 @@ It is recommended to use indentation rules for preprocessor conditions too.
 
 Conditional compilation should generally be on a feature-by-feature basis.
 Although, one of usage of conditional preprocessor directives is to handle
-differences between different machines or operating systems, machine or
-operating system dependencies should be avoided in most cases. Use a
-conditionals to handle presence or absence specific features instead.
+differences between different machines or operating systems. OS type,
+CPU kind, board, implementation etc. dependencies via conditional
+compilation should be avoided in most cases. Use name of the feature or
+property instead of name of bearing entiry.
 
 You may exclude fragment of your code using @code{#if 0} directive.
 
@@ -1639,7 +1700,8 @@ You may exclude fragment of your code using @code{#if 0} directive.
 
 
 Your program must be compiled without any warning messages for all target 
-architectures. All warning messages must be enabled in compiler.
+architectures. All warning messages must be enabled in compiler
+(@code{'-Wall -W'} flags enable all warnings in GCC).
 
 Of course, error messages not acceptable too.
 

@@ -1,27 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html40/loose.dtd">
 <HTML>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on July, 20  2004 by texi2html 1.64 -->
-<!-- 
+<!-- Created on August, 3 2004 by texi2html 1.66 -->
+<!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
-Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
- 
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
 -->
 <HEAD>
-<TITLE>C Source Code Style Guide: </TITLE>
+<TITLE>C Source Code Style Guide</TITLE>
 
-<META NAME="description" CONTENT="C Source Code Style Guide: ">
-<META NAME="keywords" CONTENT="C Source Code Style Guide: ">
+<META NAME="description" CONTENT="C Source Code Style Guide">
+<META NAME="keywords" CONTENT="C Source Code Style Guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="texi2html 1.64">
+<META NAME="Generator" CONTENT="texi2html 1.66">
 
 </HEAD>
 
-<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<BODY LANG="en" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
 
 <A NAME="SEC1"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
@@ -39,16 +40,27 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
 
 @exampleindent 0
 @setcontentsaftertitlepage
-</P><P>
+</P>
+<P>
 
 @copying
-Copyright (C) 1999, 2003 OKTET Labs, St.-Petersburg, Russia
-</P><P>
+Copyright &copy; 1999 Terkom, St.-Petersburg, Russia
+</P>
+<P>
 
-This document is the property of Oktet Labs Nevertheless, there are no
+Copyright &copy; 2003 OKTET Ltd., St.-Petersburg, Russia
+</P>
+<P>
+
+Copyright &copy; 2004 OKTET Labs, St.-Petersburg, Russia
+</P>
+<P>
+
+This document is the property of OKTET Labs. Nevertheless, there are no
 special restrictions regarding confidentiality which limit the audience
 or distribution of this memo.
-</P><P>
+</P>
+<P>
 
 <H1> Abstract </H1>
 <!--docid::SEC1::-->
@@ -56,7 +68,8 @@ or distribution of this memo.
 
 This document describes the general formatting rules of C programming
 language constructs, naming conventions and coding style.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC2"></A>
@@ -75,8 +88,17 @@ language constructs, naming conventions and coding style.
 <!--docid::SEC2::-->
 <P>
 
-Copyright (C) 1999, 2003 OKTET Labs
-</P><P>
+Copyright &copy; 1999 Terkom,  St.-Petersburg, Russia
+</P>
+<P>
+
+Copyright &copy; 2003 OKTET Ltd., St.-Petersburg, Russia
+</P>
+<P>
+
+Copyright &copy; 2004 OKTET Labs, St.-Petersburg, Russia
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC3"></A>
@@ -97,10 +119,12 @@ Copyright (C) 1999, 2003 OKTET Labs
 
 This document is intended for OKTET Labs C programmers, reviewers,
 testers and other persons involved in software development process.
-</P><P>
+</P>
+<P>
 
 It is assumed that a reader is familiar with the C programming language.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC4"></A>
@@ -120,7 +144,8 @@ It is assumed that a reader is familiar with the C programming language.
 <P>
 
 Draft
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC5"></A>
@@ -139,18 +164,20 @@ Draft
 <!--docid::SEC5::-->
 <P>
 
-<TABLE><tr><td>&nbsp;</td><td class=display><pre style="font-family: serif">Ulianovskaya 1, Peterhoff, 198504, St.-Petersburg, Russia
-Phone: +7(812) 428-4384
-Fax: +7(812) 428-4389
-</pre></td></tr></table></P><P>
+<TABLE><tr><td>&nbsp;</td><td class=display><pre style="font-family: serif">Unit 3H, Universitetsky pr., 18/2, Petrodvorets, St.-Petersburg, Russia
+Phone: +7(812) 428-6709
+Fax: +7(812) 428-7715
+</pre></td></tr></table><P>
 
 For more information, call the above office or visit our web site at
 <A HREF="http://www.oktetlabs.ru">http://www.oktetlabs.ru</A>.
-</P><P>
+</P>
+<P>
 
 Please, send your comments and notes about found errors, typos, and
 inconsistencies to <A HREF="mailto:support@oktetlabs.ru">support@oktetlabs.ru</A>.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC6"></A>
@@ -181,10 +208,13 @@ Feb, 23  B    Dmitry V. Semyonov  Typos fixed.
 Mar, 4   C    Dmitry V. Semyonov  Fixes after review
 2003
 
-Mar,18   D    Elena A. Vengerova  OKTET Labs identifier is assigned
-2004                              
+Mar, 18  D    Elena A. Vengerova  OKTET Labs identifier is assigned
+2004
+
+Aug, 2   E    Andrew Rybchenko    Contact information updated. Typos fixed.
+2004                              Victor V. Vengerov notes applied.
 ----------------------------------------------------------------------------
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 <HR SIZE="6">
 <A NAME="SEC7"></A>
@@ -217,7 +247,7 @@ achieved.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC9"> &gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC9"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -227,16 +257,17 @@ achieved.
 <!--docid::SEC8::-->
 <P>
 
+</P>
 <DL COMPACT>
-<DT><SAMP>`ANSI'</SAMP>
+<DT>`<SAMP>ANSI</SAMP>'
 <DD>American National Standards Institute
-<DT><SAMP>`CR'</SAMP>
+<DT>`<SAMP>CR</SAMP>'
 <DD>Carriage Return
-<DT><SAMP>`CVS'</SAMP>
+<DT>`<SAMP>CVS</SAMP>'
 <DD>Concurrent Version System
-<DT><SAMP>`LF'</SAMP>
+<DT>`<SAMP>LF</SAMP>'
 <DD>Line Feed
-<DT><SAMP>`WRS'</SAMP>
+<DT>`<SAMP>WRS</SAMP>'
 <DD>Wind River Systems
 </DL>
 <P>
@@ -246,9 +277,9 @@ achieved.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC8"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC10"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC8"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC10"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -258,12 +289,13 @@ achieved.
 <!--docid::SEC9::-->
 <P>
 
+</P>
 <DL COMPACT>
-<DT><SAMP>`Subsystem'</SAMP>
+<DT>`<SAMP>Subsystem</SAMP>'
 <DD>Functionally closed, alienable, possibly reusable, software component
 with well defined external interfaces. It may be library, tool, device
 driver, part of OS, etc.
-<DT><SAMP>`Doxygen'</SAMP>
+<DT>`<SAMP>Doxygen</SAMP>'
 <DD>A documentation system for C++, C, and several other programming languages.
 See 'Doxygen manual' for more information.
 </DL>
@@ -274,9 +306,9 @@ See 'Doxygen manual' for more information.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC9"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC11"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC9"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC11"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -289,14 +321,15 @@ See 'Doxygen manual' for more information.
 This work is inspired by many existing coding standards and our own experience
 in C software development and understanding of foreign source code. Most
 notable documents which have been used to create this standard are
-</P><P>
+</P>
+<P>
 
 <UL>
 <LI>
-L.W.Cannon, R.A. Elliot et.al. "Recommended C Style and Coding Standards"
+L.W.Cannon, R.A. Elliot et.al. &quot;Recommended C Style and Coding Standards&quot;
 (based on Indian Hill C Style and Coding Standard).
 <LI>
-R. Stallman "GNU Coding Standards" 
+R. Stallman &quot;GNU Coding Standards&quot; 
 (March 1998, (C) Free Software Foundation)
 <LI>
 J.K. Ousterhout
@@ -313,9 +346,9 @@ Doxygen manual
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC10"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC12"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC10"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -329,26 +362,29 @@ The main purpose of this standard is to define a framework which can
 help us to develop source code in a clear and uniform manner. Another
 goal is to define a base for automatic generation of convenient on-line
 and printable documentation directly from sources.
-</P><P>
+</P>
+<P>
 
-This document defines the "low-level" C coding conventions, structure
+This document defines the &quot;low-level&quot; C coding conventions, structure
 of C source files, naming conventions, commenting style which must be applied
 to developing of C source code. We have tried not only give a pandect of
 rules, but also give rationale and reasons for some of them.
-</P><P>
+</P>
+<P>
 
 Doxygen-specific guidelines concerning resulting documentation
 formatting and common issues will be described a separate document.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC12"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC11"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC11"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -359,6 +395,8 @@ formatting and common issues will be described a separate document.
 <P>
 
 <UL>
+<LI>
+Victor V. Vengerov <A HREF="mailto:Victor.Vengerov@oktetlabs.ru">Victor.Vengerov@oktetlabs.ru</A>
 <LI>
 Elena A. Vengerova <A HREF="mailto:Elena.Vengerova@oktetlabs.ru">Elena.Vengerova@oktetlabs.ru</A>
 <LI>
@@ -371,9 +409,9 @@ Konstantin Abramenko <A HREF="mailto:Konstantin.Abramenko@oktetlabs.ru">Konstant
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC12"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC14"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC11"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC22"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -388,9 +426,9 @@ Konstantin Abramenko <A HREF="mailto:Konstantin.Abramenko@oktetlabs.ru">Konstant
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC15"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC22"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -402,16 +440,19 @@ Konstantin Abramenko <A HREF="mailto:Konstantin.Abramenko@oktetlabs.ru">Konstant
 
 C language has a pretty simple syntax, nevertheless it is possible to write
 extremely complicated code. The following example, taken from 
-<CITE>"Obfuscated C Contest"</CITE> archive, is a correct C program; you can
+<CITE>&quot;Obfuscated C Contest&quot;</CITE> archive, is a correct C program; you can
 try to compile and execute it:
-</P><P>
+</P>
+<P>
 
 @verbatim
-main() { printf(&#38;unix["\021%six\012\0"],(unix)["have"]+"fun"-0x60); }
-</P><P>
+main() { printf(&amp;unix[&quot;\021%six\012\0&quot;],(unix)[&quot;have&quot;]+&quot;fun&quot;-0x60); }
+</P>
+<P>
 
 How much time you need to understand how it works? :-)
-</P><P>
+</P>
+<P>
 
 It is good for fun, but absolutely not applicable for development of a
 big software project, which must be supported by many people during few
@@ -419,16 +460,17 @@ years. Your code may be read by many people, and it is very important to
 make your code understandable for them. Every time have in mind that you
 are writing code not for compiler, but for human. Limit your fantasy to
 make your code clear.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC15"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC14"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC16"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC22"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -439,27 +481,30 @@ make your code clear.
 <P>
 
 Any line of C source code couldn't be longer than 80 characters.
-</P><P>
+</P>
+<P>
 
 Remember that during debugging and further development of your program
 you often insert additional <CODE>if</CODE> statements moving your original
 code more and more to the right. Try to keep your original code in 60-70
 character limit.
-</P><P>
+</P>
+<P>
 
 If C source code is generated by other programs, tools, scripts, and
 produced code is not intended to be human-readable, it is not required
 to follow 80 character limitation.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC16"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC15"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC17"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC22"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -475,20 +520,22 @@ of specific program or project. Nevertheless, each file must have a
 reasonable size. It is not possible to give hard limitations of source
 length; it seems that 800-4000 lines of code is a good source size and
 up to 6000-8000 lines is acceptable.
-</P><P>
+</P>
+<P>
 
 If C source code is generated by other programs, tools, scripts, the
 file  length is not limited.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC17"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC16"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC18"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC22"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -498,34 +545,38 @@ file  length is not limited.
 <!--docid::SEC17::-->
 <P>
 
-Lines in source file are separated by character <SAMP>`LF'</SAMP> (hex code
-0x0a). It is not allowed to use <FONT SIZE="-1">MS-DOS</FONT> standard <SAMP>`CR-LF'</SAMP>
+Lines in source file are separated by character `<SAMP>LF</SAMP>' (hex code
+0x0a). It is not allowed to use <FONT SIZE="-1">MS-DOS</FONT> standard `<SAMP>CR-LF</SAMP>'
 sequence for line delimiting.
-</P><P>
+</P>
+<P>
 
-It is permitted (but not required) to insert <SAMP>`FF'</SAMP> character (Form
+It is permitted (but not required) to insert `<SAMP>FF</SAMP>' character (Form
 Feed, hex code 0x0c) to separate logically independent parts of source
 code  (functions or function groups, variable declaration groups, etc).
 This character shall not be used inside function body.
-</P><P>
+</P>
+<P>
 
 It is prohibited to use control characters immediately in string
 constants or comments. For strings you may use escape sequences instead.
-</P><P>
+</P>
+<P>
 
 Do not forget to setup your text editor program so that it will insert
-appropriate number of spaces instead of <SAMP>`TAB'</SAMP> (hex code 0x09)
+appropriate number of spaces instead of `<SAMP>TAB</SAMP>' (hex code 0x09)
 character on <KBD>TAB</KBD> key pressing.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC18"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC17"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC19"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC22"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -535,19 +586,20 @@ character on <KBD>TAB</KBD> key pressing.
 <!--docid::SEC18::-->
 <P>
 
-Do not ever use the "trigraphs" feature of <FONT SIZE="-1">ANSI</FONT> C. (If you
+Do not ever use the &quot;trigraphs&quot; feature of <FONT SIZE="-1">ANSI</FONT> C. (If you
 don't know what does it mean - don't worry, it will be better if you
 never know about it).
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC19"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC18"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC20"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC22"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -560,41 +612,46 @@ never know about it).
 Indentation is used to show structure of algorithms or data types.
 Usually, each statement in complex statement is started at the same
 column, and each nested statement is indented relative to its
-"parent". Precise rules specific to each C language construct provided
+&quot;parent&quot;. Precise rules specific to each C language construct provided
 below.
-</P><P>
+</P>
+<P>
 
 Indentation level is 4 character. It means that every nested block shifted
-to 4 character right relatively to the position of its "parent block".
-</P><P>
+to 4 character right relatively to the position of its &quot;parent block&quot;.
+</P>
+<P>
 
 If a nested block is a complex statement surrounded with curly brackets
-(braces), these brackets must be placed at the position of "parent" block.
-</P><P>
+(braces), these brackets must be placed at the position of &quot;parent&quot; block.
+</P>
+<P>
 
 The following example demonstrates this:
-</P><P>
+</P>
+<P>
 
 @verbatim
     while (p != NULL)
     {
-        for (i = 0; i &#60; p-&#62;tabsize; i++)
+        for (i = 0; i &lt; p-&gt;tabsize; i++)
         {
-            if (p-&#62;tab[i] == x)
+            if (p-&gt;tab[i] == x)
                 return i;
         }
         return 0;
     }
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC20"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC19"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC21"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC22"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -629,9 +686,9 @@ get their own line.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC20"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC22"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC22"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -652,16 +709,17 @@ be used only in a limited number of modules, and preferable under
 conditional preprocessor directives. Compiler-depended features like
 <CODE>inline</CODE> function attribute must be used via appropriate preprocessor
 definition.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC22"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC21"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC23"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC13"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC23"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -674,13 +732,15 @@ definition.
 Choosing names is one of the most important aspects of programming. Good
 names clarify the function of a program and reduce the need for other
 documentation. Poor names result in ambiguity, confusion and errors.
-</P><P>
+</P>
+<P>
 
 The ideal name is one that instantly conveys as much information as possible
 about the purpose of an entity (variable, function, field, etc.) it refers to.
 Try to choose names in such way that they could not be misinterpreted or
 confused by other programmers.
-</P><P>
+</P>
+<P>
 
 Here is the check list for names:
 <UL>
@@ -704,20 +764,23 @@ Check if the name is so generic that it doesn't convey any information.
 <P>
 
 Words and abbreviations from non-English languages cannot be used to
-form identifiers. Use underscore character <SAMP>`_'</SAMP> to separate the
+form identifiers. Use underscore character `<SAMP>_</SAMP>' to separate the
 words. Do not fear to use long identifiers. In any case, an identifier
 <EM>must not contain</EM> pronouns, interjections, private names,
 nicknames, or place names.
-</P><P>
+</P>
+<P>
 
 Variable, type, field names must be in lower case only. Use upper case for
 preprocessor names and enum constants. Do not mix upper and lower case 
 letters in the same name.
-</P><P>
+</P>
+<P>
 
 If you have chosen some abbreviation, document it and use the same 
 abbreviation everywhere in the program.
-</P><P>
+</P>
+<P>
 
 You must have in mind possible name conflicts when you assign a name to an
 entity. A conflict may occur if two global variables or functions are defined 
@@ -725,9 +788,10 @@ in two places, or if some header files contain declaration of types,
 preprocessor variables, structs, etc. with the same name, and these headers may
 be included both. The only way how to avoid such conflicts is to give names
 in a consistent manner.
-</P><P>
+</P>
+<P>
 
-You must add module-  or subsystem-specific prefixes to globally visible
+You must add module-&nbsp; or subsystem-specific prefixes to globally visible
 names. It is recommended to have prefix not less than 3 character long;
 2-character prefix is allowed for some significant wide-used subsystems.
 A prefix must be the same for all global names in module or subsystem. All
@@ -738,28 +802,31 @@ components. It is not required (but allowed), to prefix local names (names
 in the header files which may be included only in particular subsystem and not
 exported to the outer world, static variables and functions). Do not prefix
 field names in structures and unions.
-</P><P>
+</P>
+<P>
 
-It is recommended for uniformity to use <SAMP>`object + action +
-object/property'</SAMP> style while giving a name to a function. Besides, this
+It is recommended for uniformity to use `<SAMP>object + action +
+object/property</SAMP>' style while giving a name to a function. Besides, this
 style is convenient when module prefix is used in place of the first
 object. For example, <CODE>fat_get_cluster(), pkt_send_raw()</CODE>.
-</P><P>
+</P>
+<P>
 
 The only exception for the above rules is if you are implementing
 something using externally given (standardized) specification.
 Therefore, it is not required to rename <CODE>printf</CODE> to
 <CODE>libc_printf</CODE> if you are implementing <FONT SIZE="-1">ANSI</FONT> C library!
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC23"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC22"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC24"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC22"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC28"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -774,19 +841,21 @@ needs to understand your work. Comments are very important parts of your
 code, it is a way to make your program simple and well-readable. Lack of
 comments or inaccurate comments may make life for reader (and may be for you
 too!) very complex.
-</P><P>
+</P>
+<P>
 
 This chapter provides general rules for comment writing.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC24"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC23"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC25"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC23"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC28"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -799,20 +868,22 @@ This chapter provides general rules for comment writing.
 Comments are started with the sequence <CODE>/*</CODE>. Comments are finished with
 the sequence <CODE>*/</CODE>. It is prohibited to use C++ line comment designator
 <CODE>//</CODE> even if your compiler supports it. Nested comments are not allowed.
-</P><P>
+</P>
+<P>
 
 Don't use <CODE>/*</CODE> and <CODE>*/</CODE> sequences for temporary removing pieces
 of your code. Use preprocessor directives instead.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC25"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC24"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC26"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC23"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC28"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -824,24 +895,27 @@ of your code. Use preprocessor directives instead.
 
 All comments in your program shall be written in English, because English is
 the only language that nearly all programmers in all countries can read.
-</P><P>
+</P>
+<P>
 
 If it is declared in technical requirement document, that comments must be
 written in any other language UTF-8 character set should be used.
-</P><P>
+</P>
+<P>
 
 Multilingual comments within sources are <EM>highly</EM> not recommended.
 It is proposed to use separate translation files for such cases.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC26"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC25"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC27"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC23"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC28"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -858,18 +932,22 @@ exactly as it is used). Put one space character between words in sentences.
 Couple punctuation mark to the left word and insert a space character after
 punctuation mark. Put an empty line between paragraphs. You must put space
 character after <CODE>/*</CODE> and before <CODE>*/</CODE>.
-</P><P>
+</P>
+<P>
 
 Two comment styles may be used: one-line comments and multiline comments.
 One line comment looks like this:
-</P><P>
+</P>
+<P>
 
 @verbatim
 /* This is example of one-line comment */
-</P><P>
+</P>
+<P>
 
 Multiline comments look like this:
-</P><P>
+</P>
+<P>
 
 @verbatim
 /*
@@ -877,23 +955,26 @@ Multiline comments look like this:
  * if your text couldn't be fitted in one 80-character line. Please, note
  * that each line is started with the asterisk character.
  */
-</P><P>
+</P>
+<P>
 
 Code comments must be indented as appropriate piece of code.
-</P><P>
+</P>
+<P>
 
 Some specific comment formatting considerations provided in appropriate
 chapters of this document.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC27"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC26"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC28"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC23"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC28"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -912,7 +993,8 @@ Second, people will read the comments to find out how your code works
 internally, so they can fix bugs or add new features. More documentation
 isn't necessarily better: reading pages of comments may be not easier than
 understanding uncommented code.
-</P><P>
+</P>
+<P>
 
 It is most important to comment things which affect many different
 pieces of program. Thus it is required that every procedure interface,
@@ -920,7 +1002,8 @@ every structure declaration, and every global variable must be commented
 clearly. If you haven't commented one of these things it will be
 necessary to look at all the uses of the thing to understand how it's
 supposed to work.
-</P><P>
+</P>
+<P>
 
 On the other hand, things with only local impact may not need much
 documentation. If the overall purpose of the function has been explained,
@@ -929,23 +1012,27 @@ meaningful names, it is not required to give any comments at all. For long
 functions, comment local variables and logical blocks of function. Also,
 comment a tricky situations, non-obvious code which depends on information
 to someone reading it for the first time.
-</P><P>
+</P>
+<P>
 
 Document each thing in exactly one place. If something is documented in
 several places, it will be hard to keep the documentation up to date as the
 system changes. Try to document each major design decision in exactly one
 place.
-</P><P>
+</P>
+<P>
 
 Don't just repeat what is already obvious from the code, like this:
 @verbatim
     i += 1;   /* Increment i */
-</P><P>
+</P>
+<P>
 
 Documentation should provide higher-level information about the overall
 function of the code, helping readers to understand what a complex
 collection of statements really means.
-</P><P>
+</P>
+<P>
 
 It is extremely important to write comments as you write the code. Don't
 delay documentation writing until you finish to implement and change
@@ -954,21 +1041,23 @@ never stop coding: there is always more code you have to write. If you
 accumulate more undocumented code, it will be harder to you to find energy
 and time to comment it. So, you just write more undocumented code. Finally,
 you may forget some important things which must be documented.
-</P><P>
+</P>
+<P>
 
 If you write comments as you go, it won't add much to your coding time and
 you won't have to worry about doing it later. Therefore, it is required to
 write comments as you write the code.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC28"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC27"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC29"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC23"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -979,16 +1068,17 @@ write comments as you write the code.
 <P>
 
 This chapter describes general rules about C source and headers file layout.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC29"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC28"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC30"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC28"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1001,7 +1091,8 @@ This chapter describes general rules about C source and headers file layout.
 Every file containing C source code must be started from standard file
 header. After the header the following sections should be included in the 
 specified recommended order:
-</P><P>
+</P>
+<P>
 
 <UL>
 <LI>
@@ -1009,44 +1100,51 @@ General file documentation. It is a C comment consisting of a complete
 description of the overall module purpose and function.
 <P>
 
+</P>
 <LI>
 <EM>Includes</EM>. The include section (if exists) consist of one or more C
 preprocessor <CODE>#include</CODE> directives. This section groups all header
 files included in the module in one place. In most cases, system include
-files, such as <TT>`stdio.h'</TT>, should be included first. Subsystem
+files, such as `<TT>stdio.h</TT>', should be included first. Subsystem
 interface include files (see below) usually must be included before
 subsystem headers. Header files that declare functions or external
 variables should be included in the file that defines the function or
 variable.
 <P>
 
+</P>
 <LI>
 <EM>Defines</EM>. The defines section (if it exists) consists of one or more C
 preprocessor <CODE>#define</CODE> directives. This section (if it exists) groups
 all definitions made in module in one place.
 <P>
 
+</P>
 <LI>
 <EM>Types</EM>. This section (if it exists) contains all struct, typedef, enum
 definitions and groups it together.
 <P>
 
+</P>
 <LI>
 <EM>Forwards</EM>. The forward declarations section (if it exists) consists
 of one or more <FONT SIZE="-1">ANSI</FONT> C function prototypes. This section
 groups all such declarations together.
 <P>
 
+</P>
 <LI>
 <EM>Globals</EM>. This section (if it exists) consists of all
 external-visible variables definitions and groups it together.
 <P>
 
+</P>
 <LI>
 <EM>Locals</EM>. This section consists of all variables visible only inside this
 module (static variables) and groups it together.
 <P>
 
+</P>
 <LI>
 <EM>Functions</EM>. The functions section (if it exists) consists of one or more C
 function definitions. This section groups all such declarations together.
@@ -1062,16 +1160,17 @@ implemented after all preceding definitions anyway. Nevertheless,
 remember that it means that your software is likely to have a poor
 design. It is recommended to split source or header file to many smaller
 ones in this case.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC30"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC29"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC31"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC28"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1081,65 +1180,74 @@ ones in this case.
 <!--docid::SEC30::-->
 <P>
 
-Each <SAMP>`.c'</SAMP> or <SAMP>`.h'</SAMP> files written by human, must have a formal
+Each `<SAMP>.c</SAMP>' or `<SAMP>.h</SAMP>' files written by human, must have a formal
 header. This header starts at the first line of source file. A header
 has the following format:
-</P><P>
+</P>
+<P>
 
 @verbatim
 /** @file
- * @brief &#60;subsystem description&#62;
+ * @brief &lt;subsystem description&gt;
  *
- * &#60;module description&#62;
+ * &lt;module description&gt;
  * 
- * &#60;copyright notice&#62;
+ * &lt;copyright notice&gt;
  *
- * @author &#60;author name&#62; &#60;&#60;author e-mail&#62;&#62;
+ * @author &lt;author name&gt; &lt;&lt;author e-mail&gt;&gt;
  *
- * &#60;license term notice&#62;
+ * &lt;license term notice&gt;
  * 
  * $Id: OKTL-0000034.texi,v 1.1 2004/03/18 17:18:09 helen Exp $
  */
-</P><P>
+</P>
+<P>
 
 <EM>Subsystem description</EM> is a short (one-line preferred) description of
 subsystem to which this file belongs. This line must be same for all files
 of this subsystem.
-</P><P>
+</P>
+<P>
 
 <EM>Module description</EM> is a short description of a source file. It
 should be started with upper-case letter, and finished with dot.
-</P><P>
+</P>
+<P>
 
 <EM>Copyright notice</EM> must provide information about copyright holder of
-this work. This line must consist of word <SAMP>`Copyright'</SAMP>, copyright sign
-<SAMP>`(C)'</SAMP>, organization name which holds copyright, and its location
-(city and country). It is allowed multiple <SAMP>`Copyright'</SAMP> sections if
+this work. This line must consist of word `<SAMP>Copyright</SAMP>', copyright sign
+`<SAMP>(C)</SAMP>', organization name which holds copyright, and its location
+(city and country). It is allowed multiple `<SAMP>Copyright</SAMP>' sections if
 your source contains fragments copyrighted by different organizations.
-</P><P>
+</P>
+<P>
 
 <EM>@author</EM> section of the header must provide information about
 principal developer of this module. The section consists of the author's
 name (in English transcription) and e-mail address which may be used
 later to contact the author regarding to these sources. It is allowed to
-have multiple <SAMP>`@author'</SAMP> sections if principal developer has been
+have multiple `<SAMP>@author</SAMP>' sections if principal developer has been
 changed; put a name of the last principal developer first. OKTET Labs
-employees shall use &#60;Name.Surname@oktetlabs.ru&#62; form of e-mail address.
-</P><P>
+employees shall use &lt;Name.Surname@oktetlabs.ru&gt; form of e-mail address.
+</P>
+<P>
 
-Unnecessary part <SAMP>`license term notice'</SAMP> may be added to provide
+Optional part `<SAMP>license term notice</SAMP>' may be added to provide
 information about licensing terms for this source file, about distribution
 permissions or restrictions, or to refer to a particular license text.
-</P><P>
+</P>
+<P>
 
 The last line of the header is a substitution for source code system
-(e.g. <FONT SIZE="-1">CVS</FONT>) information. <SAMP>`$'</SAMP>Id: $ sequence will be
+(e.g. <FONT SIZE="-1">CVS</FONT>) information. `<SAMP>$</SAMP>'Id: $ sequence will be
 substituted with actual module identification string while a file is
 committed into <FONT SIZE="-1">CVS</FONT> repository.
-</P><P>
+</P>
+<P>
 
 Note that doxygen-style comment and tags are used here.
-</P><P>
+</P>
+<P>
 
 @verbatim
 /** @file
@@ -1149,21 +1257,22 @@ Note that doxygen-style comment and tags are used here.
  *
  * Copyright (C) 1999 OKTET Labs, St.-Petersburg, Russia
  *
- * @author Victor V. Vengerov &#60;Victor.Vengerov@oktetlabs.ru&#62;
- * @author Dmitry V. Semyonov &#60;Dmitry.Semyonov@oktet.ru&#62;
+ * @author Victor V. Vengerov &lt;Victor.Vengerov@oktetlabs.ru&gt;
+ * @author Dmitry V. Semyonov &lt;Dmitry.Semyonov@oktet.ru&gt;
  *
  * $Id: OKTL-0000034.texi,v 1.1 2004/03/18 17:18:09 helen Exp $
  */
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC31"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC30"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC32"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC28"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1176,35 +1285,37 @@ Note that doxygen-style comment and tags are used here.
 Some of source files fed to compiler may be generated by other programs
 or scripts. Such programs or scripts must put special header at the beginning 
 of such files:
-</P><P>
+</P>
+<P>
 
 @verbatim
 /*
- * This file is automatically generated by program &#60;program&#62;.
+ * This file is automatically generated by program &lt;program&gt;.
  * DO NOT EDIT IT!!!
  *
- * File generated at &#60;date&#62; &#60;time&#62;
+ * File generated at &lt;date&gt; &lt;time&gt;
  */
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC32"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC31"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC28"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<H2> 8.4 Header (<SAMP>`.h'</SAMP>) files </H2>
+<H2> 8.4 Header (`<SAMP>.h</SAMP>') files </H2>
 <!--docid::SEC32::-->
 <P>
 
-Header files are started with the same header as <SAMP>`.c'</SAMP> files. Header
+Header files are started with the same header as `<SAMP>.c</SAMP>' files. Header
 files must include C variable and function declarations, common type
 definitions, preprocessor definitions, definitions of inline functions which
 may be used in more than one C module. Each module which requires
@@ -1214,55 +1325,63 @@ declarations from another header file, it is recommended to include that
 header file to the first one. (Usually, header file contains some interface
 definition, and it is poor if user of this interface must know about
 internal things needed for this interface declaration.)
-</P><P>
+</P>
+<P>
 
 There are two kinds of header files: which define interface to subsystem
 and which define inter-module interfaces inside specific subsystem.
 Try not to mix these two kinds of header files. Do not include internal
 definitions and declarations to the interface headers.
-</P><P>
+</P>
+<P>
 
 Header file must be started with the same header as C source code file.
 The body of header file must be organized in the following way:
-</P><P>
+</P>
+<P>
 
 @verbatim
-#ifndef __&#60;subsystem_prefix&#62;_&#60;filename&#62;_H__
-#define __&#60;subsystem_prefix&#62;_&#60;filename&#62;_H__
+#ifndef __&lt;subsystem_prefix&gt;_&lt;filename&gt;_H__
+#define __&lt;subsystem_prefix&gt;_&lt;filename&gt;_H__
 #ifdef __cplusplus
-extern "C" {
+extern &quot;C&quot; {
 #endif
-</P><P>
+</P>
+<P>
 
 ...
-</P><P>
+</P>
+<P>
 
 #ifdef __cplusplus
 }
 #endif
-#endif /* __&#60;subsystem_prefix&#62;_&#60;filename&#62;_H__ */
-</P><P>
+#endif /* __&lt;subsystem_prefix&gt;_&lt;filename&gt;_H__ */
+</P>
+<P>
 
-In this fragment <SAMP>`&#60;subsystem_prefix&#62;'</SAMP> must be substituted with
-capitalized subsystem abbreviation, <SAMP>`&#60;filename&#62;'</SAMP> must be
+In this fragment `<SAMP>&lt;subsystem_prefix&gt;</SAMP>' must be substituted with
+capitalized subsystem abbreviation, `<SAMP>&lt;filename&gt;</SAMP>' must be
 substituted with capitalized form of header file name. If the filename
 already contains the subsystem prefix there is no need to add another
 one.
-</P><P>
+</P>
+<P>
 
 Conditionals <CODE>#ifdef __cplusplus</CODE> used to make possible usage of
 appropriate header in C++ program. These preprocessor conditionals may be
 omitted in internal headers, but are mandatory for interface headers.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC33"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC32"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC34"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC28"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1277,9 +1396,9 @@ omitted in internal headers, but are mandatory for interface headers.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC35"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1291,85 +1410,96 @@ omitted in internal headers, but are mandatory for interface headers.
 
 It is required to put formal function header before each function definition.
 Function header have the following format:
-</P><P>
+</P>
+<P>
 
 @verbatim
 /**
- * &#60;function description&#62;
+ * &lt;function description&gt;
  *
- * @param &#60;param1&#62;      &#60;param1 description&#62; [ (OUT) | (IN/OUT) ]
- * @param &#60;param2&#62;      &#60;param2 description&#62; [ (OUT) | (IN/OUT) ]
+ * @param &lt;param1&gt;      &lt;param1 description&gt; [ (OUT) | (IN/OUT) ]
+ * @param &lt;param2&gt;      &lt;param2 description&gt; [ (OUT) | (IN/OUT) ]
  * ...
  *
- * @return &#60;return value description&#62;
+ * @return &lt;return value description&gt;
  *
- * @retval &#60;retval1&#62;    &#60;retval1 specification&#62;
- * @retval &#60;retval2&#62;    &#60;retval2 specification&#62;
+ * @retval &lt;retval1&gt;    &lt;retval1 specification&gt;
+ * @retval &lt;retval2&gt;    &lt;retval2 specification&gt;
  * ...
  *
- * @se &#60;side effects description&#62;
+ * @se &lt;side effects description&gt;
  *
- * @sa &#60;closely related functions and documentation references&#62;
+ * @sa &lt;closely related functions and documentation references&gt;
  *
- * @alg &#60;algorithm description&#62;
+ * @alg &lt;algorithm description&gt;
  *
- * @bug &#60;bug description&#62;
+ * @bug &lt;bug description&gt;
  *
- * @todo &#60;todo description&#62;
+ * @todo &lt;todo description&gt;
  */
-</P><P>
+</P>
+<P>
 
 Not all parts must be presented in each function header.
-</P><P>
+</P>
+<P>
 
-The only always required part is <SAMP>`&#60;function description&#62;'</SAMP>. It
+The only always required part is `<SAMP>&lt;function description&gt;</SAMP>'. It
 should be started with upper-case letter, and finished with dot. It is
 recommended to use common style of the form 'Copy bytes' (which is
 opposite to 'Copies bytes') for documentation similarity.
-</P><P>
+</P>
+<P>
 
 At the same time it is <EM>mandatory</EM> to describe all function
 parameters and returned value(s). If a function does not return a value,
-<SAMP>`@return'</SAMP> part may be omitted, or &#60;return value specification&#62; may
-be <SAMP>`N/A'</SAMP> (not applicable). If a value directly returned by a function
+`<SAMP>@return</SAMP>' part may be omitted, or &lt;return value specification&gt; may
+be `<SAMP>N/A</SAMP>' (not applicable). If a value directly returned by a function
 lies within a limited set of constants, then each constant should be
-described using <SAMP>`@retval'</SAMP> tag.
-</P><P>
+described using `<SAMP>@retval</SAMP>' tag.
+</P>
+<P>
 
 If a parameter is used to deliver values out from a function, it is
-recommended to add <SAMP>`(IN/OUT)'</SAMP> or <SAMP>`(OUT)'</SAMP> (depending on whether
+allowed to add `<SAMP>(IN/OUT)</SAMP>' or `<SAMP>(OUT)</SAMP>' (depending on whether
 the parameter is used or not as input at the same time accordingly) hint
-to the end of parameter description. <SAMP>`(IN)'</SAMP> is assumed by default,
+to the end of parameter description. `<SAMP>(IN)</SAMP>' is assumed by default,
 and should not be used.
-</P><P>
+</P>
+<P>
 
-<SAMP>`@se'</SAMP> (side effects) part must be presented only when a function
+`<SAMP>@se</SAMP>' (side effects) part must be presented only when a function
 has non-obvious side effects. For example, if this function essentially
 modifies common data structures, and it is not clear from its name, or a
 function prints something to standard output, changes state of some
 hardware, and so on.
-</P><P>
+</P>
+<P>
 
-Use optional <SAMP>`@sa'</SAMP> (see also) part to give references to closely
+Use optional `<SAMP>@sa</SAMP>' (see also) part to give references to closely
 related functions and documentation blocks.
-</P><P>
+</P>
+<P>
 
-Optional <SAMP>`@bug'</SAMP> and <SAMP>`@todo'</SAMP> sections may be used to identify
+Optional `<SAMP>@bug</SAMP>' and `<SAMP>@todo</SAMP>' sections may be used to identify
 found bugs or things that need to be done accordingly.
-</P><P>
+</P>
+<P>
 
-<SAMP>`@alg'</SAMP> (algorithm) part must be provided only when a function is
-not obvious, and some tricky approaches are used for its implementation.
-</P><P>
+`<SAMP>@alg</SAMP>' (algorithm) part must be provided only when it is not enough
+to define <EM>what</EM> function does; it is necessary to explain <EM>how</EM>
+this achieved.
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC35"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC34"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC36"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1381,29 +1511,32 @@ not obvious, and some tricky approaches are used for its implementation.
 
 The function description as well as any of the sections beginning tags
 must be started from the 3rd column position (beginning with 0) just
-after the <SAMP>`' * ''</SAMP> sequence of characters.
-</P><P>
+after the `<SAMP>' * '</SAMP>' sequence of characters.
+</P>
+<P>
 
-Use exactly one <SAMP>`SPACE'</SAMP> character between any of section beginning
+Use exactly one `<SAMP>SPACE</SAMP>' character between any of section beginning
 tags and start of section body, if the body begins on the same line with
 a tag.
-</P><P>
+</P>
+<P>
 
-&#60;paramX description&#62;, &#60;retvalX specification&#62;, as well as any line
+&lt;paramX description&gt;, &lt;retvalX specification&gt;, as well as any line
 (except first) of multiline section must be indented by multiples of 8
 spaces. This simplifies text formatting with TAB key. The whole indented
 description must form a single column. In other words, it is not allowed
 to have a line indented by 8 characters, and other one indented by 16.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC36"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC35"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC37"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1415,7 +1548,8 @@ to have a line indented by 8 characters, and other one indented by 16.
 
 All functions must be defined in <FONT SIZE="-1">ANSI</FONT> C format. Function definition
 must look like this:
-</P><P>
+</P>
+<P>
 
 @verbatim
 /** 
@@ -1453,10 +1587,12 @@ object_create_null(objid objclass, char *name)
     }
     return obj;
 }
-</P><P>
+</P>
+<P>
 
 Please, pay your attention to the following topics:
-</P><P>
+</P>
+<P>
 
 <UL>
 <LI>
@@ -1468,14 +1604,16 @@ Function name is started at column zero.
 
 Such formatting will simplify use of some tools. For example, <CODE>grep</CODE>
 command can be used to find location of a specific function definition:
-</P><P>
+</P>
+<P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>$ grep ^object_create_null *
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 If argument list can not fit in one line, this line can be split in the
 following way:
-</P><P>
+</P>
+<P>
 
 @verbatim
 static objid
@@ -1484,16 +1622,17 @@ datafile_encode(int in_file_desc, int out_file_desc, char *encoding_key,
 {
     ...
 }
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC37"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC36"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC38"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1506,25 +1645,28 @@ datafile_encode(int in_file_desc, int out_file_desc, char *encoding_key,
 It is <EM>highly not recommended</EM> to pass or return structures to or
 from functions. Pass pointers instead and make a copy inside the function if
 it is really necessary.
-</P><P>
+</P>
+<P>
 
 It is required to define a function with <CODE>static</CODE> specifier if the
 function must be visible only inside a current module (file).
-</P><P>
+</P>
+<P>
 
 Function return type must be declared. Do not default it to
 <CODE>int</CODE>; if a function does not return a value then it must be
 given return type <CODE>void</CODE>.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC38"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC37"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC39"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1542,16 +1684,17 @@ simplifies understanding what function does. If it is not possible, size up to
 70-140 lines is good, and up to 400-500 is acceptable. If your function is
 overgrown, try to redesign it to isolate logically separable parts in
 different functions.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC39"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC38"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC40"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1562,7 +1705,8 @@ different functions.
 <P>
 
 Function parameters may be divided into three categories.
-</P><P>
+</P>
+<P>
 
 <UL>
 <LI>
@@ -1577,35 +1721,40 @@ modifies.
 <P>
 
 Parameters should normally appear in the order {in, in-out, out}.
-</P><P>
+</P>
+<P>
 
 Parameters which have source/destination semantics must always appear in
 the order {destination, source}.
-</P><P>
+</P>
+<P>
 
 If there is a group of functions, all of which operate on structures of a
 particular type (hash table, device descriptor structure, etc), parameter
 which points to this structure should be the first argument of each
 function. All such parameters must have the same name.
-</P><P>
+</P>
+<P>
 
 Do not use <CODE>auto</CODE> memory class specifier with local variables. If you
 think that some (3-4 maximum) variables are used in a critical part of code
 or are frequently used, you may give <CODE>register</CODE> memory class specifier.
-</P><P>
+</P>
+<P>
 
 Avoid local declarations that override declarations at higher levels. In
 particular, local variables must not be redeclared in nested blocks.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC40"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC39"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1616,97 +1765,135 @@ particular, local variables must not be redeclared in nested blocks.
 <P>
 
 It is recommended to give short but clear names to local variables. Here are
-some recommended names for local variables.
-</P><P>
+some recommended names for local variables. All these names may be used with
+possible digit suffixes.
+</P>
+<P>
 
-Names <CODE>i</CODE>, <CODE>j</CODE>, <CODE>k</CODE>, with possible digit suffix must be used
-as names for loop variables.
-</P><P>
+Names <CODE>i</CODE>, <CODE>j</CODE>, <CODE>k</CODE> must be used as names for loop variables.
+</P>
+<P>
 
-Names <CODE>n</CODE>, <CODE>m</CODE> with possible digit suffixes must be used as a names
-for variables which contain a number of some entities. Variable name
-<CODE>l</CODE> (with a possible digit suffix) may be used for length of something.
-</P><P>
+Names <CODE>n</CODE>, <CODE>m</CODE> must be used as a names for variables which contain
+a number of some entities. Variable name <CODE>l</CODE> may be used for length of
+something.
+</P>
+<P>
 
-Names <CODE>s</CODE> or <CODE>str</CODE> (only one of them in one function!) with
-possible digit suffixes must be used as a pointer to character strings.
-</P><P>
+Names <CODE>s</CODE> or <CODE>str</CODE> (only one of them in one function!) may be used
+as a pointer to character strings.
+</P>
+<P>
 
-Names <CODE>p</CODE>, <CODE>q</CODE> with possible digit suffixes must be used as a
-pointer to some data element (structures, elements of array, etc). It is
-acceptable to use <CODE>p</CODE> and <CODE>q</CODE> identifiers as pointers to
-character arrays too.
-</P><P>
+Names <CODE>s</CODE> or <CODE>sock</CODE> may be used for a socket file descriptors.
+</P>
+<P>
 
-Names <CODE>t</CODE>, <CODE>tmp</CODE> with possible digit suffixes must be used as
-temporary variables.
-</P><P>
+Name <CODE>fd</CODE> may be used to refer to a file descriptor variable.
+</P>
+<P>
+
+Name <CODE>f</CODE> may be used for a file descriptor or <CODE>FILE</CODE> variable
+associated with file (<EM>not</EM> socket or device).
+</P>
+<P>
+
+Name <CODE>fn</CODE> may be used for a string constanting the file name.
+</P>
+<P>
+
+Names <CODE>p</CODE>, <CODE>q</CODE> must be used as a pointer to some data element
+(structures, elements of array, etc). It is acceptable to use <CODE>p</CODE> and
+<CODE>q</CODE> identifiers as pointers to character arrays too.
+</P>
+<P>
+
+Names <CODE>t</CODE>, <CODE>tmp</CODE> must be used as temporary variables.
+</P>
+<P>
 
 Name <CODE>src</CODE> may be used as a pointer to source of string, buffer,
 structure, etc. Name <CODE>dst</CODE> may be used as a pointer to destination.
-</P><P>
+</P>
+<P>
 
-Name <CODE>c</CODE> with possible digit suffixes may be used as a temporary
-variable for character.
-</P><P>
+Names <CODE>in</CODE> and <CODE>out</CODE> must be used for pointers or indexes in
+input and output data.
+</P>
+<P>
 
-Name <CODE>que</CODE> with possible digit suffixes may be associated with some kind
-of queue.
-</P><P>
+Name <CODE>c</CODE> may be used as a temporary variable for character.
+</P>
+<P>
 
-Names <CODE>x</CODE>, <CODE>y</CODE>, and <CODE>z</CODE> with possible digit suffixes may
-be associated with coordinates.
-</P><P>
+Name <CODE>que</CODE> may be associated with some kind of queue.
+</P>
+<P>
 
-Names <CODE>w</CODE> and <CODE>h</CODE> with possible digit suffixes may be associated
-with width and height of something.
-</P><P>
+Names <CODE>x</CODE>, <CODE>y</CODE>, and <CODE>z</CODE> may be associated with coordinates.
+</P>
+<P>
 
-Name <CODE>fd</CODE> may be used to refer to file (file descriptor or <CODE>FILE</CODE>
-variable).
-</P><P>
+Names <CODE>w</CODE> and <CODE>h</CODE> may be associated with width and height of
+something.
+</P>
+<P>
+
+Name <CODE>a</CODE> may be used for a some kind of addresses. Names <CODE>pa</CODE> and
+<CODE>va</CODE> may be used for physical and virtual addresses accordingly.
+</P>
+<P>
+
+Name <CODE>conn</CODE> may be used for a file descriptor or other entity
+representing connection.
+</P>
+<P>
 
 <EM>Example:</EM>
-</P><P>
+</P>
+<P>
 
 @verbatim
     int i;
     
     ...
     
-    p = &#38;queue_pool[0];
+    p = &amp;queue_pool[0];
     n = sizeof(queue_pool);
-    if (n &#62; max_queue_size)
+    if (n &gt; max_queue_size)
     {
         n = max_queue_size;
     }
-    for (i = 0; i &#60; n; i++)
+    for (i = 0; i &lt; n; i++)
     {
-        p-&#62;data = NULL;
-        p-&#62;id = i;
-        p-&#62;next = p+1;
+        p-&gt;data = NULL;
+        p-&gt;id = i;
+        p-&gt;next = p + 1;
         p++
     }
-</P><P>
+</P>
+<P>
 
 It is not allowed to have more than three variables with the same name and
 different suffixes.
-</P><P>
+</P>
+<P>
 
 Comments for local variables are necessary only when it is really necessary.
 You must comment non-obvious variables in long functions only. It is not
 necessary to comment variables which are used in clear way, for example
 loop counters, etc.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC41"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC40"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC42"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC33"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1721,9 +1908,9 @@ loop counters, etc.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC43"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1738,9 +1925,9 @@ loop counters, etc.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC42"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC44"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1753,15 +1940,18 @@ loop counters, etc.
 You must insert comment immediately before structure declaration which
 describes purpose of this structure, usage conventions and give other
 necessary information.
-</P><P>
+</P>
+<P>
 
 You must give a detailed comment for each field of declared structure.
-</P><P>
+</P>
+<P>
 
 Usually understanding of data structures used in program is a key to
 understanding of a whole system. Please, write accurate and detailed 
 comments for structure declarations.
-</P><P>
+</P>
+<P>
 
 Comments for structure fields must be placed in the same line where a
 field is declared. All comments must be indented to the same level. It
@@ -1770,16 +1960,17 @@ common level if some field names are longer than others and such shifts
 allow to avoid  splitting comments to several lines. If comment is
 split a new line must be indented to the level of first comment
 letter following the <CODE>/*</CODE> sequence. See examples below.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC44"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC43"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC45"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1790,60 +1981,67 @@ letter following the <CODE>/*</CODE> sequence. See examples below.
 <P>
 
 The <CODE>struct</CODE> declaration must look like this:
-</P><P>
+</P>
+<P>
 
 @verbatim
 /** Node of the double-linked list */
 struct list_node {
-    struct list_node  *next;    /**&#60; Next node in double-linked list */
-    struct list_node  *prev;    /**&#60; Previous node in double-linked list */
-    int                size;    /**&#60; Information field size */
-    char               node[0]; /**&#60; Information field designator */
+    struct list_node  *next;    /**&lt; Next node in double-linked list */
+    struct list_node  *prev;    /**&lt; Previous node in double-linked list */
+    int                size;    /**&lt; Information field size */
+    char               node[0]; /**&lt; Information field designator */
 };
-</P><P>
+</P>
+<P>
 
 If <CODE>struct</CODE> declaration is used in a variable declaration or
 <CODE>typedef</CODE> declaration, <CODE>typedef</CODE> or variable specifiers must
 be placed before <CODE>struct</CODE> keyword on the same line, and identifier
 must be placed after close bracket on the same line:
-</P><P>
+</P>
+<P>
 
 @verbatim
 /** NCR875 SCSI host adapter user-settable hardware parameters */
 typedef struct ncr875_hw_regs {
-    int diffScsi;  /**&#60; Differential SCSI bus enable */
-    int TolerANT;  /**&#60; TolerANT enable */
-    int slowCable; /**&#60; Slow cable mode (Extra clock cycle of Data Setup) */
-    int burstLen;  /**&#60; Maximum number of transfers performed per PCI bus
+    int diffScsi;  /**&lt; Differential SCSI bus enable */
+    int TolerANT;  /**&lt; TolerANT enable */
+    int slowCable; /**&lt; Slow cable mode (Extra clock cycle of Data Setup) */
+    int burstLen;  /**&lt; Maximum number of transfers performed per PCI bus
                         ownership, legal values is 2,4,8,16,32,64,128 */
 } ncr875_hw_regs;
-</P><P>
+</P>
+<P>
 
 In <CODE>typedef</CODE> declaration, it is recommended to give the same name to
 <CODE>struct</CODE> name in <CODE>struct</CODE> namespace and to <CODE>typedef</CODE> name.
-</P><P>
+</P>
+<P>
 
 All field names must be started at the same position. The choice of the 
 position is based on the maximum length of field type specifiers used in 
-structure. Note that reference specifiers <SAMP>`*'</SAMP> must be coupled to field
+structure. Note that reference specifiers `<SAMP>*</SAMP>' must be coupled to field
 name, but placed at left from common field indentation level.
-</P><P>
+</P>
+<P>
 
 It is <EM>highly not recommended</EM> to join struct and variable
 declaration. Declare types and variables separately.
  
 In some cases nested <CODE>struct/union</CODE> declarations are acceptable,
 but it is not recommended.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC45"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC44"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC46"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1860,16 +2058,17 @@ it may be compiler-specific. Therefore, it is prohibited to declare, for
 example, hardware register layout as a structure with bit fields, or represent
 structure of binary file in such way, or define structure of data which will
 be sent over network.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC46"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC45"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC47"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1881,16 +2080,17 @@ be sent over network.
 
 All conventions provided for struct formatting are applied to <CODE>union</CODE>
 declarations.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC47"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC46"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC48"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1905,9 +2105,9 @@ declarations.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC47"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC49"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1918,33 +2118,37 @@ declarations.
 <P>
 
 The <CODE>enum</CODE> declaration must look like this:
-</P><P>
+</P>
+<P>
 
 @verbatim
 /** LED status constants */
 enum led_status {
-    LED_STATUS_OFF   = 0, /**&#60; LED is off */
-    LED_STATUS_ON    = 1, /**&#60; LED is on */
-    LED_STATUS_FAIL  = 2, /**&#60; LED is unfunctional */
-    LED_STATUS_MAINT = 4  /**&#60; LED is now in maintenance mode; operations are
+    LED_STATUS_OFF   = 0, /**&lt; LED is off */
+    LED_STATUS_ON    = 1, /**&lt; LED is on */
+    LED_STATUS_FAIL  = 2, /**&lt; LED is unfunctional */
+    LED_STATUS_MAINT = 4  /**&lt; LED is now in maintenance mode; operations are
                                limited */
 };
-</P><P>
+</P>
+<P>
 
 The same rules for typedef/variable definitions as for structures are applied.
-</P><P>
+</P>
+<P>
 
 Each <CODE>enum</CODE> component must occupy a separate line.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC49"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC48"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC50"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1956,22 +2160,24 @@ Each <CODE>enum</CODE> component must occupy a separate line.
 
 <CODE>enum</CODE> members must be prefixed with some abbreviation common for
 all members.
-</P><P>
+</P>
+<P>
 
 It is necessary to give a value for each member, if this value is specified
 externally (in manual, data sheet, technical specification, etc). Otherwise
 it is recommended not to assign values, or assign a value to the first element
 only.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC50"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC49"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -1983,27 +2189,31 @@ only.
 
 Don't forget to give type qualifiers (<CODE>const</CODE> and <CODE>volatile</CODE>) when
 it is necessary, especially <CODE>volatile</CODE> specifier.
-</P><P>
+</P>
+<P>
 
 Absence of <CODE>volatile</CODE> specifier in place where it is required is a
 serious subtle error. Save your time and think every time when
 <CODE>volatile</CODE> specifier may be significant. Do not give <CODE>volatile</CODE>
 specifier to types, fields, variables which do not require it, because it
 may lead to misunderstanding and make your code worse.
-</P><P>
+</P>
+<P>
 
-Give <CODE>const</CODE> specifier when it is possible, because it may make compiler
-output better and help you to avoid some errors.
-</P><P>
+It's <EM>highly</EM> recommended to give <CODE>const</CODE> specifier
+when it is applicable, because it may make compiler output better and
+help you to avoid some errors.
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC51"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC50"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC52"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC41"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC52"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2017,43 +2227,49 @@ Each variable declaration must be started on a separate line.
 Global-space variables definitions must be started at column 0.
 Local variables must be started at block indent level, same
 as for the statements in this block.
-<SAMP>`*'</SAMP> specifiers must be placed near variable name.
-</P><P>
+`<SAMP>*</SAMP>' specifiers must be placed near variable name.
+</P>
+<P>
 
 Variable declarations may be divided into blocks separated by empty line
 and block comment. The common formatting rules are applied inside one block.
-</P><P>
+</P>
+<P>
 
 @verbatim
 /* Phase correction algorithm variables */
-static fixed16  phase_error; /**&#60; Currently estimated phase error */
-static int      phcorr_num;  /**&#60; Number of processed samples */
-static fixed16 *sample;      /**&#60; Next sample pointer */
-</P><P>
+static fixed16  phase_error; /**&lt; Currently estimated phase error */
+static int      phcorr_num;  /**&lt; Number of processed samples */
+static fixed16 *sample;      /**&lt; Next sample pointer */
+</P>
+<P>
 
 Variable names in a block start at the same column. Variable comments
 start at the same column. If comment couldn't be fitted in one line, it may
 be split. Continuation line should begin at the same column where first 
 letter of comments after <CODE>/*</CODE> was placed.
-</P><P>
+</P>
+<P>
 
 @verbatim
-static uint32     input_bit_number;   /**&#60; Number of bits received from
+static uint32     input_bit_number;   /**&lt; Number of bits received from
                                            external interface */
-</P><P>
+</P>
+<P>
 
 If variable block has only one declaration inside, variable comment may be
 omitted.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC52"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC53"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC51"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC53"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2066,56 +2282,63 @@ omitted.
 Try not to use numeric constant values in code (except simple cases, like
 constants 0, 1, -1 and in some rare situations when direct constant usage
 may be more clear than identifier usage - for example bit masks like 0xff).
-</P><P>
+</P>
+<P>
 
 When multiline string constant is used, it is recommended to insert
-<SAMP>`\n'</SAMP> character explicitly and close quote at each line.
-</P><P>
+`<SAMP>\n</SAMP>' character explicitly and close quote at each line.
+</P>
+<P>
 
 <EM>Examples:</EM>
-</P><P>
+</P>
+<P>
 
 @verbatim
 /* Right: */
 void
 usage_information_print(void)
 {
-    printf("check -- check C source code to the C Source Code Style"
-           "conformance\n"
-           "Usage:\n"
-           "    check <filename>\n");
+    printf(&quot;check -- check C source code to the C Source Code Style &quot;
+           &quot;conformance\n&quot;
+           &quot;Usage:\n&quot;
+           &quot;    check &lt;filename&gt;\n&quot;);
 }
-</P><P>
+</P>
+<P>
 
 /* Wrong: */
 void
 usage_information_print(void)
 {
-    printf("
+    printf(&quot;
 check -- check C source code to the C Source Code Style conformance
 Usage:
-    check &#60;filename&#62;\n");
+    check &lt;filename&gt;\n&quot;);
 }
-</P><P>
+</P>
+<P>
 
 If constant length suffix is used, the capital suffix letter must be used
 (use <CODE>0L</CODE>, not <CODE>0l</CODE>). Similarly, for floating point constants,
-use capital exponent letter <SAMP>`E'</SAMP> (use <CODE>1.25E+35</CODE>, not
+use capital exponent letter `<SAMP>E</SAMP>' (use <CODE>1.25E+35</CODE>, not
 <CODE>1.25e+35</CODE>).
-</P><P>
+</P>
+<P>
 
 In hexadecimal constants, lower-case letters must be used (use
 <CODE>0xdeadbeef</CODE>, not <CODE>0xDEADBEEF</CODE>).
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC53"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC52"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC54"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC52"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC54"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2125,114 +2348,134 @@ In hexadecimal constants, lower-case letters must be used (use
 <!--docid::SEC53::-->
 <P>
 
-Unary operators <SAMP>`&#38;'</SAMP>, <SAMP>`*'</SAMP>, <SAMP>`+'</SAMP>, <SAMP>`-'</SAMP>, <SAMP>`~'</SAMP>,
-<SAMP>`!'</SAMP>, <SAMP>`++'</SAMP>, <SAMP>`--'</SAMP> must be coupled with operands to which such
+Unary operators `<SAMP>&amp;</SAMP>', `<SAMP>*</SAMP>', `<SAMP>+</SAMP>', `<SAMP>-</SAMP>', `<SAMP>~</SAMP>',
+`<SAMP>!</SAMP>', `<SAMP>++</SAMP>', `<SAMP>--</SAMP>' must be coupled with operands to which such
 operators are applied.
-</P><P>
+</P>
+<P>
 
 Binary operators
-<SAMP>`*'</SAMP>, <SAMP>`/'</SAMP>, <SAMP>`%'</SAMP>, <SAMP>`+'</SAMP>,
-<SAMP>`-'</SAMP>, <SAMP>`&#62;&#62;'</SAMP>, <SAMP>`&#60;&#60;'</SAMP>, <SAMP>`&#60;'</SAMP>, <SAMP>`&#62;'</SAMP>,
-<SAMP>`&#60;='</SAMP>, <SAMP>`&#62;='</SAMP>, <SAMP>`=='</SAMP>, <SAMP>`!='</SAMP>, <SAMP>`&#38;'</SAMP>, <SAMP>`^'</SAMP>, <SAMP>`|'</SAMP>,
-<SAMP>`&#38;&#38;'</SAMP>, <SAMP>`||'</SAMP>,
-<SAMP>`='</SAMP>, <SAMP>`*='</SAMP>, <SAMP>`/='</SAMP>, <SAMP>`%='</SAMP>, <SAMP>`+='</SAMP>, <SAMP>`-='</SAMP>, <SAMP>`&#60;&#60;='</SAMP>,
-<SAMP>`&#62;&#62;='</SAMP>, <SAMP>`&#38;='</SAMP>, <SAMP>`^='</SAMP>, <SAMP>`|='</SAMP>
+`<SAMP>*</SAMP>', `<SAMP>/</SAMP>', `<SAMP>%</SAMP>', `<SAMP>+</SAMP>',
+`<SAMP>-</SAMP>', `<SAMP>&gt;&gt;</SAMP>', `<SAMP>&lt;&lt;</SAMP>', `<SAMP>&lt;</SAMP>', `<SAMP>&gt;</SAMP>',
+`<SAMP>&lt;=</SAMP>', `<SAMP>&gt;=</SAMP>', `<SAMP>==</SAMP>', `<SAMP>!=</SAMP>', `<SAMP>&amp;</SAMP>', `<SAMP>^</SAMP>', `<SAMP>|</SAMP>',
+`<SAMP>&amp;&amp;</SAMP>', `<SAMP>||</SAMP>',
+`<SAMP>=</SAMP>', `<SAMP>*=</SAMP>', `<SAMP>/=</SAMP>', `<SAMP>%=</SAMP>', `<SAMP>+=</SAMP>', `<SAMP>-=</SAMP>', `<SAMP>&lt;&lt;=</SAMP>',
+`<SAMP>&gt;&gt;=</SAMP>', `<SAMP>&amp;=</SAMP>', `<SAMP>^=</SAMP>', `<SAMP>|=</SAMP>'
 must be separated by one space at left and right.
-</P><P>
+</P>
+<P>
 
-Operators <SAMP>`.'</SAMP> and <SAMP>`-&#62;'</SAMP> must be coupled with both operands.
-</P><P>
+Operators `<SAMP>.</SAMP>' and `<SAMP>-&gt;</SAMP>' must be coupled with both operands.
+</P>
+<P>
 
-Operator <SAMP>`,'</SAMP> (comma) must be coupled to its left operand and separated
+Operator `<SAMP>,</SAMP>' (comma) must be coupled to its left operand and separated
 by one space character from the right operand.
-</P><P>
+</P>
+<P>
 
-Operator <SAMP>`[]'</SAMP> must be coupled to the left and inner operands.
-</P><P>
+Operator `<SAMP>[]</SAMP>' must be coupled to the left and inner operands.
+</P>
+<P>
 
-Syntactic components of conditional operator <SAMP>`a ? b : c'</SAMP>
+Syntactic components of conditional operator `<SAMP>a ? b : c</SAMP>'
 must be separated by one space character. It is recommended to enclose
-conditional operator into the round brackets.
-</P><P>
+conditional operator into the parenthesis.
+</P>
+<P>
 
-Grouping round brackets must be coupled with the contents inside brackets.
-</P><P>
+Grouping parenthesis must be coupled with the contents inside brackets.
+</P>
+<P>
 
 In function call no delimiters must be added between function name
 or function expression and left round bracket. Also, no delimiters
 must be inserted between open round bracket and first operand and between
 close round bracket and between last operand.
-</P><P>
+</P>
+<P>
 
-<SAMP>`sizeof'</SAMP> operator must use syntax similar to function call.
-</P><P>
+`<SAMP>sizeof</SAMP>' operator must use syntax similar to function call.
+</P>
+<P>
 
 Round brackets of type cast operator must be coupled with type specifier and
 with operand.
-</P><P>
+</P>
+<P>
 
 It is allowed to use embedded assignment statement if it make code simpler
 and better readable. Don't use embedded assignment in artificial places. For
 example,
-</P><P>
+</P>
+<P>
 
 @verbatim
     x = x1 + w;
     pos = ofs + x;
-</P><P>
+</P>
+<P>
 
 should not be replaced by
-</P><P>
+</P>
+<P>
 
 @verbatim
     pos = ofs + (x = x1 + w);
-</P><P>
+</P>
+<P>
 
 <EM>More examples:</EM>
-</P><P>
+</P>
+<P>
 
 @verbatim
-    p = p-&#62;next;  /* Correct */
+    p = p-&gt;next;  /* Correct */
     n = - n;      /* Incorrect */
     ++ b;         /* Incorrect */
     b++;          /* Correct */
-    printf("Internal error: %d\\n", (class &#60;&#60; 8) | errno);
+    printf(&quot;Internal error: %d\\n&quot;, (class &lt;&lt; 8) | errno);
     scsi_freq = (freq_multiplier ? freq * 2 : freq);
     list = hash_tab[hash_func(key) % hash_mod];
-    memcpy((char *)dest, (char *)src, n);
-</P><P>
+    memcpy(dest, src, n);
+</P>
+<P>
 
-It is recommended to insert additional unnecessary round brackets to
+It is recommended to insert additional unnecessary parenthesis to
 expression to make it more readable. It is recommended to assume only that
 unary operators have higher priority than binary and that multiplication
 operators has higher priority that addition.
-</P><P>
+</P>
+<P>
 
 It is allowed to insert additional spaces between binary operators, if it is
 improve readability. For example, if you have a group of statements which
 fill fields of structure, code with aligned assignment operators seems
 better. Sometimes, additional spaces may help to show structure of complex
 expressions.
-</P><P>
+</P>
+<P>
 
 Do not test non-boolean expression as you test a boolean. For example, where
 <CODE>x</CODE> is integer, use <CODE>if (x == 0)</CODE> instead <CODE>if (!x)</CODE>.
-</P><P>
+</P>
+<P>
 
 When you split expression into multiple lines, break line after operator.
 Line up continuation lines with the part of the preceding line they
 continue.
  
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC54"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC53"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC55"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC53"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2247,9 +2490,9 @@ continue.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC54"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC56"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC54"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2260,17 +2503,19 @@ continue.
 <P>
 
 <CODE>if</CODE> statement must look like this:
-</P><P>
+</P>
+<P>
 
 @verbatim
     if (p != NULL)
     {
-        if (p-&#62;flag &#38; FEL_INACTIVE)
+        if (p-&gt;flag &amp; FEL_INACTIVE)
             continue;
         else
-            p = p-&#62;next;
+            p = p-&gt;next;
     }
-</P><P>
+</P>
+<P>
 
 It is recommended to enclose <CODE>if</CODE> branches into curly braces in
 each case, except it is a small simple statement. Particularly, it is
@@ -2278,18 +2523,20 @@ recommended to enclose <CODE>if</CODE> branches when it is nested to other
 <CODE>if</CODE> or when this branch contains nested <CODE>if</CODE> statements.
 Also, it is recommended to enclose branch in curly braces if the other
 branch is enclosed.
-</P><P>
+</P>
+<P>
 
 <CODE>if - else if - else if<small>...</small></CODE>
 statements must be formatted like this:
-</P><P>
+</P>
+<P>
 
 @verbatim
-    if (strcmp(reply, "yes") == 0)
+    if (strcmp(reply, &quot;yes&quot;) == 0)
     {
         ...
     }
-    else if (strcmp(reply, "no") == 0)
+    else if (strcmp(reply, &quot;no&quot;) == 0)
     {
         ...
     }
@@ -2297,16 +2544,17 @@ statements must be formatted like this:
     {
         ...
     }
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC56"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC55"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC57"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC54"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2317,41 +2565,46 @@ statements must be formatted like this:
 <P>
 
 <CODE>for</CODE> statement may look like this:
-</P><P>
+</P>
+<P>
 
 @verbatim
-    for (i = 0; i &#60; n; i++)
+    for (i = 0; i &lt; n; i++)
         x += buf[i];
-</P><P>
+</P>
+<P>
 
 Alternative form of <CODE>for</CODE> statement applied when components of
 <CODE>for</CODE> can not fit into the one 80-character line.
-</P><P>
+</P>
+<P>
 
 @verbatim
-    for (p = list-&#62;head, i = 0;
-         p &#38;&#38; !(element_is_invalid(p));
+    for (p = list-&gt;head, i = 0;
+         p &amp;&amp; !(element_is_invalid(p));
          p = list_element_next(p))
     {
         list_element_register(p);
         i++;
     }
-</P><P>
+</P>
+<P>
 
 It is recommended to enclose <CODE>for</CODE> body in curly braces in every case
 except when <CODE>for</CODE> components fit in one line and <CODE>for</CODE> body is
 sufficiently simple (something like <CODE>n += j;</CODE>, not a compound
 statement).
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC57"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC56"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC58"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC54"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2366,24 +2619,26 @@ statement).
     while (p != NULL)
     {
         interp_evaluate_node(p);
-        p = p-&#62;next;
+        p = p-&gt;next;
     }
-</P><P>
+</P>
+<P>
 
 It is recommended to enclose <CODE>while</CODE> body in curly braces in every case
 except when <CODE>while</CODE> condition fits in one line and <CODE>while</CODE>
 body is sufficiently simple (something like <CODE>n += j;</CODE>, not a compound
 statement).
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC58"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC57"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC59"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC54"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2394,22 +2649,24 @@ statement).
 <P>
 
 <CODE>do</CODE> statement must look like this:
-</P><P>
+</P>
+<P>
 
 @verbatim
     do {
-        entry_process(&#38;n, entry);
-    } while (n &#62; 0);
-</P><P>
+        entry_process(&amp;n, entry);
+    } while (n &gt; 0);
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC59"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC58"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC60"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC54"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2420,7 +2677,8 @@ statement).
 <P>
 
 <CODE>switch</CODE> statement must look like this:
-</P><P>
+</P>
+<P>
 
 @verbatim
     switch (action)
@@ -2428,62 +2686,70 @@ statement).
         case ACTION_NOP:
         case ACTION_NEXT:
             break;
-</P><P>
+</P>
+<P>
 
         case ACTION_COPY:
             *new_type = *type;
             state = STATE_COPIED;
             break;
-</P><P>
+</P>
+<P>
 
         case ACTION_MOVE:
             *new_type = *type;
             type = NULL;
             break;
-</P><P>
+</P>
+<P>
 
         case ACTION_CLONE:
         {
             int i;
             
-            for (i = 0; i &#60; type_num; i++)
+            for (i = 0; i &lt; type_num; i++)
             {
                 clone_type[i] = *type;
             }
             state = STATE_CLONED;
             break;
         }
-</P><P>
+</P>
+<P>
 
         default:
             assert(0);
     }
-</P><P>
+</P>
+<P>
 
 <CODE>switch</CODE> branches must be separated by empty lines. Each <CODE>case</CODE>
 label must be placed on a separate line. You must enclose statements in
 curly braces only if some local variables must be declared in block.
-</P><P>
+</P>
+<P>
 
 It is recommended to finish each <CODE>switch</CODE> branch with <CODE>break</CODE>
 statement. If you really want to continue execution in the next <CODE>switch</CODE>
 branch, insert comment <CODE>/* FALLTHROUGH */</CODE> before empty line which
 separates two branches.
-</P><P>
+</P>
+<P>
 
 The <CODE>default</CODE> case, if used, should be last and does not require a
 <CODE>break</CODE> if it is last. To make your code safer, it is recommended to add
 <CODE>default</CODE> branch always.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC60"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC59"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC54"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2495,7 +2761,7 @@ The <CODE>default</CODE> case, if used, should be last and does not require a
 
 It is <EM>highly not recommended</EM> to use <CODE>goto</CODE> statement
 in your program. In most cases it means that you code has poor design.
-Try to use "structural goto" statements, like <CODE>break</CODE>,
+Try to use &quot;structural goto&quot; statements, like <CODE>break</CODE>,
 <CODE>continue</CODE>, <CODE>return</CODE>. In some rare cases <CODE>goto</CODE> usage may be
 acceptable. For example, if function performs multiple resource allocations,
 and fail occurs, all allocated resources must be released. If fail condition
@@ -2503,16 +2769,17 @@ may occur in many places, it is possible to use <CODE>goto</CODE> statement to
 jump to the resource deallocation fragment at the end of the function.
 If it is possible to avoid such <CODE>goto</CODE> usage (for example, if resource
 deallocation function exists and may be used) <CODE>goto</CODE> must not be used.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC61"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC60"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC62"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC54"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC67"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2527,9 +2794,9 @@ deallocation function exists and may be used) <CODE>goto</CODE> must not be used
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC63"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC67"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2540,17 +2807,18 @@ deallocation function exists and may be used) <CODE>goto</CODE> must not be used
 <P>
 
 Preprocessor directives must be started at column zero. It is not allowed
-spaces between <SAMP>`#'</SAMP> sign and directive name.
-</P><P>
+to have spaces between `<SAMP>#</SAMP>' sign and directive name.
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC63"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC62"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC64"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC67"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2560,22 +2828,24 @@ spaces between <SAMP>`#'</SAMP> sign and directive name.
 <!--docid::SEC63::-->
 <P>
 
-Use <SAMP>`&#60;<small>...</small>&#62;'</SAMP> with file name in <CODE>#include</CODE> to include
+Use `<SAMP>&lt;<small>...</small>&gt;</SAMP>' with file name in <CODE>#include</CODE> to include
 <FONT SIZE="-1">ANSI</FONT> C headers or header files provided by the target
 operating system.
-</P><P>
+</P>
+<P>
 
-Use quotes <SAMP>`"<small>...</small>"'</SAMP> with file name to include other headers.
-</P><P>
+Use quotes `<SAMP>&quot;<small>...</small>&quot;</SAMP>' with file name to include other headers.
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC64"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC63"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC65"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC67"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2589,16 +2859,24 @@ It is alternative to <CODE>enum</CODE> method to give symbolic names to constant
 In some cases it is more convenient than <CODE>enum</CODE>, but <CODE>enum</CODE> is a
 preferred method for constant definitions (at least, because many debuggers
 couldn't use preprocessing information).
-</P><P>
+</P>
+<P>
+
+<CODE>#define</CODE> must be used for a constant definition when the constant is
+used in preprocessor expressions. Also, for example, hardware register
+definitions may be included in the assembler source, so it is better to
+use <CODE>#define</CODE> to define them.
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC65"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC64"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC66"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC67"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2608,45 +2886,79 @@ couldn't use preprocessing information).
 <!--docid::SEC65::-->
 <P>
 
-It is required to around all macro parameters with parentheses, because
+It is required to around all macro parameters with parenthesis, because
 complex expressions can be used as macro parameters, and operator-precedence
 problems can arise. Body of function-like macros must be arounded with
-parentheses too.
-</P><P>
+parenthesis too.
+</P>
+<P>
 
 Lets consider the next code fragment:
-</P><P>
+</P>
+<P>
 
 @verbatim
 #define DEBUG(s) \
     if (debug)                     \
     {                              \
-        printf("debug: %s\n", s);  \
+        printf(&quot;debug: %s\n&quot;, s);  \
     }
     
     ...
     
     if (p == NULL)
-        DEBUG("p is NULL");
+        DEBUG(&quot;p is NULL&quot;);
     else
         ...
-</P><P>
+</P>
+<P>
 
 In this example, else branch of <CODE>if (p == NULL)</CODE> statement will become
 associated with <CODE>if</CODE> statement in <CODE>DEBUG</CODE> macro. To avoid this,
 all statement-like macros must be arounded by
 <CODE>do { <small>...</small> } while (0)</CODE> statement:
-</P><P>
+</P>
+<P>
 
 @verbatim
 #define DEBUG \
     do {                               \
         if (debug)                     \
         {                              \
-            printf("debug: %s\n", s);  \
+            printf(&quot;debug: %s\n&quot;, s);  \
         }                              \
     } while (0)
-</P><P>
+</P>
+<P>
+
+Also, lets consider the following example:
+</P>
+<P>
+
+@verbatim
+#define INC(i) \
+    do {                                                \
+        printf(&quot;Loop counter new value is %d\n&quot;, ++i);  \
+    } while (0)
+</P>
+<P>
+
+    ...
+</P>
+<P>
+
+    for (i = 0; i &lt; 5; ({INC(i);}))
+    {
+        ...
+    }
+</P>
+<P>
+
+The example states how macros arounded by <CODE>do { <small>...</small> } while (0)</CODE>
+statement may be used in <CODE>for()</CODE> statement components. The macro call
+is arounded by curly and, then, round brackets.
+</P>
+<P>
 
 It is recommended to hold macros on one line if it is possible. If no,
 format macros as it is shown in a bad example above. Line up all
@@ -2654,16 +2966,28 @@ continuation backslashes on right side of macro body. Check that backslash
 is a last character in this string. Do not put any code in first line where
 macros name and parameters given. Follow to the indentation rules in body of
 macros.
-</P><P>
+</P>
+<P>
+
+Function-like macros must be commented like functions. Types of parameters
+should be stated in macro description.
+</P>
+<P>
+
+It's recommented to use inline functions instead of function-like macros,
+if it is applicable. Compiler can help to avoid some errors and its output
+in the case of compilation errors more friendly, if inline function is used.
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC66"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC65"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC67"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC67"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2679,48 +3003,56 @@ for setting certain options at compile time. Be careful: various controls
 may easily combine in unforeseen ways. Check for error condition combination
 or absence or incorrect value of some preprocessor variables. In last case,
 use preprocessor directive <CODE>#error</CODE> to handle such situations.
-</P><P>
+</P>
+<P>
 
 It is recommended to maintain syntactic correctness in false branches.
-</P><P>
+</P>
+<P>
 
 Try to put <CODE>#if</CODE>/<CODE>#ifdef</CODE> directives in header files instead C
 source file. Use <CODE>#if</CODE>/<CODE>#ifdef</CODE> to define macros that can be used
 uniformly in the code. For instance, a header file for checking memory
 allocation might look like:
-</P><P>
+</P>
+<P>
 
 @verbatim
 #ifdef DEBUG
     extern void *mm_malloc(size_t bytes);
-#   define MALLOC(size) (mm_malloc(size))
+#define MALLOC(size) (mm_malloc(size))
 #else
     extern void *malloc(size_t bytes);
-#   define MALLOC(size) (mm_malloc(size))
+#define MALLOC(size) (malloc(size))
 #endif
-</P><P>
+</P>
+<P>
 
 It is recommended to use indentation rules for preprocessor conditions too.
-</P><P>
+</P>
+<P>
 
 Conditional compilation should generally be on a feature-by-feature basis.
 Although, one of usage of conditional preprocessor directives is to handle
-differences between different machines or operating systems, machine or
-operating system dependencies should be avoided in most cases. Use a
-conditionals to handle presence or absence specific features instead.
-</P><P>
+differences between different machines or operating systems. OS type,
+CPU kind, board, implementation etc. dependencies via conditional
+compilation should be avoided in most cases. Use name of the feature or
+property instead of name of bearing entiry.
+</P>
+<P>
 
 You may exclude fragment of your code using <CODE>#if 0</CODE> directive.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC67"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC66"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC68"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC61"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC68"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
@@ -2731,25 +3063,29 @@ You may exclude fragment of your code using <CODE>#if 0</CODE> directive.
 <P>
 
 Your program must be compiled without any warning messages for all target 
-architectures. All warning messages must be enabled in compiler.
-</P><P>
+architectures. All warning messages must be enabled in compiler
+(<CODE>'-Wall -W'</CODE> flags enable all warnings in GCC).
+</P>
+<P>
 
 Of course, error messages not acceptable too.
-</P><P>
+</P>
+<P>
 
 These conditions are applied to any code surrounded by conditional preprocessor
 statements, including traces, checks, debugging prints, assertions etc.
 The only exception is a temporary code fragment between <CODE>#if 0/#endif</CODE>
 statements. Such fragments must be removed before code freezing or
 releasing.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC68"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC67"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt; ]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC67"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC1">Top</A>]</TD>
@@ -2767,10 +3103,12 @@ basis additional naming conventions, including common prefix conventions,
 rules for function or data structures grouping, restrictions to libraries
 and headers which may be used in project, preprocessor variables and
 macros usage, include files organization etc.
-</P><P>
+</P>
+<P>
 
 It is highly recommended to make those standards compliant to this one.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC_Contents"></A>
@@ -2781,7 +3119,7 @@ It is highly recommended to make those standards compliant to this one.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
 <H1>Table of Contents</H1>
-<UL>
+<BLOCKQUOTE>
 <A NAME="TOC1" HREF="OKTL-0000034.html#SEC1">Abstract</A>
 <BR>
 <A NAME="TOC2" HREF="OKTL-0000034.html#SEC2">Copyright Notice</A>
@@ -2804,13 +3142,13 @@ It is highly recommended to make those standards compliant to this one.
 <BR>
 <A NAME="TOC11" HREF="OKTL-0000034.html#SEC11">4. Introduction</A>
 <BR>
-<UL>
+<BLOCKQUOTE>
 <A NAME="TOC12" HREF="OKTL-0000034.html#SEC12">4.1 Contributors</A>
 <BR>
-</UL>
+</BLOCKQUOTE>
 <A NAME="TOC13" HREF="OKTL-0000034.html#SEC13">5. General</A>
 <BR>
-<UL>
+<BLOCKQUOTE>
 <A NAME="TOC14" HREF="OKTL-0000034.html#SEC14">5.1 Style remarks</A>
 <BR>
 <A NAME="TOC15" HREF="OKTL-0000034.html#SEC15">5.2 Text width</A>
@@ -2827,12 +3165,12 @@ It is highly recommended to make those standards compliant to this one.
 <BR>
 <A NAME="TOC21" HREF="OKTL-0000034.html#SEC21">5.8 Special compiler features</A>
 <BR>
-</UL>
+</BLOCKQUOTE>
 <A NAME="TOC22" HREF="OKTL-0000034.html#SEC22">6. Naming conventions</A>
 <BR>
 <A NAME="TOC23" HREF="OKTL-0000034.html#SEC23">7. Conventional comments</A>
 <BR>
-<UL>
+<BLOCKQUOTE>
 <A NAME="TOC24" HREF="OKTL-0000034.html#SEC24">7.1 Comment designators</A>
 <BR>
 <A NAME="TOC25" HREF="OKTL-0000034.html#SEC25">7.2 Language</A>
@@ -2841,28 +3179,28 @@ It is highly recommended to make those standards compliant to this one.
 <BR>
 <A NAME="TOC27" HREF="OKTL-0000034.html#SEC27">7.4 Comments style</A>
 <BR>
-</UL>
+</BLOCKQUOTE>
 <A NAME="TOC28" HREF="OKTL-0000034.html#SEC28">8. File layout</A>
 <BR>
-<UL>
+<BLOCKQUOTE>
 <A NAME="TOC29" HREF="OKTL-0000034.html#SEC29">8.1 Order of file sections</A>
 <BR>
 <A NAME="TOC30" HREF="OKTL-0000034.html#SEC30">8.2 Human-written file headers</A>
 <BR>
 <A NAME="TOC31" HREF="OKTL-0000034.html#SEC31">8.3 Generated file headers</A>
 <BR>
-<A NAME="TOC32" HREF="OKTL-0000034.html#SEC32">8.4 Header (<SAMP>`.h'</SAMP>) files</A>
+<A NAME="TOC32" HREF="OKTL-0000034.html#SEC32">8.4 Header (`<SAMP>.h</SAMP>') files</A>
 <BR>
-</UL>
+</BLOCKQUOTE>
 <A NAME="TOC33" HREF="OKTL-0000034.html#SEC33">9. Function Definition Formatting</A>
 <BR>
-<UL>
+<BLOCKQUOTE>
 <A NAME="TOC34" HREF="OKTL-0000034.html#SEC34">9.1 Function header</A>
 <BR>
-<UL>
+<BLOCKQUOTE>
 <A NAME="TOC35" HREF="OKTL-0000034.html#SEC35">9.1.1 Indentation inside function header</A>
 <BR>
-</UL>
+</BLOCKQUOTE>
 <A NAME="TOC36" HREF="OKTL-0000034.html#SEC36">9.2 Function Formatting</A>
 <BR>
 <A NAME="TOC37" HREF="OKTL-0000034.html#SEC37">9.3 Considerations</A>
@@ -2873,33 +3211,33 @@ It is highly recommended to make those standards compliant to this one.
 <BR>
 <A NAME="TOC40" HREF="OKTL-0000034.html#SEC40">9.6 Local variables naming conventions</A>
 <BR>
-</UL>
+</BLOCKQUOTE>
 <A NAME="TOC41" HREF="OKTL-0000034.html#SEC41">10. Types definitions formatting</A>
 <BR>
-<UL>
+<BLOCKQUOTE>
 <A NAME="TOC42" HREF="OKTL-0000034.html#SEC42">10.1 <CODE>struct</CODE> declaration</A>
 <BR>
-<UL>
+<BLOCKQUOTE>
 <A NAME="TOC43" HREF="OKTL-0000034.html#SEC43">10.1.1 <CODE>struct</CODE> comments</A>
 <BR>
 <A NAME="TOC44" HREF="OKTL-0000034.html#SEC44">10.1.2 <CODE>struct</CODE> formatting</A>
 <BR>
 <A NAME="TOC45" HREF="OKTL-0000034.html#SEC45">10.1.3 Bit fields</A>
 <BR>
-</UL>
+</BLOCKQUOTE>
 <A NAME="TOC46" HREF="OKTL-0000034.html#SEC46">10.2 <CODE>union</CODE> declaration</A>
 <BR>
 <A NAME="TOC47" HREF="OKTL-0000034.html#SEC47">10.3 <CODE>enum</CODE> declaration</A>
 <BR>
-<UL>
+<BLOCKQUOTE>
 <A NAME="TOC48" HREF="OKTL-0000034.html#SEC48">10.3.1 <CODE>enum</CODE> formatting conventions</A>
 <BR>
 <A NAME="TOC49" HREF="OKTL-0000034.html#SEC49">10.3.2 <CODE>enum</CODE> elements conventions</A>
 <BR>
-</UL>
+</BLOCKQUOTE>
 <A NAME="TOC50" HREF="OKTL-0000034.html#SEC50">10.4 Type qualifiers</A>
 <BR>
-</UL>
+</BLOCKQUOTE>
 <A NAME="TOC51" HREF="OKTL-0000034.html#SEC51">11. Variable declaration formatting</A>
 <BR>
 <A NAME="TOC52" HREF="OKTL-0000034.html#SEC52">12. Literals and constants</A>
@@ -2908,7 +3246,7 @@ It is highly recommended to make those standards compliant to this one.
 <BR>
 <A NAME="TOC54" HREF="OKTL-0000034.html#SEC54">14. C Statements Formatting</A>
 <BR>
-<UL>
+<BLOCKQUOTE>
 <A NAME="TOC55" HREF="OKTL-0000034.html#SEC55">14.1 <CODE>if</CODE> statement</A>
 <BR>
 <A NAME="TOC56" HREF="OKTL-0000034.html#SEC56">14.2 <CODE>for</CODE> statement</A>
@@ -2921,10 +3259,10 @@ It is highly recommended to make those standards compliant to this one.
 <BR>
 <A NAME="TOC60" HREF="OKTL-0000034.html#SEC60">14.6 <CODE>goto</CODE> statement</A>
 <BR>
-</UL>
+</BLOCKQUOTE>
 <A NAME="TOC61" HREF="OKTL-0000034.html#SEC61">15. Preprocessor usage</A>
 <BR>
-<UL>
+<BLOCKQUOTE>
 <A NAME="TOC62" HREF="OKTL-0000034.html#SEC62">15.1 Preprocessor directives formatting</A>
 <BR>
 <A NAME="TOC63" HREF="OKTL-0000034.html#SEC63">15.2 <CODE>#include</CODE> usage</A>
@@ -2935,12 +3273,12 @@ It is highly recommended to make those standards compliant to this one.
 <BR>
 <A NAME="TOC66" HREF="OKTL-0000034.html#SEC66">15.5 Conditional compilation</A>
 <BR>
-</UL>
+</BLOCKQUOTE>
 <A NAME="TOC67" HREF="OKTL-0000034.html#SEC67">16. Warning messages</A>
 <BR>
 <A NAME="TOC68" HREF="OKTL-0000034.html#SEC68">17. Project-Dependent Standards</A>
 <BR>
-</UL>
+</BLOCKQUOTE>
 <HR SIZE=1>
 <A NAME="SEC_OVERVIEW"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
@@ -3010,10 +3348,10 @@ It is highly recommended to make those standards compliant to this one.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="OKTL-0000034.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
 <H1>About this document</H1>
-This document was generated by <I>Victor V. Vengerov</I> on <I>July, 20  2004</I>
-using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
-"><I>texi2html</I></A>
-<P></P>  
+This document was generated
+by 
+using <A HREF="http://texi2html.cvshome.org"><I>texi2html</I></A>
+<P></P>
 The buttons in the navigation panels have the following meaning:
 <P></P>
 <table border = "1">
@@ -3056,10 +3394,10 @@ next section in reading order
 FastBack
 </TD>
 <TD>
-previous or up-and-previous section 
+beginning of this chapter or previous chapter
 </TD>
 <TD>
-1.1
+1
 </TD>
 </TR>
 <TR>
@@ -3082,10 +3420,10 @@ up section
 FastForward
 </TD>
 <TD>
-next or up-and-next section
+next chapter
 </TD>
 <TD>
-1.3
+2
 </TD>
 </TR>
 <TR>
@@ -3141,40 +3479,43 @@ this page
 </TD>
 </TR>
 </TABLE>
-<P></P>
-where the <STRONG> Example </STRONG> assumes that the current position 
-is at <STRONG> Subsubsection One-Two-Three </STRONG> of a document of 
-the following structure:
-<UL>
-<LI> 1. Section One  </LI>
-<UL>
-<LI>1.1 Subsection One-One</LI>
-<UL>
-<LI> ... </LI>
-</UL>
-<LI>1.2 Subsection One-Two</LI>
-<UL>
-<LI>1.2.1 Subsubsection One-Two-One
-</LI><LI>1.2.2 Subsubsection One-Two-Two
-</LI><LI>1.2.3 Subsubsection One-Two-Three &nbsp; &nbsp; <STRONG>
-&lt;== Current Position </STRONG>
-</LI><LI>1.2.4 Subsubsection One-Two-Four
-</LI></UL>
-<LI>1.3 Subsection One-Three</LI>
-<UL>
-<LI> ... </LI>
-</UL>
-<LI>1.4 Subsection One-Four</LI>
-</UL>
-</UL>
+    <P>
+      where the <STRONG> Example </STRONG> assumes that the current position
+      is at <STRONG> Subsubsection One-Two-Three </STRONG> of a document of
+      the following structure:</P>
+    <UL>
+      <LI> 1. Section One
+        <UL>
+          <LI>1.1 Subsection One-One
+            <UL>
+              <LI>...</LI>
+            </UL>
+          <LI>1.2 Subsection One-Two
+            <UL>
+              <LI>1.2.1 Subsubsection One-Two-One</LI>
+              <LI>1.2.2 Subsubsection One-Two-Two</LI>
+              <LI>1.2.3 Subsubsection One-Two-Three &nbsp; &nbsp;
+                <STRONG>&lt;== Current Position </STRONG></LI>
+              <LI>1.2.4 Subsubsection One-Two-Four</LI>
+            </UL>
+          </LI>
+          <LI>1.3 Subsection One-Three
+            <UL>
+              <LI>...</LI>
+            </UL>
+          </LI>
+          <LI>1.4 Subsection One-Four</LI>
+        </UL>
+      </LI>
+    </UL>
 
 <HR SIZE=1>
-<BR>  
+<BR>
 <FONT SIZE="-1">
 This document was generated
-by <I>Victor V. Vengerov</I> on <I>July, 20  2004</I>
-using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
-"><I>texi2html</I></A>
+by <I>Andrew Rybchenko</I> on <I>August, 3 2004</I>
+using <A HREF="http://texi2html.cvshome.org"><I>texi2html</I></A>
+</FONT>
 
 </BODY>
 </HTML>
