@@ -14,19 +14,19 @@
 @c @(#) $Id: OKTL-0000034.texi,v 1.1 2004/03/18 17:18:09 helen Exp $
 @c
 
-@c Use A-Z letters for different versions of document drafts.
-@c Use 1-N numbers for different versions of document issues.
-@set REV    E
-@set DATE   2 Aug 2004
+@c Standard title
+@set TITLE  C Source Code Style Guide
 
 @c Identifier of this document
 @set ID     OKTL-0000034
 
-@c Standard title
-@set TITLE  C Source Code Style Guide
-
 @c Type 'Draft', 'Approved', 'Issued', or 'Obsolete' here
 @set STATUS Draft
+
+@c Use A-Z letters for different versions of document drafts.
+@c Use 1-N numbers for different versions of document issues.
+@set REV    E
+@set DATE   2 Aug 2004
 
 @c Comma-separated list of years to be used in copyright notices
 @set YEARS 1999, 2003, 2004
