@@ -14,13 +14,14 @@
 @c @(#) $Id: OKTL-0000034.texi,v 1.1 2004/03/18 17:18:09 helen Exp $
 @c
 
-@c Standard title
+@c Standard title (it is duplicated in @settitle)
 @set TITLE  C Source Code Style Guide
 
 @c Identifier of this document
 @set ID     OKTL-0000034
 
 @c Type 'Draft', 'Approved', 'Issued', or 'Obsolete' here
+@c It's duplicated in 'Document status' section
 @set STATUS Draft
 
 @c Use A-Z letters for different versions of document drafts.
@@ -34,7 +35,7 @@
 
 @c -*%header%
 @setfilename OKTL-0000034.txt
-@settitle    @value{TITLE}
+@settitle    C Source Code Style Guide
 @ifinfo
 @exampleindent 0
 @end ifinfo
@@ -111,7 +112,8 @@ It is assumed that a reader is familiar with the C programming language.
 
 @unnumbered Document status
 
-@value{STATUS}
+@c @value{STATUS}
+Draft
 
 
 @unnumbered Contact Information
