@@ -556,7 +556,7 @@ following format:
  *
  * <license term notice>
  *
- * $Id: OKTL-0000034.texi,v 1.1 2004/03/18 17:18:09 helen Exp $
+ * $Id: $
  */
 
    "Subsystem description" is a short (one-line preferred) description
@@ -603,7 +603,7 @@ repository.
  * @author Victor V. Vengerov <Victor.Vengerov@oktetlabs.ru>
  * @author Dmitry V. Semyonov <Dmitry.Semyonov@oktet.ru>
  *
- * $Id: OKTL-0000034.texi,v 1.1 2004/03/18 17:18:09 helen Exp $
+ * $Id: $
  */
 
 8.3 Generated file headers
