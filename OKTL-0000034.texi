@@ -11,8 +11,6 @@
 @c Author: Dmitry V. Semyonov <Dmitry.Semyonov@oktet.ru>
 @c Author: Victor V. Vengerov <Victor.Vengerov@oktetlabs.ru>
 @c
-@c @(#) $Id: OKTL-0000034.texi,v 1.1 2004/03/18 17:18:09 helen Exp $
-@c
 
 @c Standard title (it is duplicated in @settitle)
 @set TITLE  C Source Code Style Guide
@@ -672,7 +670,7 @@ has the following format:
  *
  * <license term notice>
  * 
- * $Id: OKTL-0000034.texi,v 1.1 2004/03/18 17:18:09 helen Exp $
+ * $Id: $
  */
 @end verbatim
 
@@ -719,7 +717,7 @@ Note that doxygen-style comment and @-tags are used here.
  * @author Victor V. Vengerov <Victor.Vengerov@oktetlabs.ru>
  * @author Dmitry V. Semyonov <Dmitry.Semyonov@oktet.ru>
  *
- * $Id: OKTL-0000034.texi,v 1.1 2004/03/18 17:18:09 helen Exp $
+ * $Id: $
  */
 @end verbatim
 
