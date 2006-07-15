@@ -11,7 +11,7 @@ Copyright (C) 1999 Terkom, St.-Petersburg, Russia
 
 Copyright (C) 2003 OKTET Ltd., St.-Petersburg, Russia
 
-Copyright (C) 2004 OKTET Labs, St.-Petersburg, Russia
+Copyright (C) 2004, 2005, 2006 OKTET Labs, St.-Petersburg, Russia
 
 This document is the property of OKTET Labs. Nevertheless, there are no
 special restrictions regarding confidentiality which limit the audience
@@ -30,72 +30,99 @@ or distribution of this memo.-->
 </head>
 <body>
 <h1 class="settitle">C Source Code Style Guide</h1>
-<h2 class="unnumbered"><a name="TOC0"></a>Abstract</h2>
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_TOC0" href="#TOC0">1 Abbreviations</a>
+<li><a name="toc_TOC1" href="#TOC1">2 Terminology</a>
+<li><a name="toc_TOC2" href="#TOC2">3 References</a>
+<li><a name="toc_TOC3" href="#TOC3">4 Introduction</a>
+<ul>
+<li><a href="#TOC4">4.1 Contributors</a>
+</li></ul>
+<li><a name="toc_TOC5" href="#TOC5">5 General</a>
+<ul>
+<li><a href="#TOC6">5.1 Style remarks</a>
+<li><a href="#TOC7">5.2 Text width</a>
+<li><a href="#TOC8">5.3 File length</a>
+<li><a href="#TOC9">5.4 Special Characters</a>
+<li><a href="#TOC10">5.5 Trigraphs</a>
+<li><a href="#TOC11">5.6 Indentation</a>
+<li><a href="#TOC12">5.7 Vertical spacing</a>
+<li><a href="#TOC13">5.8 Special compiler features</a>
+</li></ul>
+<li><a name="toc_TOC14" href="#TOC14">6 Naming conventions</a>
+<li><a name="toc_TOC15" href="#TOC15">7 Conventional comments</a>
+<ul>
+<li><a href="#TOC16">7.1 Comment designators</a>
+<li><a href="#TOC17">7.2 Language</a>
+<li><a href="#TOC18">7.3 Formatting conventions</a>
+<li><a href="#TOC19">7.4 Comments style</a>
+</li></ul>
+<li><a name="toc_TOC20" href="#TOC20">8 File layout</a>
+<ul>
+<li><a href="#TOC21">8.1 Order of file sections</a>
+<li><a href="#TOC22">8.2 Human-written file headers</a>
+<li><a href="#TOC23">8.3 Generated file headers</a>
+<li><a href="#TOC24">8.4 Header (<span class="samp">.h</span>) files</a>
+</li></ul>
+<li><a name="toc_TOC25" href="#TOC25">9 Function Definition Formatting</a>
+<ul>
+<li><a href="#TOC26">9.1 Function header</a>
+<ul>
+<li><a href="#TOC27">9.1.1 Indentation inside function header</a>
+</li></ul>
+<li><a href="#TOC28">9.2 Function Formatting</a>
+<li><a href="#TOC29">9.3 Considerations</a>
+<li><a href="#TOC30">9.4 Function size</a>
+<li><a href="#TOC31">9.5 Parameters and local variables conventions</a>
+<li><a href="#TOC32">9.6 Local variables naming conventions</a>
+</li></ul>
+<li><a name="toc_TOC33" href="#TOC33">10 Types definitions formatting</a>
+<ul>
+<li><a href="#TOC34">10.1 <code>struct</code> declaration</a>
+<ul>
+<li><a href="#TOC35">10.1.1 <code>struct</code> comments</a>
+<li><a href="#TOC36">10.1.2 <code>struct</code> formatting</a>
+<li><a href="#TOC37">10.1.3 Bit fields</a>
+</li></ul>
+<li><a href="#TOC38">10.2 <code>union</code> declaration</a>
+<li><a href="#TOC39">10.3 <code>enum</code> declaration</a>
+<ul>
+<li><a href="#TOC40">10.3.1 <code>enum</code> formatting conventions</a>
+<li><a href="#TOC41">10.3.2 <code>enum</code> elements conventions</a>
+</li></ul>
+<li><a href="#TOC42">10.4 Type qualifiers</a>
+</li></ul>
+<li><a name="toc_TOC43" href="#TOC43">11 Variable declaration formatting</a>
+<li><a name="toc_TOC44" href="#TOC44">12 Literals and constants</a>
+<li><a name="toc_TOC45" href="#TOC45">13 C Expressions</a>
+<li><a name="toc_TOC46" href="#TOC46">14 C Statements Formatting</a>
+<ul>
+<li><a href="#TOC47">14.1 <code>if</code> statement</a>
+<li><a href="#TOC48">14.2 <code>for</code> statement</a>
+<li><a href="#TOC49">14.3 <code>while</code> statement</a>
+<li><a href="#TOC50">14.4 <code>do</code> statement</a>
+<li><a href="#TOC51">14.5 <code>switch</code> statement</a>
+<li><a href="#TOC52">14.6 <code>goto</code> statement</a>
+</li></ul>
+<li><a name="toc_TOC53" href="#TOC53">15 Preprocessor usage</a>
+<ul>
+<li><a href="#TOC54">15.1 Preprocessor directives formatting</a>
+<li><a href="#TOC55">15.2 <code>#include</code> usage</a>
+<li><a href="#TOC56">15.3 <code>#define</code> constant definitions</a>
+<li><a href="#TOC57">15.4 Macros</a>
+<li><a href="#TOC58">15.5 Conditional compilation</a>
+</li></ul>
+<li><a name="toc_TOC59" href="#TOC59">16 Safe programming</a>
+<li><a name="toc_TOC60" href="#TOC60">17 Warning messages</a>
+<li><a name="toc_TOC61" href="#TOC61">18 Project-Dependent Standards</a>
+</li></ul>
+</div>
 
-<p>This document describes the general formatting rules of C programming
-language constructs, naming conventions and coding style.
 
-<h2 class="unnumbered"><a name="TOC1"></a>Copyright Notice</h2>
 
-<p>Copyright &copy; 1999 Terkom,  St.-Petersburg, Russia
-
-   <p>Copyright &copy; 2003 OKTET Ltd., St.-Petersburg, Russia
-
-   <p>Copyright &copy; 2004 OKTET Labs, St.-Petersburg, Russia
-
-<h2 class="unnumbered"><a name="TOC2"></a>Audience</h2>
-
-<p>This document is intended for OKTET Labs C programmers, reviewers,
-testers and other persons involved in software development process.
-
-   <p>It is assumed that a reader is familiar with the C programming language.
-
-<h2 class="unnumbered"><a name="TOC3"></a>Document status</h2>
-
-<!-- @value{STATUS} -->
-<p>Draft
-
-<h2 class="unnumbered"><a name="TOC4"></a>Contact Information</h2>
-
-<pre class="display">     Unit 3H, Universitetsky pr., 18/2, Petrodvorets, St.-Petersburg, Russia
-     Phone: +7(812) 428-6709
-     Fax: +7(812) 428-7715
-</pre>
-   <p>For more information, call the above office or visit our web site at
-<a href="http://www.oktetlabs.ru">http://www.oktetlabs.ru</a>.
-
-   <p>Please, send your comments and notes about found errors, typos, and
-inconsistencies to <a href="mailto:support@oktetlabs.ru">support@oktetlabs.ru</a>.
-
-<h2 class="unnumbered"><a name="TOC5"></a>Revision History</h2>
-
-<pre class="example">     Date     Rev  Author              Changes
-     ----------------------------------------------------------------------------
-     1999     A    Victor V. Vengerov  Initially written
-     
-     Feb, 23  B    Dmitry V. Semyonov  Typos fixed.
-     2003                              Reformatted according to OKTET Generic
-                                       Document Template.
-                                       Added doxygen related information.
-     
-     Mar, 4   C    Dmitry V. Semyonov  Fixes after review
-     2003
-     
-     Mar, 18  D    Elena A. Vengerova  OKTET Labs identifier is assigned
-     2004
-     
-     Aug, 2   E    Andrew Rybchenko    Contact information updated. Typos fixed.
-     2004                              Victor V. Vengerov notes applied.
-     ----------------------------------------------------------------------------
-</pre>
-<h2 class="unnumbered"><a name="TOC6"></a>Issues</h2>
-
-     <ul>
-<li>The document should be updated after more experience of Doxygen usage is
-achieved. 
-</ul>
-
-<h2 class="chapter"><a name="TOC7"></a>1 Abbreviations</h2>
+<h2 class="chapter"><a name="TOC0"></a>1 Abbreviations</h2>
 
      <dl>
 <dt><span class="samp">ANSI</span><dd>American National Standards Institute
@@ -105,17 +132,20 @@ achieved.
 <br><dt><span class="samp">WRS</span><dd>Wind River Systems
 </dl>
 
-<h2 class="chapter"><a name="TOC8"></a>2 Terminology</h2>
+<h2 class="chapter"><a name="TOC1"></a>2 Terminology</h2>
 
      <dl>
-<dt><span class="samp">Subsystem</span><dd>Functionally closed, alienable, possibly reusable, software component
+<dt><span class="samp">Doxygen</span><dd>A documentation system for C++, C, and several other programming languages. 
+See 'Doxygen manual' for more information. 
+<br><dt><span class="samp">Splint</span><dd>A tool for statically checking C programs. 
+<br><dt><span class="samp">Subsystem</span><dd>Functionally closed, alienable, possibly reusable, software component
 with well defined external interfaces. It may be library, tool, device
 driver, part of OS, etc. 
-<br><dt><span class="samp">Doxygen</span><dd>A documentation system for C++, C, and several other programming languages. 
-See 'Doxygen manual' for more information. 
+<br><dt><span class="samp">Subversion</span><dd>A free/open-source version control system designed to be the successor
+to <acronym>CVS</acronym>. 
 </dl>
 
-<h2 class="chapter"><a name="TOC9"></a>3 References</h2>
+<h2 class="chapter"><a name="TOC2"></a>3 References</h2>
 
 <p>This work is inspired by many existing coding standards and our own experience
 in C software development and understanding of foreign source code. Most
@@ -132,7 +162,7 @@ Tcl/Tk Engineering Manual
 <li>Doxygen manual
 </ul>
 
-<h2 class="chapter"><a name="TOC10"></a>4 Introduction</h2>
+<h2 class="chapter"><a name="TOC3"></a>4 Introduction</h2>
 
 <p>The main purpose of this standard is to define a framework which can
 help us to develop source code in a clear and uniform manner. Another
@@ -145,29 +175,29 @@ to developing of C source code. We have tried not only give a pandect of
 rules, but also give rationale and reasons for some of them.
 
    <p>Doxygen-specific guidelines concerning resulting documentation
-formatting and common issues will be described a separate document.
+formatting and common issues will be described in a separate document.
 
-<h3 class="section"><a name="TOC11"></a>4.1 Contributors</h3>
+<h3 class="section"><a name="TOC4"></a>4.1 Contributors</h3>
 
      <ul>
 <li>Victor V. Vengerov <a href="mailto:Victor.Vengerov@oktetlabs.ru">Victor.Vengerov@oktetlabs.ru</a>
 <li>Elena A. Vengerova <a href="mailto:Elena.Vengerova@oktetlabs.ru">Elena.Vengerova@oktetlabs.ru</a>
 <li>Konstantin Abramenko <a href="mailto:Konstantin.Abramenko@oktetlabs.ru">Konstantin.Abramenko@oktetlabs.ru</a>
+<li>Dmitry V. Semyonov <a href="mailto:Dmitry.Semyonov@oktet.ru">Dmitry.Semyonov@oktet.ru</a>
+<li>Andrew Rybchenko <a href="mailto:Andrew.Rybchenko@oktetlabs.ru">Andrew.Rybchenko@oktetlabs.ru</a>
 </ul>
 
-<h2 class="chapter"><a name="TOC12"></a>5 General</h2>
+<h2 class="chapter"><a name="TOC5"></a>5 General</h2>
 
-<h3 class="section"><a name="TOC13"></a>5.1 Style remarks</h3>
+<h3 class="section"><a name="TOC6"></a>5.1 Style remarks</h3>
 
 <p>C language has a pretty simple syntax, nevertheless it is possible to write
 extremely complicated code. The following example, taken from
 <cite>&ldquo;Obfuscated C Contest&rdquo;</cite> archive, is a correct C program; you can
 try to compile and execute it:
 
-<pre class="verbatim">
-main() { printf(&amp;unix["\021%six\012\0"],(unix)["have"]+"fun"-0x60); }
+<pre class="example">     main() { printf(&amp;unix["\021%six\012\0"],(unix)["have"]+"fun"-0x60); }
 </pre>
-
    <p>How much time you need to understand how it works? :-)
 
    <p>It is good for fun, but absolutely not applicable for development of a
@@ -177,7 +207,7 @@ make your code understandable for them. Every time have in mind that you
 are writing code not for compiler, but for human. Limit your fantasy to
 make your code clear.
 
-<h3 class="section"><a name="TOC14"></a>5.2 Text width</h3>
+<h3 class="section"><a name="TOC7"></a>5.2 Text width</h3>
 
 <p>Any line of C source code couldn't be longer than 80 characters.
 
@@ -190,7 +220,7 @@ character limit.
 produced code is not intended to be human-readable, it is not required
 to follow 80 character limitation.
 
-<h3 class="section"><a name="TOC15"></a>5.3 File length</h3>
+<h3 class="section"><a name="TOC8"></a>5.3 File length</h3>
 
 <p>Source code file length is not limited explicitly. More important aspect
 in division of source code to many files is to reflect logical structure
@@ -202,7 +232,7 @@ up to 6000-8000 lines is acceptable.
    <p>If C source code is generated by other programs, tools, scripts, the
 file  length is not limited.
 
-<h3 class="section"><a name="TOC16"></a>5.4 Special Characters</h3>
+<h3 class="section"><a name="TOC9"></a>5.4 Special Characters</h3>
 
 <p>Lines in source file are separated by character <span class="samp">LF</span> (hex code
 0x0a). It is not allowed to use <acronym>MS-DOS</acronym> standard <span class="samp">CR-LF</span>
@@ -220,13 +250,13 @@ constants or comments. For strings you may use escape sequences instead.
 appropriate number of spaces instead of <span class="samp">TAB</span> (hex code 0x09)
 character on &lt;TAB&gt; key pressing.
 
-<h3 class="section"><a name="TOC17"></a>5.5 Trigraphs</h3>
+<h3 class="section"><a name="TOC10"></a>5.5 Trigraphs</h3>
 
 <p>Do not ever use the &ldquo;trigraphs&rdquo; feature of <acronym>ANSI</acronym> C. (If you
 don't know what does it mean - don't worry, it will be better if you
 never know about it).
 
-<h3 class="section"><a name="TOC18"></a>5.6 Indentation</h3>
+<h3 class="section"><a name="TOC11"></a>5.6 Indentation</h3>
 
 <p>Indentation is used to show structure of algorithms or data types. 
 Usually, each statement in complex statement is started at the same
@@ -242,19 +272,17 @@ to 4 character right relatively to the position of its &ldquo;parent block&rdquo
 
    <p>The following example demonstrates this:
 
-<pre class="verbatim">
-    while (p != NULL)
-    {
-        for (i = 0; i &lt; p->tabsize; i++)
-        {
-            if (p->tab[i] == x)
-                return i;
-        }
-        return 0;
-    }
+<pre class="example">         while (p != NULL)
+         {
+             for (i = 0; i &lt; p-&gt;tabsize; i++)
+             {
+                 if (p-&gt;tab[i] == x)
+                     return i;
+             }
+             return 0;
+         }
 </pre>
-
-<h3 class="section"><a name="TOC19"></a>5.7 Vertical spacing</h3>
+   <h3 class="section"><a name="TOC12"></a>5.7 Vertical spacing</h3>
 
      <ul>
 <li>Use blank lines to make code more readable. Group logically related sections
@@ -271,7 +299,7 @@ see templates below.
 get their own line. 
 </ul>
 
-<h3 class="section"><a name="TOC20"></a>5.8 Special compiler features</h3>
+<h3 class="section"><a name="TOC13"></a>5.8 Special compiler features</h3>
 
 <p>Usually, each compiler provides some non-standard facilities, which are not
 supported by other compilers. Examples are assembler insertions, function or
@@ -285,7 +313,7 @@ conditional preprocessor directives. Compiler-depended features like
 <code>inline</code> function attribute must be used via appropriate preprocessor
 definition.
 
-<h2 class="chapter"><a name="TOC21"></a>6 Naming conventions</h2>
+<h2 class="chapter"><a name="TOC14"></a>6 Naming conventions</h2>
 
 <p>Choosing names is one of the most important aspects of programming. Good
 names clarify the function of a program and reduce the need for other
@@ -354,7 +382,7 @@ something using externally given (standardized) specification.
 Therefore, it is not required to rename <code>printf</code> to
 <code>libc_printf</code> if you are implementing <acronym>ANSI</acronym> C library!
 
-<h2 class="chapter"><a name="TOC22"></a>7 Conventional comments</h2>
+<h2 class="chapter"><a name="TOC15"></a>7 Conventional comments</h2>
 
 <p>Comments are special remarks intended first of all for human reader, who
 needs to understand your work. Comments are very important parts of your
@@ -364,7 +392,7 @@ too!) very complex.
 
    <p>This chapter provides general rules for comment writing.
 
-<h3 class="section"><a name="TOC23"></a>7.1 Comment designators</h3>
+<h3 class="section"><a name="TOC16"></a>7.1 Comment designators</h3>
 
 <p>Comments are started with the sequence <code>/*</code>. Comments are finished with
 the sequence <code>*/</code>. It is prohibited to use C++ line comment designator
@@ -373,7 +401,7 @@ the sequence <code>*/</code>. It is prohibited to use C++ line comment designato
    <p>Don't use <code>/*</code> and <code>*/</code> sequences for temporary removing pieces
 of your code. Use preprocessor directives instead.
 
-<h3 class="section"><a name="TOC24"></a>7.2 Language</h3>
+<h3 class="section"><a name="TOC17"></a>7.2 Language</h3>
 
 <p>All comments in your program shall be written in English, because English is
 the only language that nearly all programmers in all countries can read.
@@ -384,7 +412,7 @@ written in any other language UTF-8 character set should be used.
    <p>Multilingual comments within sources are <em>highly</em> not recommended. 
 It is proposed to use separate translation files for such cases.
 
-<h3 class="section"><a name="TOC25"></a>7.3 Formatting conventions</h3>
+<h3 class="section"><a name="TOC18"></a>7.3 Formatting conventions</h3>
 
 <p>The text of your comment must follow some simple usual conventions. Statement
 must be started from capital letter (except case when the first word is a name
@@ -397,26 +425,22 @@ character after <code>/*</code> and before <code>*/</code>.
    <p>Two comment styles may be used: one-line comments and multiline comments. 
 One line comment looks like this:
 
-<pre class="verbatim">
-/* This is example of one-line comment */
+<pre class="example">     /* This is example of one-line comment */
 </pre>
-
    <p>Multiline comments look like this:
 
-<pre class="verbatim">
-/*
- * This is example of multiline comment. Such comment layout must be used
- * if your text couldn't be fitted in one 80-character line. Please, note
- * that each line is started with the asterisk character.
- */
+<pre class="example">     /*
+      * This is example of multiline comment. Such comment layout must be used
+      * if your text couldn't be fitted in one 80-character line. Please, note
+      * that each line is started with the asterisk character.
+      */
 </pre>
-
    <p>Code comments must be indented as appropriate piece of code.
 
    <p>Some specific comment formatting considerations provided in appropriate
 chapters of this document.
 
-<h3 class="section"><a name="TOC26"></a>7.4 Comments style</h3>
+<h3 class="section"><a name="TOC19"></a>7.4 Comments style</h3>
 
 <p>The purpose of comments is to save time and reduce errors. Comments are
 typically used for two purposes. First, people will read the comments
@@ -441,7 +465,10 @@ and if there isn't much code in the procedure, and if variables have
 meaningful names, it is not required to give any comments at all. For long
 functions, comment local variables and logical blocks of function. Also,
 comment a tricky situations, non-obvious code which depends on information
-to someone reading it for the first time.
+to someone reading it for the first time. Non-<dfn>Doxygen</dfn> style
+(<code>/* ... */</code>) should be used for comments in function body (it
+saves two symbols and avoids confusion since it is not included in
+documentation generated by <dfn>Doxygen</dfn> in any case).
 
    <p>Document each thing in exactly one place. If something is documented in
 several places, it will be hard to keep the documentation up to date as the
@@ -449,10 +476,8 @@ system changes. Try to document each major design decision in exactly one
 place.
 
    <p>Don't just repeat what is already obvious from the code, like this:
-<pre class="verbatim">
-    i += 1;   /* Increment i */
+<pre class="example">     i += 1;   /* Increment i */
 </pre>
-
    <p>Documentation should provide higher-level information about the overall
 function of the code, helping readers to understand what a complex
 collection of statements really means.
@@ -469,11 +494,11 @@ you may forget some important things which must be documented.
 you won't have to worry about doing it later. Therefore, it is required to
 write comments as you write the code.
 
-<h2 class="chapter"><a name="TOC27"></a>8 File layout</h2>
+<h2 class="chapter"><a name="TOC20"></a>8 File layout</h2>
 
 <p>This chapter describes general rules about C source and headers file layout.
 
-<h3 class="section"><a name="TOC28"></a>8.1 Order of file sections</h3>
+<h3 class="section"><a name="TOC21"></a>8.1 Order of file sections</h3>
 
 <p>Every file containing C source code must be started from standard file
 header. After the header the following sections should be included in the
@@ -523,28 +548,26 @@ remember that it means that your software is likely to have a poor
 design. It is recommended to split source or header file to many smaller
 ones in this case.
 
-<h3 class="section"><a name="TOC29"></a>8.2 Human-written file headers</h3>
+<h3 class="section"><a name="TOC22"></a>8.2 Human-written file headers</h3>
 
 <p>Each <span class="samp">.c</span> or <span class="samp">.h</span> files written by human, must have a formal
 header. This header starts at the first line of source file. A header
 has the following format:
 
-<pre class="verbatim">
-/** @file
- * @brief &lt;subsystem description>
- *
- * &lt;module description>
- * 
- * &lt;copyright notice>
- *
- * @author &lt;author name> &lt;&lt;author e-mail>>
- *
- * &lt;license term notice>
- * 
- * $Id: $
- */
+<pre class="example">     /** @file
+      * @brief &lt;subsystem description&gt;
+      *
+      * &lt;module description&gt;
+      *
+      * &lt;copyright notice&gt;
+      *
+      * @author &lt;author name&gt; &lt;&lt;author e-mail&gt;&gt;
+      *
+      * &lt;license term notice&gt;
+      *
+      * $Id: $
+      */
 </pre>
-
    <p><dfn>Subsystem description</dfn> is a short (one-line preferred) description of
 subsystem to which this file belongs. This line must be same for all files
 of this subsystem.
@@ -571,43 +594,41 @@ information about licensing terms for this source file, about distribution
 permissions or restrictions, or to refer to a particular license text.
 
    <p>The last line of the header is a substitution for source code system
-(e.g. <acronym>CVS</acronym>) information. <span class="samp">$Id: $</span> sequence will be
-substituted with actual module identification string while a file is
-committed into <acronym>CVS</acronym> repository.
+(e.g. <acronym>CVS</acronym>, <dfn>Subversion</dfn>) information. <span class="samp">$Id: $</span>
+sequence will be substituted with actual module identification string
+while a file is committed into repository.
 
    <p>Note that doxygen-style comment and tags are used here.
 
-<pre class="verbatim">
-/** @file
- * @brief ncr875 controller device driver
- *
- * Chip-specific primitive implementation.
- *
- * Copyright (C) 1999 OKTET Labs, St.-Petersburg, Russia
- *
- * @author Victor V. Vengerov &lt;Victor.Vengerov@oktetlabs.ru>
- * @author Dmitry V. Semyonov &lt;Dmitry.Semyonov@oktet.ru>
- *
- * $Id: $
- */
+<pre class="example">     /** @file
+      * @brief ncr875 controller device driver
+      *
+      * Chip-specific primitive implementation.
+      *
+      * Copyright (C) 2004 OKTET Labs, St.-Petersburg, Russia
+      *
+      * @author Victor V. Vengerov &lt;Victor.Vengerov@oktetlabs.ru&gt;
+      * @author Andrew Rybchenko &lt;Andrew.Rybchenko@oktetlabs.ru&gt;
+      *
+      * $Id: $
+      */
 </pre>
-
-<h3 class="section"><a name="TOC30"></a>8.3 Generated file headers</h3>
+   <h3 class="section"><a name="TOC23"></a>8.3 Generated file headers</h3>
 
 <p>Some of source files fed to compiler may be generated by other programs
 or scripts. Such programs or scripts must put special header at the beginning
 of such files:
 
-<pre class="verbatim">
-/*
- * This file is automatically generated by program &lt;program>.
- * DO NOT EDIT IT!!!
- *
- * File generated at &lt;date> &lt;time>
- */
+<pre class="example">     /*
+      * This file is automatically generated by program &lt;program&gt;.
+      * DO NOT EDIT IT!!!
+      *
+      * File generated at &lt;date&gt; &lt;time&gt;
+      */
 </pre>
+   <p>Format YYYY-MM-DD should be used for date specification.
 
-<h3 class="section"><a name="TOC31"></a>8.4 Header (<span class="samp">.h</span>) files</h3>
+<h3 class="section"><a name="TOC24"></a>8.4 Header (<span class="samp">.h</span>) files</h3>
 
 <p>Header files are started with the same header as <span class="samp">.c</span> files. Header
 files must include C variable and function declarations, common type
@@ -628,21 +649,23 @@ definitions and declarations to the interface headers.
    <p>Header file must be started with the same header as C source code file. 
 The body of header file must be organized in the following way:
 
-<pre class="verbatim">
-#ifndef __&lt;subsystem_prefix>_&lt;filename>_H__
-#define __&lt;subsystem_prefix>_&lt;filename>_H__
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-...
-
-#ifdef __cplusplus
-}
-#endif
-#endif /* __&lt;subsystem_prefix>_&lt;filename>_H__ */
+<pre class="example">     #ifndef __&lt;subsystem_prefix&gt;_&lt;filename&gt;_H__
+     #define __&lt;subsystem_prefix&gt;_&lt;filename&gt;_H__
+     
+     #include &lt;nesting_header.h&gt;
+     ...
+     
+     #ifdef __cplusplus
+     extern "C" {
+     #endif
+     
+     ...
+     
+     #ifdef __cplusplus
+     }
+     #endif
+     #endif /* __&lt;subsystem_prefix&gt;_&lt;filename&gt;_H__ */
 </pre>
-
    <p>In this fragment <span class="samp">&lt;subsystem_prefix&gt;</span> must be substituted with
 capitalized subsystem abbreviation, <span class="samp">&lt;filename&gt;</span> must be
 substituted with capitalized form of header file name. If the filename
@@ -651,60 +674,73 @@ one.
 
    <p>Conditionals <code>#ifdef __cplusplus</code> used to make possible usage of
 appropriate header in C++ program. These preprocessor conditionals may be
-omitted in internal headers, but are mandatory for interface headers.
+omitted in internal headers, but are mandatory for interface headers. 
+It is important to including nesting headers before
+<code>#ifdef __cplusplus</code> block in order not to affect symbols declared
+there.
 
-<h2 class="chapter"><a name="TOC32"></a>9 Function Definition Formatting</h2>
+<h2 class="chapter"><a name="TOC25"></a>9 Function Definition Formatting</h2>
 
-<h3 class="section"><a name="TOC33"></a>9.1 Function header</h3>
+<h3 class="section"><a name="TOC26"></a>9.1 Function header</h3>
 
 <p>It is required to put formal function header before each function definition. 
 Function header have the following format:
 
-<pre class="verbatim">
-/**
- * &lt;function description>
- *
- * @param &lt;param1>      &lt;param1 description> [ (OUT) | (IN/OUT) ]
- * @param &lt;param2>      &lt;param2 description> [ (OUT) | (IN/OUT) ]
- * ...
- *
- * @return &lt;return value description>
- *
- * @retval &lt;retval1>    &lt;retval1 specification>
- * @retval &lt;retval2>    &lt;retval2 specification>
- * ...
- *
- * @se &lt;side effects description>
- *
- * @sa &lt;closely related functions and documentation references>
- *
- * @alg &lt;algorithm description>
- *
- * @bug &lt;bug description>
- *
- * @todo &lt;todo description>
- */
+<pre class="example">     /**
+      * &lt;function description&gt;
+      *
+      * @param &lt;param1&gt;      &lt;param1 description&gt;
+      * @param &lt;param2&gt;      &lt;param2 description&gt;
+      * ...
+      *
+      * @return &lt;return value description&gt;
+      *
+      * @retval &lt;retval1&gt;    &lt;retval1 specification&gt;
+      * @retval &lt;retval2&gt;    &lt;retval2 specification&gt;
+      * ...
+      *
+      * @se &lt;side effects description&gt;
+      *
+      * @sa &lt;closely related functions and documentation references&gt;
+      *
+      * @alg &lt;algorithm description&gt;
+      *
+      * @bug &lt;bug description&gt;
+      *
+      * @todo &lt;todo description&gt;
+      */
 </pre>
-
    <p>Not all parts must be presented in each function header.
 
    <p>The only always required part is <span class="samp">&lt;function description&gt;</span>. It
 should be started with upper-case letter, and finished with dot. It is
 recommended to use common style of the form 'Copy bytes' (which is
-opposite to 'Copies bytes') for documentation similarity.
+opposite to 'Copies bytes') for documentation similarity. If the
+function complies with some prototype, it should be stated in
+description.
 
    <p>At the same time it is <em>mandatory</em> to describe all function
 parameters and returned value(s). If a function does not return a value,
 <span class="samp">@return</span> part may be omitted, or &lt;return value specification&gt; may
-be <span class="samp">N/A</span> (not applicable). If a value directly returned by a function
-lies within a limited set of constants, then each constant should be
-described using <span class="samp">@retval</span> tag.
+be <span class="samp">N/A</span> (not applicable). All parameter descriptions in a
+particular function must start from the same case: either upper or lower. 
+If the description of the parameter or returned value is complete
+English sentence or is followed by additional statements, it must be
+started from upper-case letter and finished with dot. Description of
+return value after <span class="samp">@return</span> tag must be started from upper-case
+letter.
+
+   <p>If a value directly returned by a function lies within a limited set of
+constants, then each constant should be described using <span class="samp">@retval</span>
+tag. Description of returned value after <span class="samp">@retval</span> tag must start
+from upper-case letter.
 
    <p>If a parameter is used to deliver values out from a function, it is
-allowed to add <span class="samp">(IN/OUT)</span> or <span class="samp">(OUT)</span> (depending on whether
+allowed to add <code>[inout]</code> or <code>[out]</code> (depending on whether
 the parameter is used or not as input at the same time accordingly) hint
-to the end of parameter description. <span class="samp">(IN)</span> is assumed by default,
-and should not be used.
+just after <code>@param</code> without any space. If such hints are used,
+input parameters have to be marked using <span class="samp">[in]</span>. Thus, in/out
+hints should be used for either all or none parameters.
 
    <p><span class="samp">@se</span> (side effects) part must be presented only when a function
 has non-obvious side effects. For example, if this function essentially
@@ -722,7 +758,7 @@ found bugs or things that need to be done accordingly.
 to define <em>what</em> function does; it is necessary to explain <em>how</em>
 this achieved.
 
-<h4 class="subsection"><a name="TOC34"></a>9.1.1 Indentation inside function header</h4>
+<h4 class="subsection"><a name="TOC27"></a>9.1.1 Indentation inside function header</h4>
 
 <p>The function description as well as any of the sections beginning tags
 must be started from the 3rd column position (beginning with 0) just
@@ -738,49 +774,47 @@ spaces. This simplifies text formatting with TAB key. The whole indented
 description must form a single column. In other words, it is not allowed
 to have a line indented by 8 characters, and other one indented by 16.
 
-<h3 class="section"><a name="TOC35"></a>9.2 Function Formatting</h3>
+<h3 class="section"><a name="TOC28"></a>9.2 Function Formatting</h3>
 
 <p>All functions must be defined in <acronym>ANSI</acronym> C format. Function definition
 must look like this:
 
-<pre class="verbatim">
-/** 
- * Create object instance of class 'objclass' which designates to be
- * referred as a null object of this class. If 'name' is given
- * (not equal to NULL), register object instance with given name.
- *
- * @param  objclass     Class object identifier.
- * @param  name         Null object name, or NULL.
- *
- * @return
- *      Object identifier for null object of class 'objclass', or
- *      OBJID_NULL, if error occurred.
- */
-static objid
-object_create_null(objid objclass, char *name)
-{
-    objid obj;
-    
-    obj = class_instantiate(objclass);
-    if (obj == OBJID_NULL)
-    {
-        return OBJID_NULL;
-    }
-    if (name != NULL)
-    {
-        int rc;
-        
-        rc = object_register_with_name(obj, name);
-        if (rc != OBJ_SUCCESSFUL)
-        {
-            object_delete_instance(obj);
-            return OBJID_NULL;
-        }
-    }
-    return obj;
-}
+<pre class="example">     /**
+      * Create object instance of class 'objclass' which designates to be
+      * referred as a null object of this class. If 'name' is given
+      * (not equal to NULL), register object instance with given name.
+      *
+      * @param  objclass     Class object identifier.
+      * @param  name         Null object name, or NULL.
+      *
+      * @return
+      *      Object identifier for null object of class 'objclass', or
+      *      OBJID_NULL, if error occurred.
+      */
+     static objid
+     object_create_null(objid objclass, char *name)
+     {
+         objid obj;
+     
+         obj = class_instantiate(objclass);
+         if (obj == OBJID_NULL)
+         {
+             return OBJID_NULL;
+         }
+         if (name != NULL)
+         {
+             int rc;
+     
+             rc = object_register_with_name(obj, name);
+             if (rc != OBJ_SUCCESSFUL)
+             {
+                 object_delete_instance(obj);
+                 return OBJID_NULL;
+             }
+         }
+         return obj;
+     }
 </pre>
-
    <p>Please, pay your attention to the following topics:
 
      <ul>
@@ -798,16 +832,14 @@ command can be used to find location of a specific function definition:
    <p>If argument list can not fit in one line, this line can be split in the
 following way:
 
-<pre class="verbatim">
-static objid
-datafile_encode(int in_file_desc, int out_file_desc, char *encoding_key,
-                int encoding_key_len, int control)
-{
-    ...
-}
+<pre class="example">     static objid
+     datafile_encode(int in_file_desc, int out_file_desc, char *encoding_key,
+                     int encoding_key_len, int control)
+     {
+         ...
+     }
 </pre>
-
-<h3 class="section"><a name="TOC36"></a>9.3 Considerations</h3>
+   <h3 class="section"><a name="TOC29"></a>9.3 Considerations</h3>
 
 <p>It is <em>highly not recommended</em> to pass or return structures to or
 from functions. Pass pointers instead and make a copy inside the function if
@@ -820,7 +852,7 @@ function must be visible only inside a current module (file).
 <code>int</code>; if a function does not return a value then it must be
 given return type <code>void</code>.
 
-<h3 class="section"><a name="TOC37"></a>9.4 Function size</h3>
+<h3 class="section"><a name="TOC30"></a>9.4 Function size</h3>
 
 <p>It is not possible to give hard limits for function code size. In any case,
 remember that it is better if function is pretty simple, pretty short and
@@ -831,7 +863,7 @@ simplifies understanding what function does. If it is not possible, size up to
 overgrown, try to redesign it to isolate logically separable parts in
 different functions.
 
-<h3 class="section"><a name="TOC38"></a>9.5 Parameters and local variables conventions</h3>
+<h3 class="section"><a name="TOC31"></a>9.5 Parameters and local variables conventions</h3>
 
 <p>Function parameters may be divided into three categories.
 
@@ -860,7 +892,7 @@ or are frequently used, you may give <code>register</code> memory class specifie
    <p>Avoid local declarations that override declarations at higher levels. In
 particular, local variables must not be redeclared in nested blocks.
 
-<h3 class="section"><a name="TOC39"></a>9.6 Local variables naming conventions</h3>
+<h3 class="section"><a name="TOC32"></a>9.6 Local variables naming conventions</h3>
 
 <p>It is recommended to give short but clear names to local variables. Here are
 some recommended names for local variables. All these names may be used with
@@ -869,8 +901,8 @@ possible digit suffixes.
    <p>Names <code>i</code>, <code>j</code>, <code>k</code> must be used as names for loop variables.
 
    <p>Names <code>n</code>, <code>m</code> must be used as a names for variables which contain
-a number of some entities. Variable name <code>l</code> may be used for length of
-something.
+a number of some entities. Variable name <code>l</code> (ell) may be used for
+length of something.
 
    <p>Names <code>s</code> or <code>str</code> (only one of them in one function!) may be used
 as a pointer to character strings.
@@ -913,26 +945,24 @@ representing connection.
 
    <p><em>Example:</em>
 
-<pre class="verbatim">
-    int i;
-    
-    ...
-    
-    p = &amp;queue_pool[0];
-    n = sizeof(queue_pool);
-    if (n > max_queue_size)
-    {
-        n = max_queue_size;
-    }
-    for (i = 0; i &lt; n; i++)
-    {
-        p->data = NULL;
-        p->id = i;
-        p->next = p + 1;
-        p++
-    }
+<pre class="example">         int i;
+     
+         ...
+     
+         p = &amp;queue_pool[0];
+         n = sizeof(queue_pool);
+         if (n &gt; max_queue_size)
+         {
+             n = max_queue_size;
+         }
+         for (i = 0; i &lt; n; i++)
+         {
+             p-&gt;data = NULL;
+             p-&gt;id = i;
+             p-&gt;next = p + 1;
+             p++;
+         }
 </pre>
-
    <p>It is not allowed to have more than three variables with the same name and
 different suffixes.
 
@@ -941,11 +971,11 @@ You must comment non-obvious variables in long functions only. It is not
 necessary to comment variables which are used in clear way, for example
 loop counters, etc.
 
-<h2 class="chapter"><a name="TOC40"></a>10 Types definitions formatting</h2>
+<h2 class="chapter"><a name="TOC33"></a>10 Types definitions formatting</h2>
 
-<h3 class="section"><a name="TOC41"></a>10.1 <code>struct</code> declaration</h3>
+<h3 class="section"><a name="TOC34"></a>10.1 <code>struct</code> declaration</h3>
 
-<h4 class="subsection"><a name="TOC42"></a>10.1.1 <code>struct</code> comments</h4>
+<h4 class="subsection"><a name="TOC35"></a>10.1.1 <code>struct</code> comments</h4>
 
 <p>You must insert comment immediately before structure declaration which
 describes purpose of this structure, usage conventions and give other
@@ -965,36 +995,32 @@ allow to avoid  splitting comments to several lines. If comment is
 split a new line must be indented to the level of first comment
 letter following the <code>/*</code> sequence. See examples below.
 
-<h4 class="subsection"><a name="TOC43"></a>10.1.2 <code>struct</code> formatting</h4>
+<h4 class="subsection"><a name="TOC36"></a>10.1.2 <code>struct</code> formatting</h4>
 
 <p>The <code>struct</code> declaration must look like this:
 
-<pre class="verbatim">
-/** Node of the double-linked list */
-struct list_node {
-    struct list_node  *next;    /**&lt; Next node in double-linked list */
-    struct list_node  *prev;    /**&lt; Previous node in double-linked list */
-    int                size;    /**&lt; Information field size */
-    char               node[0]; /**&lt; Information field designator */
-};
+<pre class="example">     /** Node of the double-linked list */
+     struct list_node {
+         struct list_node  *next;    /**&lt; Next node in double-linked list */
+         struct list_node  *prev;    /**&lt; Previous node in double-linked list */
+         int                size;    /**&lt; Information field size */
+         char               node[0]; /**&lt; Information field designator */
+     };
 </pre>
-
    <p>If <code>struct</code> declaration is used in a variable declaration or
 <code>typedef</code> declaration, <code>typedef</code> or variable specifiers must
 be placed before <code>struct</code> keyword on the same line, and identifier
 must be placed after close bracket on the same line:
 
-<pre class="verbatim">
-/** NCR875 SCSI host adapter user-settable hardware parameters */
-typedef struct ncr875_hw_regs {
-    int diffScsi;  /**&lt; Differential SCSI bus enable */
-    int TolerANT;  /**&lt; TolerANT enable */
-    int slowCable; /**&lt; Slow cable mode (Extra clock cycle of Data Setup) */
-    int burstLen;  /**&lt; Maximum number of transfers performed per PCI bus
-                        ownership, legal values is 2,4,8,16,32,64,128 */
-} ncr875_hw_regs;
+<pre class="example">     /** NCR875 SCSI host adapter user-settable hardware parameters */
+     typedef struct ncr875_hw_regs {
+         int diff_scsi;  /**&lt; Differential SCSI bus enable */
+         int tolerant;   /**&lt; Tolerant enable */
+         int slow_cable; /**&lt; Slow cable mode (Extra clock cycle of Data Setup) */
+         int burst_len;  /**&lt; Maximum number of transfers performed per PCI bus
+                              ownership, legal values is 2,4,8,16,32,64,128 */
+     } ncr875_hw_regs;
 </pre>
-
    <p>In <code>typedef</code> declaration, it is recommended to give the same name to
 <code>struct</code> name in <code>struct</code> namespace and to <code>typedef</code> name.
 
@@ -1009,7 +1035,7 @@ declaration. Declare types and variables separately.
    <p>In some cases nested <code>struct/union</code> declarations are acceptable,
 but it is not recommended.
 
-<h4 class="subsection"><a name="TOC44"></a>10.1.3 Bit fields</h4>
+<h4 class="subsection"><a name="TOC37"></a>10.1.3 Bit fields</h4>
 
 <p>You may use bit fields to save memory if you know how much bits is
 sufficient to store some specific value. But in any case you should not make
@@ -1019,33 +1045,31 @@ example, hardware register layout as a structure with bit fields, or represent
 structure of binary file in such way, or define structure of data which will
 be sent over network.
 
-<h3 class="section"><a name="TOC45"></a>10.2 <code>union</code> declaration</h3>
+<h3 class="section"><a name="TOC38"></a>10.2 <code>union</code> declaration</h3>
 
 <p>All conventions provided for struct formatting are applied to <code>union</code>
 declarations.
 
-<h3 class="section"><a name="TOC46"></a>10.3 <code>enum</code> declaration</h3>
+<h3 class="section"><a name="TOC39"></a>10.3 <code>enum</code> declaration</h3>
 
-<h4 class="subsection"><a name="TOC47"></a>10.3.1 <code>enum</code> formatting conventions</h4>
+<h4 class="subsection"><a name="TOC40"></a>10.3.1 <code>enum</code> formatting conventions</h4>
 
 <p>The <code>enum</code> declaration must look like this:
 
-<pre class="verbatim">
-/** LED status constants */
-enum led_status {
-    LED_STATUS_OFF   = 0, /**&lt; LED is off */
-    LED_STATUS_ON    = 1, /**&lt; LED is on */
-    LED_STATUS_FAIL  = 2, /**&lt; LED is unfunctional */
-    LED_STATUS_MAINT = 4  /**&lt; LED is now in maintenance mode; operations are
-                               limited */
-};
+<pre class="example">     /** LED status constants */
+     enum led_status {
+         LED_STATUS_OFF   = 0, /**&lt; LED is off */
+         LED_STATUS_ON    = 1, /**&lt; LED is on */
+         LED_STATUS_FAIL  = 2, /**&lt; LED is unfunctional */
+         LED_STATUS_MAINT = 4, /**&lt; LED is now in maintenance mode; operations
+                                    are limited */
+     };
 </pre>
-
    <p>The same rules for typedef/variable definitions as for structures are applied.
 
    <p>Each <code>enum</code> component must occupy a separate line.
 
-<h4 class="subsection"><a name="TOC48"></a>10.3.2 <code>enum</code> elements conventions</h4>
+<h4 class="subsection"><a name="TOC41"></a>10.3.2 <code>enum</code> elements conventions</h4>
 
 <p><code>enum</code> members must be prefixed with some abbreviation common for
 all members.
@@ -1055,7 +1079,7 @@ externally (in manual, data sheet, technical specification, etc). Otherwise
 it is recommended not to assign values, or assign a value to the first element
 only.
 
-<h3 class="section"><a name="TOC49"></a>10.4 Type qualifiers</h3>
+<h3 class="section"><a name="TOC42"></a>10.4 Type qualifiers</h3>
 
 <p>Don't forget to give type qualifiers (<code>const</code> and <code>volatile</code>) when
 it is necessary, especially <code>volatile</code> specifier.
@@ -1070,38 +1094,37 @@ may lead to misunderstanding and make your code worse.
 when it is applicable, because it may make compiler output better and
 help you to avoid some errors.
 
-<h2 class="chapter"><a name="TOC50"></a>11 Variable declaration formatting</h2>
+<h2 class="chapter"><a name="TOC43"></a>11 Variable declaration formatting</h2>
 
 <p>Each variable declaration must be started on a separate line. 
 Global-space variables definitions must be started at column 0. 
 Local variables must be started at block indent level, same
 as for the statements in this block. 
-<span class="samp">*</span> specifiers must be placed near variable name.
+<span class="samp">*</span> specifiers must be placed near variable (or function name in
+forward declaration) name.
 
    <p>Variable declarations may be divided into blocks separated by empty line
 and block comment. The common formatting rules are applied inside one block.
 
-<pre class="verbatim">
-/* Phase correction algorithm variables */
-static fixed16  phase_error; /**&lt; Currently estimated phase error */
-static int      phcorr_num;  /**&lt; Number of processed samples */
-static fixed16 *sample;      /**&lt; Next sample pointer */
+<pre class="example">     /* Phase correction algorithm variables */
+     static fixed16  phase_error; /**&lt; Currently estimated phase error */
+     static int      phcorr_num;  /**&lt; Number of processed samples */
+     static fixed16 *sample;      /**&lt; Next sample pointer */
+     
+     static phase *phase_rotate(phase *cur, float angle);
 </pre>
-
    <p>Variable names in a block start at the same column. Variable comments
 start at the same column. If comment couldn't be fitted in one line, it may
 be split. Continuation line should begin at the same column where first
 letter of comments after <code>/*</code> was placed.
 
-<pre class="verbatim">
-static uint32     input_bit_number;   /**&lt; Number of bits received from
-                                           external interface */
+<pre class="example">     static uint32     input_bit_number;   /**&lt; Number of bits received from
+                                                external interface */
 </pre>
-
    <p>If variable block has only one declaration inside, variable comment may be
 omitted.
 
-<h2 class="chapter"><a name="TOC51"></a>12 Literals and constants</h2>
+<h2 class="chapter"><a name="TOC44"></a>12 Literals and constants</h2>
 
 <p>Try not to use numeric constant values in code (except simple cases, like
 constants 0, 1, -1 and in some rare situations when direct constant usage
@@ -1112,28 +1135,26 @@ may be more clear than identifier usage - for example bit masks like 0xff).
 
    <p><em>Examples:</em>
 
-<pre class="verbatim">
-/* Right: */
-void
-usage_information_print(void)
-{
-    printf("check -- check C source code to the C Source Code Style "
-           "conformance\n"
-           "Usage:\n"
-           "    check &lt;filename>\n");
-}
-
-/* Wrong: */
-void
-usage_information_print(void)
-{
-    printf("
-check -- check C source code to the C Source Code Style conformance
-Usage:
-    check &lt;filename>\n");
-}
+<pre class="example">     /* Right: */
+     void
+     usage_information_print(void)
+     {
+         printf("check -- check C source code to the C Source Code Style "
+                "conformance\n"
+                "Usage:\n"
+                "    check &lt;filename&gt;\n");
+     }
+     
+     /* Wrong: */
+     void
+     usage_information_print(void)
+     {
+         printf("
+     check -- check C source code to the C Source Code Style conformance
+     Usage:
+         check &lt;filename&gt;\n");
+     }
 </pre>
-
    <p>If constant length suffix is used, the capital suffix letter must be used
 (use <code>0L</code>, not <code>0l</code>). Similarly, for floating point constants,
 use capital exponent letter <span class="samp">E</span> (use <code>1.25E+35</code>, not
@@ -1142,7 +1163,7 @@ use capital exponent letter <span class="samp">E</span> (use <code>1.25E+35</cod
    <p>In hexadecimal constants, lower-case letters must be used (use
 <code>0xdeadbeef</code>, not <code>0xDEADBEEF</code>).
 
-<h2 class="chapter"><a name="TOC52"></a>13 C Expressions</h2>
+<h2 class="chapter"><a name="TOC45"></a>13 C Expressions</h2>
 
 <p>Unary operators <span class="samp">&amp;</span>, <span class="samp">*</span>, <span class="samp">+</span>, <span class="samp">-</span>, <span class="samp">~</span>,
 <span class="samp">!</span>, <span class="samp">++</span>, <span class="samp">--</span> must be coupled with operands to which such
@@ -1184,30 +1205,24 @@ with operand.
 and better readable. Don't use embedded assignment in artificial places. For
 example,
 
-<pre class="verbatim">
-    x = x1 + w;
-    pos = ofs + x;
+<pre class="example">         x = x1 + w;
+         pos = ofs + x;
 </pre>
-
    <p>should not be replaced by
 
-<pre class="verbatim">
-    pos = ofs + (x = x1 + w);
+<pre class="example">         pos = ofs + (x = x1 + w);
 </pre>
-
    <p><em>More examples:</em>
 
-<pre class="verbatim">
-    p = p->next;  /* Correct */
-    n = - n;      /* Incorrect */
-    ++ b;         /* Incorrect */
-    b++;          /* Correct */
-    printf("Internal error: %d\\n", (class &lt;&lt; 8) | errno);
-    scsi_freq = (freq_multiplier ? freq * 2 : freq);
-    list = hash_tab[hash_func(key) % hash_mod];
-    memcpy(dest, src, n);
+<pre class="example">         p = p-&gt;next;  /* Correct */
+         n = - n;      /* Incorrect */
+         ++ b;         /* Incorrect */
+         b++;          /* Correct */
+         printf("Internal error: %d\\n", (class &lt;&lt; 8) | errno);
+         scsi_freq = (freq_multiplier ? freq * 2 : freq);
+         list = hash_tab[hash_func(key) % hash_mod];
+         memcpy(dest, src, n);
 </pre>
-
    <p>It is recommended to insert additional unnecessary parenthesis to
 expression to make it more readable. It is recommended to assume only that
 unary operators have higher priority than binary and that multiplication
@@ -1226,22 +1241,20 @@ expressions.
 Line up continuation lines with the part of the preceding line they
 continue.
 
-<h2 class="chapter"><a name="TOC53"></a>14 C Statements Formatting</h2>
+<h2 class="chapter"><a name="TOC46"></a>14 C Statements Formatting</h2>
 
-<h3 class="section"><a name="TOC54"></a>14.1 <code>if</code> statement</h3>
+<h3 class="section"><a name="TOC47"></a>14.1 <code>if</code> statement</h3>
 
 <p><code>if</code> statement must look like this:
 
-<pre class="verbatim">
-    if (p != NULL)
-    {
-        if (p->flag &amp; FEL_INACTIVE)
-            continue;
-        else
-            p = p->next;
-    }
+<pre class="example">         if (p != NULL)
+         {
+             if (p-&gt;flag &amp; FEL_INACTIVE)
+                 continue;
+             else
+                 p = p-&gt;next;
+         }
 </pre>
-
    <p>It is recommended to enclose <code>if</code> branches into curly braces in
 each case, except it is a small simple statement. Particularly, it is
 recommended to enclose <code>if</code> branches when it is nested to other
@@ -1252,126 +1265,114 @@ branch is enclosed.
    <p><code>if - else if - else if...</code>
 statements must be formatted like this:
 
-<pre class="verbatim">
-    if (strcmp(reply, "yes") == 0)
-    {
-        ...
-    }
-    else if (strcmp(reply, "no") == 0)
-    {
-        ...
-    }
-    else
-    {
-        ...
-    }
+<pre class="example">         if (strcmp(reply, "yes") == 0)
+         {
+             ...
+         }
+         else if (strcmp(reply, "no") == 0)
+         {
+             ...
+         }
+         else
+         {
+             ...
+         }
 </pre>
-
-<h3 class="section"><a name="TOC55"></a>14.2 <code>for</code> statement</h3>
+   <h3 class="section"><a name="TOC48"></a>14.2 <code>for</code> statement</h3>
 
 <p><code>for</code> statement may look like this:
 
-<pre class="verbatim">
-    for (i = 0; i &lt; n; i++)
-        x += buf[i];
+<pre class="example">         for (i = 0; i &lt; n; i++)
+             x += buf[i];
 </pre>
-
    <p>Alternative form of <code>for</code> statement applied when components of
 <code>for</code> can not fit into the one 80-character line.
 
-<pre class="verbatim">
-    for (p = list->head, i = 0;
-         p &amp;&amp; !(element_is_invalid(p));
-         p = list_element_next(p))
-    {
-        list_element_register(p);
-        i++;
-    }
+<pre class="example">         for (p = list-&gt;head, i = 0;
+              p &amp;&amp; !(element_is_invalid(p));
+              p = list_element_next(p), i++)
+         {
+             list_element_register(p);
+         }
 </pre>
-
    <p>It is recommended to enclose <code>for</code> body in curly braces in every case
 except when <code>for</code> components fit in one line and <code>for</code> body is
 sufficiently simple (something like <code>n += j;</code>, not a compound
 statement).
 
-<h3 class="section"><a name="TOC56"></a>14.3 <code>while</code> statement</h3>
+<h3 class="section"><a name="TOC49"></a>14.3 <code>while</code> statement</h3>
 
 <p><code>while</code> statement must look like this:
-<pre class="verbatim">
-    while (p != NULL)
-    {
-        interp_evaluate_node(p);
-        p = p->next;
-    }
+<pre class="example">         while (p != NULL)
+         {
+             interp_evaluate_node(p);
+             p = p-&gt;next;
+         }
 </pre>
-
    <p>It is recommended to enclose <code>while</code> body in curly braces in every case
 except when <code>while</code> condition fits in one line and <code>while</code>
 body is sufficiently simple (something like <code>n += j;</code>, not a compound
 statement).
 
-<h3 class="section"><a name="TOC57"></a>14.4 <code>do</code> statement</h3>
+<h3 class="section"><a name="TOC50"></a>14.4 <code>do</code> statement</h3>
 
 <p><code>do</code> statement must look like this:
 
-<pre class="verbatim">
-    do {
-        entry_process(&amp;n, entry);
-    } while (n > 0);
+<pre class="example">         do {
+             entry_process(&amp;n, entry);
+         } while (n &gt; 0);
 </pre>
-
-<h3 class="section"><a name="TOC58"></a>14.5 <code>switch</code> statement</h3>
+   <h3 class="section"><a name="TOC51"></a>14.5 <code>switch</code> statement</h3>
 
 <p><code>switch</code> statement must look like this:
 
-<pre class="verbatim">
-    switch (action)
-    {
-        case ACTION_NOP:
-        case ACTION_NEXT:
-            break;
-
-        case ACTION_COPY:
-            *new_type = *type;
-            state = STATE_COPIED;
-            break;
-
-        case ACTION_MOVE:
-            *new_type = *type;
-            type = NULL;
-            break;
-
-        case ACTION_CLONE:
-        {
-            int i;
-            
-            for (i = 0; i &lt; type_num; i++)
-            {
-                clone_type[i] = *type;
-            }
-            state = STATE_CLONED;
-            break;
-        }
-
-        default:
-            assert(0);
-    }
+<pre class="example">         switch (action)
+         {
+             case ACTION_NOP:
+             case ACTION_NEXT:
+                 break;
+     
+             case ACTION_COPY:
+                 *new_type = *type;
+                 state = STATE_COPIED;
+                 break;
+     
+             case ACTION_MOVE:
+                 *new_type = *type;
+                 type = NULL;
+                 break;
+     
+             case ACTION_CLONE:
+             {
+                 int i;
+     
+                 for (i = 0; i &lt; type_num; i++)
+                 {
+                     clone_type[i] = *type;
+                 }
+                 state = STATE_CLONED;
+                 break;
+             }
+     
+             default:
+                 assert(0);
+         }
 </pre>
-
    <p><code>switch</code> branches must be separated by empty lines. Each <code>case</code>
 label must be placed on a separate line. You must enclose statements in
 curly braces only if some local variables must be declared in block.
 
    <p>It is recommended to finish each <code>switch</code> branch with <code>break</code>
 statement. If you really want to continue execution in the next <code>switch</code>
-branch, insert comment <code>/* FALLTHROUGH */</code> before empty line which
-separates two branches.
+branch, insert comment <code>/*@fallthrough@*/</code> before empty line which
+separates two branches (it is used by <dfn>Splint</dfn> to annotate
+suspicious places in code).
 
    <p>The <code>default</code> case, if used, should be last and does not require a
 <code>break</code> if it is last. To make your code safer, it is recommended to add
 <code>default</code> branch always.
 
-<h3 class="section"><a name="TOC59"></a>14.6 <code>goto</code> statement</h3>
+<h3 class="section"><a name="TOC52"></a>14.6 <code>goto</code> statement</h3>
 
 <p>It is <em>highly not recommended</em> to use <code>goto</code> statement
 in your program. In most cases it means that you code has poor design. 
@@ -1384,14 +1385,14 @@ jump to the resource deallocation fragment at the end of the function.
 If it is possible to avoid such <code>goto</code> usage (for example, if resource
 deallocation function exists and may be used) <code>goto</code> must not be used.
 
-<h2 class="chapter"><a name="TOC60"></a>15 Preprocessor usage</h2>
+<h2 class="chapter"><a name="TOC53"></a>15 Preprocessor usage</h2>
 
-<h3 class="section"><a name="TOC61"></a>15.1 Preprocessor directives formatting</h3>
+<h3 class="section"><a name="TOC54"></a>15.1 Preprocessor directives formatting</h3>
 
 <p>Preprocessor directives must be started at column zero. It is not allowed
 to have spaces between <span class="samp">#</span> sign and directive name.
 
-<h3 class="section"><a name="TOC62"></a>15.2 <code>#include</code> usage</h3>
+<h3 class="section"><a name="TOC55"></a>15.2 <code>#include</code> usage</h3>
 
 <p>Use <span class="samp">&lt;...&gt;</span> with file name in <code>#include</code> to include
 <acronym>ANSI</acronym> C headers or header files provided by the target
@@ -1399,7 +1400,7 @@ operating system.
 
    <p>Use quotes <span class="samp">"..."</span> with file name to include other headers.
 
-<h3 class="section"><a name="TOC63"></a>15.3 <code>#define</code> constant definitions</h3>
+<h3 class="section"><a name="TOC56"></a>15.3 <code>#define</code> constant definitions</h3>
 
 <p>It is alternative to <code>enum</code> method to give symbolic names to constants. 
 In some cases it is more convenient than <code>enum</code>, but <code>enum</code> is a
@@ -1411,7 +1412,7 @@ used in preprocessor expressions. Also, for example, hardware register
 definitions may be included in the assembler source, so it is better to
 use <code>#define</code> to define them.
 
-<h3 class="section"><a name="TOC64"></a>15.4 Macros</h3>
+<h3 class="section"><a name="TOC57"></a>15.4 Macros</h3>
 
 <p>It is required to around all macro parameters with parenthesis, because
 complex expressions can be used as macro parameters, and operator-precedence
@@ -1420,52 +1421,46 @@ parenthesis too.
 
    <p>Lets consider the next code fragment:
 
-<pre class="verbatim">
-#define DEBUG(s) \
-    if (debug)                     \
-    {                              \
-        printf("debug: %s\n", s);  \
-    }
-    
-    ...
-    
-    if (p == NULL)
-        DEBUG("p is NULL");
-    else
-        ...
+<pre class="example">     #define DEBUG(s) \
+         if (debug)                     \
+         {                              \
+             printf("debug: %s\n", s);  \
+         }
+     
+         ...
+     
+         if (p == NULL)
+             DEBUG("p is NULL");
+         else
+             ...
 </pre>
-
    <p>In this example, else branch of <code>if (p == NULL)</code> statement will become
 associated with <code>if</code> statement in <code>DEBUG</code> macro. To avoid this,
 all statement-like macros must be arounded by
 <code>do { ... } while (0)</code> statement:
 
-<pre class="verbatim">
-#define DEBUG \
-    do {                               \
-        if (debug)                     \
-        {                              \
-            printf("debug: %s\n", s);  \
-        }                              \
-    } while (0)
+<pre class="example">     #define DEBUG \
+         do {                               \
+             if (debug)                     \
+             {                              \
+                 printf("debug: %s\n", s);  \
+             }                              \
+         } while (0)
 </pre>
-
    <p>Also, lets consider the following example:
 
-<pre class="verbatim">
-#define INC(i) \
-    do {                                                \
-        printf("Loop counter new value is %d\n", ++i);  \
-    } while (0)
-
-    ...
-
-    for (i = 0; i &lt; 5; ({INC(i);}))
-    {
-        ...
-    }
+<pre class="example">     #define INC(i) \
+         do {                                                \
+             printf("Loop counter new value is %d\n", ++i);  \
+         } while (0)
+     
+         ...
+     
+         for (i = 0; i &lt; 5; ({INC(i);}))
+         {
+             ...
+         }
 </pre>
-
    <p>The example states how macros arounded by <code>do { ... } while (0)</code>
 statement may be used in <code>for()</code> statement components. The macro call
 is arounded by curly and, then, round brackets.
@@ -1484,7 +1479,7 @@ should be stated in macro description.
 if it is applicable. Compiler can help to avoid some errors and its output
 in the case of compilation errors more friendly, if inline function is used.
 
-<h3 class="section"><a name="TOC65"></a>15.5 Conditional compilation</h3>
+<h3 class="section"><a name="TOC58"></a>15.5 Conditional compilation</h3>
 
 <p>Conditional compilation is useful for making your code portable by handling
 different machines and OS behavior. Also, it is useful for debugging and
@@ -1500,16 +1495,14 @@ source file. Use <code>#if</code>/<code>#ifdef</code> to define macros that can 
 uniformly in the code. For instance, a header file for checking memory
 allocation might look like:
 
-<pre class="verbatim">
-#ifdef DEBUG
-    extern void *mm_malloc(size_t bytes);
-#define MALLOC(size) (mm_malloc(size))
-#else
-    extern void *malloc(size_t bytes);
-#define MALLOC(size) (malloc(size))
-#endif
+<pre class="example">     #ifdef DEBUG
+         extern void *mm_malloc(size_t bytes);
+     #define MALLOC(size) (mm_malloc(size))
+     #else
+         extern void *malloc(size_t bytes);
+     #define MALLOC(size) (malloc(size))
+     #endif
 </pre>
-
    <p>It is recommended to use indentation rules for preprocessor conditions too.
 
    <p>Conditional compilation should generally be on a feature-by-feature basis. 
@@ -1517,11 +1510,18 @@ Although, one of usage of conditional preprocessor directives is to handle
 differences between different machines or operating systems. OS type,
 CPU kind, board, implementation etc. dependencies via conditional
 compilation should be avoided in most cases. Use name of the feature or
-property instead of name of bearing entiry.
+property instead of name of bearing entity.
 
    <p>You may exclude fragment of your code using <code>#if 0</code> directive.
 
-<h2 class="chapter"><a name="TOC66"></a>16 Warning messages</h2>
+<h2 class="chapter"><a name="TOC59"></a>16 Safe programming</h2>
+
+<p>It is <em>highly</em> recommended to use <code>snprintf()</code> instead of
+<code>sprintf()</code>. If <code>sprintf()</code> is still used, it has to be
+guaranteed and explained in comment just before the usage why
+the buffer is sufficient.
+
+<h2 class="chapter"><a name="TOC60"></a>17 Warning messages</h2>
 
 <p>Your program must be compiled without any warning messages for all target
 architectures. All warning messages must be enabled in compiler
@@ -1535,7 +1535,7 @@ The only exception is a temporary code fragment between <code>#if 0/#endif</code
 statements. Such fragments must be removed before code freezing or
 releasing.
 
-<h2 class="chapter"><a name="TOC67"></a>17 Project-Dependent Standards</h2>
+<h2 class="chapter"><a name="TOC61"></a>18 Project-Dependent Standards</h2>
 
 <p>Individual projects may wish to establish additional standards beyond those
 given here. It is good and recommended practice to define on a per-project
@@ -1545,102 +1545,6 @@ and headers which may be used in project, preprocessor variables and
 macros usage, include files organization etc.
 
    <p>It is highly recommended to make those standards compliant to this one.
-
-   <div class="contents">
-<h2>Table of Contents</h2>
-<ul>
-<li><a name="toc_TOC0" href="#TOC0">Abstract</a>
-<li><a name="toc_TOC1" href="#TOC1">Copyright Notice</a>
-<li><a name="toc_TOC2" href="#TOC2">Audience</a>
-<li><a name="toc_TOC3" href="#TOC3">Document status</a>
-<li><a name="toc_TOC4" href="#TOC4">Contact Information</a>
-<li><a name="toc_TOC5" href="#TOC5">Revision History</a>
-<li><a name="toc_TOC6" href="#TOC6">Issues</a>
-<li><a name="toc_TOC7" href="#TOC7">1 Abbreviations</a>
-<li><a name="toc_TOC8" href="#TOC8">2 Terminology</a>
-<li><a name="toc_TOC9" href="#TOC9">3 References</a>
-<li><a name="toc_TOC10" href="#TOC10">4 Introduction</a>
-<ul>
-<li><a href="#TOC11">4.1 Contributors</a>
-</li></ul>
-<li><a name="toc_TOC12" href="#TOC12">5 General</a>
-<ul>
-<li><a href="#TOC13">5.1 Style remarks</a>
-<li><a href="#TOC14">5.2 Text width</a>
-<li><a href="#TOC15">5.3 File length</a>
-<li><a href="#TOC16">5.4 Special Characters</a>
-<li><a href="#TOC17">5.5 Trigraphs</a>
-<li><a href="#TOC18">5.6 Indentation</a>
-<li><a href="#TOC19">5.7 Vertical spacing</a>
-<li><a href="#TOC20">5.8 Special compiler features</a>
-</li></ul>
-<li><a name="toc_TOC21" href="#TOC21">6 Naming conventions</a>
-<li><a name="toc_TOC22" href="#TOC22">7 Conventional comments</a>
-<ul>
-<li><a href="#TOC23">7.1 Comment designators</a>
-<li><a href="#TOC24">7.2 Language</a>
-<li><a href="#TOC25">7.3 Formatting conventions</a>
-<li><a href="#TOC26">7.4 Comments style</a>
-</li></ul>
-<li><a name="toc_TOC27" href="#TOC27">8 File layout</a>
-<ul>
-<li><a href="#TOC28">8.1 Order of file sections</a>
-<li><a href="#TOC29">8.2 Human-written file headers</a>
-<li><a href="#TOC30">8.3 Generated file headers</a>
-<li><a href="#TOC31">8.4 Header (<span class="samp">.h</span>) files</a>
-</li></ul>
-<li><a name="toc_TOC32" href="#TOC32">9 Function Definition Formatting</a>
-<ul>
-<li><a href="#TOC33">9.1 Function header</a>
-<ul>
-<li><a href="#TOC34">9.1.1 Indentation inside function header</a>
-</li></ul>
-<li><a href="#TOC35">9.2 Function Formatting</a>
-<li><a href="#TOC36">9.3 Considerations</a>
-<li><a href="#TOC37">9.4 Function size</a>
-<li><a href="#TOC38">9.5 Parameters and local variables conventions</a>
-<li><a href="#TOC39">9.6 Local variables naming conventions</a>
-</li></ul>
-<li><a name="toc_TOC40" href="#TOC40">10 Types definitions formatting</a>
-<ul>
-<li><a href="#TOC41">10.1 <code>struct</code> declaration</a>
-<ul>
-<li><a href="#TOC42">10.1.1 <code>struct</code> comments</a>
-<li><a href="#TOC43">10.1.2 <code>struct</code> formatting</a>
-<li><a href="#TOC44">10.1.3 Bit fields</a>
-</li></ul>
-<li><a href="#TOC45">10.2 <code>union</code> declaration</a>
-<li><a href="#TOC46">10.3 <code>enum</code> declaration</a>
-<ul>
-<li><a href="#TOC47">10.3.1 <code>enum</code> formatting conventions</a>
-<li><a href="#TOC48">10.3.2 <code>enum</code> elements conventions</a>
-</li></ul>
-<li><a href="#TOC49">10.4 Type qualifiers</a>
-</li></ul>
-<li><a name="toc_TOC50" href="#TOC50">11 Variable declaration formatting</a>
-<li><a name="toc_TOC51" href="#TOC51">12 Literals and constants</a>
-<li><a name="toc_TOC52" href="#TOC52">13 C Expressions</a>
-<li><a name="toc_TOC53" href="#TOC53">14 C Statements Formatting</a>
-<ul>
-<li><a href="#TOC54">14.1 <code>if</code> statement</a>
-<li><a href="#TOC55">14.2 <code>for</code> statement</a>
-<li><a href="#TOC56">14.3 <code>while</code> statement</a>
-<li><a href="#TOC57">14.4 <code>do</code> statement</a>
-<li><a href="#TOC58">14.5 <code>switch</code> statement</a>
-<li><a href="#TOC59">14.6 <code>goto</code> statement</a>
-</li></ul>
-<li><a name="toc_TOC60" href="#TOC60">15 Preprocessor usage</a>
-<ul>
-<li><a href="#TOC61">15.1 Preprocessor directives formatting</a>
-<li><a href="#TOC62">15.2 <code>#include</code> usage</a>
-<li><a href="#TOC63">15.3 <code>#define</code> constant definitions</a>
-<li><a href="#TOC64">15.4 Macros</a>
-<li><a href="#TOC65">15.5 Conditional compilation</a>
-</li></ul>
-<li><a name="toc_TOC66" href="#TOC66">16 Warning messages</a>
-<li><a name="toc_TOC67" href="#TOC67">17 Project-Dependent Standards</a>
-</li></ul>
-</div>
 
 </body></html>
 

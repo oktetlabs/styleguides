@@ -1,72 +1,73 @@
-Abstract
-********
+C Source Code Style Guide
 
-This document describes the general formatting rules of C programming
-language constructs, naming conventions and coding style.
+Internal Standard OKTL-0000034
 
-Copyright Notice
-****************
+Table of Contents
+*****************
 
-Copyright (C) 1999 Terkom,  St.-Petersburg, Russia
+1 Abbreviations
+2 Terminology
+3 References
+4 Introduction
+  4.1 Contributors
+5 General
+  5.1 Style remarks
+  5.2 Text width
+  5.3 File length
+  5.4 Special Characters
+  5.5 Trigraphs
+  5.6 Indentation
+  5.7 Vertical spacing
+  5.8 Special compiler features
+6 Naming conventions
+7 Conventional comments
+  7.1 Comment designators
+  7.2 Language
+  7.3 Formatting conventions
+  7.4 Comments style
+8 File layout
+  8.1 Order of file sections
+  8.2 Human-written file headers
+  8.3 Generated file headers
+  8.4 Header (`.h') files
+9 Function Definition Formatting
+  9.1 Function header
+    9.1.1 Indentation inside function header
+  9.2 Function Formatting
+  9.3 Considerations
+  9.4 Function size
+  9.5 Parameters and local variables conventions
+  9.6 Local variables naming conventions
+10 Types definitions formatting
+  10.1 `struct' declaration
+    10.1.1 `struct' comments
+    10.1.2 `struct' formatting
+    10.1.3 Bit fields
+  10.2 `union' declaration
+  10.3 `enum' declaration
+    10.3.1 `enum' formatting conventions
+    10.3.2 `enum' elements conventions
+  10.4 Type qualifiers
+11 Variable declaration formatting
+12 Literals and constants
+13 C Expressions
+14 C Statements Formatting
+  14.1 `if' statement
+  14.2 `for' statement
+  14.3 `while' statement
+  14.4 `do' statement
+  14.5 `switch' statement
+  14.6 `goto' statement
+15 Preprocessor usage
+  15.1 Preprocessor directives formatting
+  15.2 `#include' usage
+  15.3 `#define' constant definitions
+  15.4 Macros
+  15.5 Conditional compilation
+16 Safe programming
+17 Warning messages
+18 Project-Dependent Standards
 
-   Copyright (C) 2003 OKTET Ltd., St.-Petersburg, Russia
-
-   Copyright (C) 2004 OKTET Labs, St.-Petersburg, Russia
-
-Audience
-********
-
-This document is intended for OKTET Labs C programmers, reviewers,
-testers and other persons involved in software development process.
-
-   It is assumed that a reader is familiar with the C programming
-language.
-
-Document status
-***************
-
-Draft
-
-Contact Information
-*******************
-
-Unit 3H, Universitetsky pr., 18/2, Petrodvorets, St.-Petersburg, Russia
-Phone: +7(812) 428-6709
-Fax: +7(812) 428-7715
-
-   For more information, call the above office or visit our web site at
-`http://www.oktetlabs.ru'.
-
-   Please, send your comments and notes about found errors, typos, and
-inconsistencies to <support@oktetlabs.ru>.
-
-Revision History
-****************
-
-Date     Rev  Author              Changes
-----------------------------------------------------------------------------
-1999     A    Victor V. Vengerov  Initially written
-
-Feb, 23  B    Dmitry V. Semyonov  Typos fixed.
-2003                              Reformatted according to OKTET Generic
-                                  Document Template.
-                                  Added doxygen related information.
-
-Mar, 4   C    Dmitry V. Semyonov  Fixes after review
-2003
-
-Mar, 18  D    Elena A. Vengerova  OKTET Labs identifier is assigned
-2004
-
-Aug, 2   E    Andrew Rybchenko    Contact information updated. Typos fixed.
-2004                              Victor V. Vengerov notes applied.
-----------------------------------------------------------------------------
-
-Issues
-******
-
-   * The document should be updated after more experience of Doxygen
-     usage is achieved.
 
 1 Abbreviations
 ***************
@@ -89,14 +90,21 @@ Issues
 2 Terminology
 *************
 
+`Doxygen'
+     A documentation system for C++, C, and several other programming
+     languages.  See 'Doxygen manual' for more information.
+
+`Splint'
+     A tool for statically checking C programs.
+
 `Subsystem'
      Functionally closed, alienable, possibly reusable, software
      component with well defined external interfaces. It may be
      library, tool, device driver, part of OS, etc.
 
-`Doxygen'
-     A documentation system for C++, C, and several other programming
-     languages.  See 'Doxygen manual' for more information.
+`Subversion'
+     A free/open-source version control system designed to be the
+     successor to CVS.
 
 3 References
 ************
@@ -132,7 +140,7 @@ applied to developing of C source code. We have tried not only give a
 pandect of rules, but also give rationale and reasons for some of them.
 
    Doxygen-specific guidelines concerning resulting documentation
-formatting and common issues will be described a separate document.
+formatting and common issues will be described in a separate document.
 
 4.1 Contributors
 ================
@@ -142,6 +150,10 @@ formatting and common issues will be described a separate document.
    * Elena A. Vengerova <Elena.Vengerova@oktetlabs.ru>
 
    * Konstantin Abramenko <Konstantin.Abramenko@oktetlabs.ru>
+
+   * Dmitry V. Semyonov <Dmitry.Semyonov@oktet.ru>
+
+   * Andrew Rybchenko <Andrew.Rybchenko@oktetlabs.ru>
 
 5 General
 *********
@@ -153,7 +165,6 @@ C language has a pretty simple syntax, nevertheless it is possible to
 write extremely complicated code. The following example, taken from
 `"Obfuscated C Contest"' archive, is a correct C program; you can try
 to compile and execute it:
-
 
 main() { printf(&unix["\021%six\012\0"],(unix)["have"]+"fun"-0x60); }
 
@@ -236,7 +247,6 @@ brackets (braces), these brackets must be placed at the position of
 "parent" block.
 
    The following example demonstrates this:
-
 
     while (p != NULL)
     {
@@ -409,11 +419,9 @@ between paragraphs. You must put space character after `/*' and before
    Two comment styles may be used: one-line comments and multiline
 comments.  One line comment looks like this:
 
-
 /* This is example of one-line comment */
 
    Multiline comments look like this:
-
 
 /*
  * This is example of multiline comment. Such comment layout must be used
@@ -453,7 +461,10 @@ variables have meaningful names, it is not required to give any
 comments at all. For long functions, comment local variables and
 logical blocks of function. Also, comment a tricky situations,
 non-obvious code which depends on information to someone reading it for
-the first time.
+the first time. Non-"Doxygen" style (`/* ... */') should be used for
+comments in function body (it saves two symbols and avoids confusion
+since it is not included in documentation generated by "Doxygen" in any
+case).
 
    Document each thing in exactly one place. If something is documented
 in several places, it will be hard to keep the documentation up to date
@@ -461,8 +472,7 @@ as the system changes. Try to document each major design decision in
 exactly one place.
 
    Don't just repeat what is already obvious from the code, like this:
-
-    i += 1;   /* Increment i */
+i += 1;   /* Increment i */
 
    Documentation should provide higher-level information about the
 overall function of the code, helping readers to understand what a
@@ -544,7 +554,6 @@ Each `.c' or `.h' files written by human, must have a formal header.
 This header starts at the first line of source file. A header has the
 following format:
 
-
 /** @file
  * @brief <subsystem description>
  *
@@ -586,22 +595,21 @@ distribution permissions or restrictions, or to refer to a particular
 license text.
 
    The last line of the header is a substitution for source code system
-(e.g. CVS) information. `$Id: $' sequence will be substituted with
-actual module identification string while a file is committed into CVS
-repository.
+(e.g. CVS, "Subversion") information. `$Id: $' sequence will be
+substituted with actual module identification string while a file is
+committed into repository.
 
    Note that doxygen-style comment and tags are used here.
-
 
 /** @file
  * @brief ncr875 controller device driver
  *
  * Chip-specific primitive implementation.
  *
- * Copyright (C) 1999 OKTET Labs, St.-Petersburg, Russia
+ * Copyright (C) 2004 OKTET Labs, St.-Petersburg, Russia
  *
  * @author Victor V. Vengerov <Victor.Vengerov@oktetlabs.ru>
- * @author Dmitry V. Semyonov <Dmitry.Semyonov@oktet.ru>
+ * @author Andrew Rybchenko <Andrew.Rybchenko@oktetlabs.ru>
  *
  * $Id: $
  */
@@ -613,13 +621,14 @@ Some of source files fed to compiler may be generated by other programs
 or scripts. Such programs or scripts must put special header at the
 beginning of such files:
 
-
 /*
  * This file is automatically generated by program <program>.
  * DO NOT EDIT IT!!!
  *
  * File generated at <date> <time>
  */
+
+   Format YYYY-MM-DD should be used for date specification.
 
 8.4 Header (`.h') files
 =======================
@@ -643,9 +652,12 @@ include internal definitions and declarations to the interface headers.
    Header file must be started with the same header as C source code
 file.  The body of header file must be organized in the following way:
 
-
 #ifndef __<subsystem_prefix>_<filename>_H__
 #define __<subsystem_prefix>_<filename>_H__
+
+#include <nesting_header.h>
+...
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -665,6 +677,8 @@ contains the subsystem prefix there is no need to add another one.
    Conditionals `#ifdef __cplusplus' used to make possible usage of
 appropriate header in C++ program. These preprocessor conditionals may
 be omitted in internal headers, but are mandatory for interface headers.
+It is important to including nesting headers before `#ifdef
+__cplusplus' block in order not to affect symbols declared there.
 
 9 Function Definition Formatting
 ********************************
@@ -675,12 +689,11 @@ be omitted in internal headers, but are mandatory for interface headers.
 It is required to put formal function header before each function
 definition.  Function header have the following format:
 
-
 /**
  * <function description>
  *
- * @param <param1>      <param1 description> [ (OUT) | (IN/OUT) ]
- * @param <param2>      <param2 description> [ (OUT) | (IN/OUT) ]
+ * @param <param1>      <param1 description>
+ * @param <param2>      <param2 description>
  * ...
  *
  * @return <return value description>
@@ -705,20 +718,31 @@ definition.  Function header have the following format:
    The only always required part is `<function description>'. It should
 be started with upper-case letter, and finished with dot. It is
 recommended to use common style of the form 'Copy bytes' (which is
-opposite to 'Copies bytes') for documentation similarity.
+opposite to 'Copies bytes') for documentation similarity. If the
+function complies with some prototype, it should be stated in
+description.
 
    At the same time it is _mandatory_ to describe all function
 parameters and returned value(s). If a function does not return a value,
 `@return' part may be omitted, or <return value specification> may be
-`N/A' (not applicable). If a value directly returned by a function lies
-within a limited set of constants, then each constant should be
-described using `@retval' tag.
+`N/A' (not applicable). All parameter descriptions in a particular
+function must start from the same case: either upper or lower.  If the
+description of the parameter or returned value is complete English
+sentence or is followed by additional statements, it must be started
+from upper-case letter and finished with dot. Description of return
+value after `@return' tag must be started from upper-case letter.
+
+   If a value directly returned by a function lies within a limited set
+of constants, then each constant should be described using `@retval'
+tag. Description of returned value after `@retval' tag must start from
+upper-case letter.
 
    If a parameter is used to deliver values out from a function, it is
-allowed to add `(IN/OUT)' or `(OUT)' (depending on whether the
-parameter is used or not as input at the same time accordingly) hint to
-the end of parameter description. `(IN)' is assumed by default, and
-should not be used.
+allowed to add `[inout]' or `[out]' (depending on whether the parameter
+is used or not as input at the same time accordingly) hint just after
+`@param' without any space. If such hints are used, input parameters
+have to be marked using `[in]'. Thus, in/out hints should be used for
+either all or none parameters.
 
    `@se' (side effects) part must be presented only when a function has
 non-obvious side effects. For example, if this function essentially
@@ -758,7 +782,6 @@ to have a line indented by 8 characters, and other one indented by 16.
 
 All functions must be defined in ANSI C format. Function definition
 must look like this:
-
 
 /**
  * Create object instance of class 'objclass' which designates to be
@@ -809,7 +832,6 @@ $ grep ^object_create_null *
 
    If argument list can not fit in one line, this line can be split in
 the following way:
-
 
 static objid
 datafile_encode(int in_file_desc, int out_file_desc, char *encoding_key,
@@ -886,8 +908,8 @@ may be used with possible digit suffixes.
    Names `i', `j', `k' must be used as names for loop variables.
 
    Names `n', `m' must be used as a names for variables which contain a
-number of some entities. Variable name `l' may be used for length of
-something.
+number of some entities. Variable name `l' (ell) may be used for length
+of something.
 
    Names `s' or `str' (only one of them in one function!) may be used
 as a pointer to character strings.
@@ -930,7 +952,6 @@ representing connection.
 
    _Example:_
 
-
     int i;
 
     ...
@@ -946,7 +967,7 @@ representing connection.
         p->data = NULL;
         p->id = i;
         p->next = p + 1;
-        p++
+        p++;
     }
 
    It is not allowed to have more than three variables with the same
@@ -990,7 +1011,6 @@ following the `/*' sequence. See examples below.
 
 The `struct' declaration must look like this:
 
-
 /** Node of the double-linked list */
 struct list_node {
     struct list_node  *next;    /**< Next node in double-linked list */
@@ -1004,14 +1024,13 @@ struct list_node {
 before `struct' keyword on the same line, and identifier must be placed
 after close bracket on the same line:
 
-
 /** NCR875 SCSI host adapter user-settable hardware parameters */
 typedef struct ncr875_hw_regs {
-    int diffScsi;  /**< Differential SCSI bus enable */
-    int TolerANT;  /**< TolerANT enable */
-    int slowCable; /**< Slow cable mode (Extra clock cycle of Data Setup) */
-    int burstLen;  /**< Maximum number of transfers performed per PCI bus
-                        ownership, legal values is 2,4,8,16,32,64,128 */
+    int diff_scsi;  /**< Differential SCSI bus enable */
+    int tolerant;   /**< Tolerant enable */
+    int slow_cable; /**< Slow cable mode (Extra clock cycle of Data Setup) */
+    int burst_len;  /**< Maximum number of transfers performed per PCI bus
+                         ownership, legal values is 2,4,8,16,32,64,128 */
 } ncr875_hw_regs;
 
    In `typedef' declaration, it is recommended to give the same name to
@@ -1053,14 +1072,13 @@ declarations.
 
 The `enum' declaration must look like this:
 
-
 /** LED status constants */
 enum led_status {
     LED_STATUS_OFF   = 0, /**< LED is off */
     LED_STATUS_ON    = 1, /**< LED is on */
     LED_STATUS_FAIL  = 2, /**< LED is unfunctional */
-    LED_STATUS_MAINT = 4  /**< LED is now in maintenance mode; operations are
-                               limited */
+    LED_STATUS_MAINT = 4, /**< LED is now in maintenance mode; operations
+                               are limited */
 };
 
    The same rules for typedef/variable definitions as for structures
@@ -1102,23 +1120,23 @@ Each variable declaration must be started on a separate line.
 Global-space variables definitions must be started at column 0.  Local
 variables must be started at block indent level, same as for the
 statements in this block.  `*' specifiers must be placed near variable
-name.
+(or function name in forward declaration) name.
 
    Variable declarations may be divided into blocks separated by empty
 line and block comment. The common formatting rules are applied inside
 one block.
-
 
 /* Phase correction algorithm variables */
 static fixed16  phase_error; /**< Currently estimated phase error */
 static int      phcorr_num;  /**< Number of processed samples */
 static fixed16 *sample;      /**< Next sample pointer */
 
+static phase *phase_rotate(phase *cur, float angle);
+
    Variable names in a block start at the same column. Variable comments
 start at the same column. If comment couldn't be fitted in one line, it
 may be split. Continuation line should begin at the same column where
 first letter of comments after `/*' was placed.
-
 
 static uint32     input_bit_number;   /**< Number of bits received from
                                            external interface */
@@ -1138,7 +1156,6 @@ bit masks like 0xff).
 `\n' character explicitly and close quote at each line.
 
    _Examples:_
-
 
 /* Right: */
 void
@@ -1206,17 +1223,14 @@ specifier and with operand.
 simpler and better readable. Don't use embedded assignment in
 artificial places. For example,
 
-
     x = x1 + w;
     pos = ofs + x;
 
    should not be replaced by
 
-
     pos = ofs + (x = x1 + w);
 
    _More examples:_
-
 
     p = p->next;  /* Correct */
     n = - n;      /* Incorrect */
@@ -1253,7 +1267,6 @@ line they continue.
 
 `if' statement must look like this:
 
-
     if (p != NULL)
     {
         if (p->flag & FEL_INACTIVE)
@@ -1270,7 +1283,6 @@ recommended to enclose branch in curly braces if the other branch is
 enclosed.
 
    `if - else if - else if...' statements must be formatted like this:
-
 
     if (strcmp(reply, "yes") == 0)
     {
@@ -1290,20 +1302,17 @@ enclosed.
 
 `for' statement may look like this:
 
-
     for (i = 0; i < n; i++)
         x += buf[i];
 
    Alternative form of `for' statement applied when components of `for'
 can not fit into the one 80-character line.
 
-
     for (p = list->head, i = 0;
          p && !(element_is_invalid(p));
-         p = list_element_next(p))
+         p = list_element_next(p), i++)
     {
         list_element_register(p);
-        i++;
     }
 
    It is recommended to enclose `for' body in curly braces in every case
@@ -1315,7 +1324,6 @@ statement).
 ======================
 
 `while' statement must look like this:
-
     while (p != NULL)
     {
         interp_evaluate_node(p);
@@ -1332,7 +1340,6 @@ statement).
 
 `do' statement must look like this:
 
-
     do {
         entry_process(&n, entry);
     } while (n > 0);
@@ -1341,7 +1348,6 @@ statement).
 =======================
 
 `switch' statement must look like this:
-
 
     switch (action)
     {
@@ -1381,8 +1387,9 @@ curly braces only if some local variables must be declared in block.
 
    It is recommended to finish each `switch' branch with `break'
 statement. If you really want to continue execution in the next `switch'
-branch, insert comment `/* FALLTHROUGH */' before empty line which
-separates two branches.
+branch, insert comment `/*@fallthrough@*/' before empty line which
+separates two branches (it is used by "Splint" to annotate suspicious
+places in code).
 
    The `default' case, if used, should be last and does not require a
 `break' if it is last. To make your code safer, it is recommended to add
@@ -1442,7 +1449,6 @@ must be arounded with parenthesis too.
 
    Lets consider the next code fragment:
 
-
 #define DEBUG(s) \
     if (debug)                     \
     {                              \
@@ -1461,7 +1467,6 @@ become associated with `if' statement in `DEBUG' macro. To avoid this,
 all statement-like macros must be arounded by `do { ... } while (0)'
 statement:
 
-
 #define DEBUG \
     do {                               \
         if (debug)                     \
@@ -1471,7 +1476,6 @@ statement:
     } while (0)
 
    Also, lets consider the following example:
-
 
 #define INC(i) \
     do {                                                \
@@ -1523,7 +1527,6 @@ source file. Use `#if'/`#ifdef' to define macros that can be used
 uniformly in the code. For instance, a header file for checking memory
 allocation might look like:
 
-
 #ifdef DEBUG
     extern void *mm_malloc(size_t bytes);
 #define MALLOC(size) (mm_malloc(size))
@@ -1540,11 +1543,18 @@ basis.  Although, one of usage of conditional preprocessor directives
 is to handle differences between different machines or operating
 systems. OS type, CPU kind, board, implementation etc. dependencies via
 conditional compilation should be avoided in most cases. Use name of
-the feature or property instead of name of bearing entiry.
+the feature or property instead of name of bearing entity.
 
    You may exclude fragment of your code using `#if 0' directive.
 
-16 Warning messages
+16 Safe programming
+*******************
+
+It is _highly_ recommended to use `snprintf()' instead of `sprintf()'.
+If `sprintf()' is still used, it has to be guaranteed and explained in
+comment just before the usage why the buffer is sufficient.
+
+17 Warning messages
 *******************
 
 Your program must be compiled without any warning messages for all
@@ -1559,7 +1569,7 @@ assertions etc.  The only exception is a temporary code fragment
 between `#if 0/#endif' statements. Such fragments must be removed
 before code freezing or releasing.
 
-17 Project-Dependent Standards
+18 Project-Dependent Standards
 ******************************
 
 Individual projects may wish to establish additional standards beyond
@@ -1571,77 +1581,4 @@ preprocessor variables and macros usage, include files organization etc.
 
    It is highly recommended to make those standards compliant to this
 one.
-
-Table of Contents
-*****************
-
-Abstract
-Copyright Notice
-Audience
-Document status
-Contact Information
-Revision History
-Issues
-1 Abbreviations
-2 Terminology
-3 References
-4 Introduction
-  4.1 Contributors
-5 General
-  5.1 Style remarks
-  5.2 Text width
-  5.3 File length
-  5.4 Special Characters
-  5.5 Trigraphs
-  5.6 Indentation
-  5.7 Vertical spacing
-  5.8 Special compiler features
-6 Naming conventions
-7 Conventional comments
-  7.1 Comment designators
-  7.2 Language
-  7.3 Formatting conventions
-  7.4 Comments style
-8 File layout
-  8.1 Order of file sections
-  8.2 Human-written file headers
-  8.3 Generated file headers
-  8.4 Header (`.h') files
-9 Function Definition Formatting
-  9.1 Function header
-    9.1.1 Indentation inside function header
-  9.2 Function Formatting
-  9.3 Considerations
-  9.4 Function size
-  9.5 Parameters and local variables conventions
-  9.6 Local variables naming conventions
-10 Types definitions formatting
-  10.1 `struct' declaration
-    10.1.1 `struct' comments
-    10.1.2 `struct' formatting
-    10.1.3 Bit fields
-  10.2 `union' declaration
-  10.3 `enum' declaration
-    10.3.1 `enum' formatting conventions
-    10.3.2 `enum' elements conventions
-  10.4 Type qualifiers
-11 Variable declaration formatting
-12 Literals and constants
-13 C Expressions
-14 C Statements Formatting
-  14.1 `if' statement
-  14.2 `for' statement
-  14.3 `while' statement
-  14.4 `do' statement
-  14.5 `switch' statement
-  14.6 `goto' statement
-15 Preprocessor usage
-  15.1 Preprocessor directives formatting
-  15.2 `#include' usage
-  15.3 `#define' constant definitions
-  15.4 Macros
-  15.5 Conditional compilation
-16 Warning messages
-17 Project-Dependent Standards
-
 

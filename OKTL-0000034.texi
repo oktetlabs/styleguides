@@ -5,7 +5,7 @@
 @c
 @c Copyright (C) 1999 Terkom, St.-Petersburg, Russia
 @c Copyright (C) 2003 OKTET Ltd., St.-Petersburg, Russia
-@c Copyright (C) 2004 OKTET Labs, St.-Petersburg, Russia
+@c Copyright (C) 2004, 2005, 2006 OKTET Labs, St.-Petersburg, Russia
 @c
 @c Author: Andrew Rybchenko <Andrew.Rybchenko@oktetlabs.ru>
 @c Author: Dmitry V. Semyonov <Dmitry.Semyonov@oktet.ru>
@@ -24,11 +24,11 @@
 
 @c Use A-Z letters for different versions of document drafts.
 @c Use 1-N numbers for different versions of document issues.
-@set REV    E
-@set DATE   2 Aug 2004
+@set REV    F
+@set DATE   15 Jul 2006
 
 @c Comma-separated list of years to be used in copyright notices
-@set YEARS 1999, 2003, 2004
+@set YEARS 1999, 2003, 2004, 2005, 2006
 
 
 @c -*%header%
@@ -38,10 +38,10 @@
 @exampleindent 0
 @end ifinfo
 @iftex
-@exampleindent 0
+@exampleindent 2
 @end iftex
 @afourpaper
-@setcontentsaftertitlepage
+@c @setcontentsaftertitlepage
 @setchapternewpage off
 @c %header%*-
 
@@ -51,9 +51,11 @@
 @copying
 Copyright @copyright{} 1999 Terkom, St.-Petersburg, Russia
 
+@noindent
 Copyright @copyright{} 2003 OKTET Ltd., St.-Petersburg, Russia
 
-Copyright @copyright{} 2004 OKTET Labs, St.-Petersburg, Russia
+@noindent
+Copyright @copyright{} 2004, 2005, 2006 OKTET Labs, St.-Petersburg, Russia
 
 This document is the property of OKTET Labs. Nevertheless, there are no
 special restrictions regarding confidentiality which limit the audience
@@ -63,78 +65,79 @@ or distribution of this memo.
 
 @c -*%titlepage%
 
+@ifplaintext
+
+@titlefont{C Source Code Style Guide}
+
+@noindent
+Internal Standard OKTL-0000034
+
+@end ifplaintext
+
+
 @titlepage
 @title    @value{TITLE}
 @subtitle Internal Standard @value{ID}
 @c Note the use of three `l's in the word `filll'; this is correct.
 @vskip 0pt plus 1filll
 @insertcopying
-@end titlepage
 
 
-@iftex
-@oddheading  @value{TITLE} @| @| @value{ID}
-@evenheading @value{ID}    @| @| @value{TITLE}
-@oddfooting  @thispage     @| @| 
-@evenfooting               @| @| @thispage
-@end iftex
+
 
 @c %titlepage%*-
-
 
 @page
 
 
-@unnumbered Abstract
+
+@majorheading Abstract
 
 This document describes the general formatting rules of C programming
 language constructs, naming conventions and coding style.
 
 
-@unnumbered Copyright Notice
+@majorheading Copyright Notice
 
-Copyright @copyright{} 1999 Terkom,  St.-Petersburg, Russia
-
-Copyright @copyright{} 2003 OKTET Ltd., St.-Petersburg, Russia
-
-Copyright @copyright{} 2004 OKTET Labs, St.-Petersburg, Russia
+@insertcopying
 
 
-@unnumbered Audience
+@majorheading Audience
 
 This document is intended for OKTET Labs C programmers, reviewers,
 testers and other persons involved in software development process.
 
+@noindent
 It is assumed that a reader is familiar with the C programming language.
 
 
-@unnumbered Document status
+@majorheading Document status
 
 @c @value{STATUS}
 Draft
 
 
-@unnumbered Contact Information
+@majorheading Contact Information
 
 @display
 Unit 3H, Universitetsky pr., 18/2, Petrodvorets, St.-Petersburg, Russia
 Phone: +7(812) 428-6709
-Fax: +7(812) 428-7715
+Fax: +7(812) 428-8761
 @end display
 
+@noindent
 For more information, call the above office or visit our web site at
 @uref{http://www.oktetlabs.ru}.
 
+@noindent
 Please, send your comments and notes about found errors, typos, and
 inconsistencies to @email{support@@oktetlabs.ru}.
 
-
 @page
 
+@majorheading Revision History
 
-@unnumbered Revision History
-
-@example
+@verbatim
 Date     Rev  Author              Changes
 ----------------------------------------------------------------------------
 1999     A    Victor V. Vengerov  Initially written
@@ -152,11 +155,15 @@ Mar, 18  D    Elena A. Vengerova  OKTET Labs identifier is assigned
 
 Aug, 2   E    Andrew Rybchenko    Contact information updated. Typos fixed.
 2004                              Victor V. Vengerov notes applied.
+
+Jul, 15  F    Andrew Rybchenko    More strict requirements on function
+2006                              parameters and return values description.
+                                  Add "Safe programming" chapter.
 ----------------------------------------------------------------------------
-@end example
+@end verbatim
 
 
-@unnumbered Issues
+@majorheading Issues
 
 @itemize @bullet
 @item
@@ -165,8 +172,19 @@ achieved.
 @end itemize
 
 
-@page
+@end titlepage
 
+
+@contents
+
+
+@iftex
+@headings on
+@oddheading  @value{TITLE} @| @| @value{ID}
+@evenheading @value{ID}    @| @| @value{TITLE}
+@oddfooting  @thispage     @| @| 
+@evenfooting               @| @| @thispage
+@end iftex
 
 @chapter Abbreviations
 
@@ -187,13 +205,18 @@ Wind River Systems
 @chapter Terminology
 
 @table @samp
+@item Doxygen
+A documentation system for C++, C, and several other programming languages.
+See 'Doxygen manual' for more information.
+@item Splint
+A tool for statically checking C programs.
 @item Subsystem
 Functionally closed, alienable, possibly reusable, software component
 with well defined external interfaces. It may be library, tool, device
 driver, part of OS, etc.
-@item Doxygen
-A documentation system for C++, C, and several other programming languages.
-See 'Doxygen manual' for more information.
+@item Subversion
+A free/open-source version control system designed to be the successor
+to @acronym{CVS}.
 @end table
 
 
@@ -233,7 +256,7 @@ to developing of C source code. We have tried not only give a pandect of
 rules, but also give rationale and reasons for some of them.
 
 Doxygen-specific guidelines concerning resulting documentation
-formatting and common issues will be described a separate document.
+formatting and common issues will be described in a separate document.
 
 
 @section Contributors
@@ -245,6 +268,10 @@ Victor V. Vengerov @email{Victor.Vengerov@@oktetlabs.ru}
 Elena A. Vengerova @email{Elena.Vengerova@@oktetlabs.ru}
 @item
 Konstantin Abramenko @email{Konstantin.Abramenko@@oktetlabs.ru}
+@item
+Dmitry V. Semyonov @email{Dmitry.Semyonov@@oktet.ru}
+@item
+Andrew Rybchenko @email{Andrew.Rybchenko@@oktetlabs.ru}
 @end itemize
 
 
@@ -258,9 +285,9 @@ extremely complicated code. The following example, taken from
 @cite{``Obfuscated C Contest''} archive, is a correct C program; you can
 try to compile and execute it:
 
-@verbatim
-main() { printf(&unix["\021%six\012\0"],(unix)["have"]+"fun"-0x60); }
-@end verbatim
+@example
+main() @{ printf(&unix["\021%six\012\0"],(unix)["have"]+"fun"-0x60); @}
+@end example 
 
 How much time you need to understand how it works? :-)
 
@@ -341,17 +368,17 @@ If a nested block is a complex statement surrounded with curly brackets
 
 The following example demonstrates this:
 
-@verbatim
+@example
     while (p != NULL)
-    {
+    @{
         for (i = 0; i < p->tabsize; i++)
-        {
+        @{
             if (p->tab[i] == x)
                 return i;
-        }
+        @}
         return 0;
-    }
-@end verbatim
+    @}
+@end example
 
 
 @section Vertical spacing
@@ -513,19 +540,19 @@ character after @code{/*} and before @code{*/}.
 Two comment styles may be used: one-line comments and multiline comments.
 One line comment looks like this:
 
-@verbatim
+@example
 /* This is example of one-line comment */
-@end verbatim
+@end example
 
 Multiline comments look like this:
 
-@verbatim
+@example
 /*
  * This is example of multiline comment. Such comment layout must be used
  * if your text couldn't be fitted in one 80-character line. Please, note
  * that each line is started with the asterisk character.
  */
-@end verbatim
+@end example
 
 Code comments must be indented as appropriate piece of code.
 
@@ -558,7 +585,10 @@ and if there isn't much code in the procedure, and if variables have
 meaningful names, it is not required to give any comments at all. For long
 functions, comment local variables and logical blocks of function. Also,
 comment a tricky situations, non-obvious code which depends on information
-to someone reading it for the first time.
+to someone reading it for the first time. Non-@dfn{Doxygen} style 
+(@code{/* ... */}) should be used for comments in function body (it
+saves two symbols and avoids confusion since it is not included in
+documentation generated by @dfn{Doxygen} in any case).
 
 Document each thing in exactly one place. If something is documented in
 several places, it will be hard to keep the documentation up to date as the
@@ -566,9 +596,9 @@ system changes. Try to document each major design decision in exactly one
 place.
 
 Don't just repeat what is already obvious from the code, like this:
-@verbatim
-    i += 1;   /* Increment i */
-@end verbatim
+@example
+i += 1;   /* Increment i */
+@end example
 
 Documentation should provide higher-level information about the overall
 function of the code, helping readers to understand what a complex
@@ -658,21 +688,21 @@ Each @samp{.c} or @samp{.h} files written by human, must have a formal
 header. This header starts at the first line of source file. A header
 has the following format:
 
-@verbatim
-/** @file
- * @brief <subsystem description>
+@example
+/** @@file
+ * @@brief <subsystem description>
  *
  * <module description>
  * 
  * <copyright notice>
  *
- * @author <author name> <<author e-mail>>
+ * @@author <author name> <<author e-mail>>
  *
  * <license term notice>
  * 
  * $Id: $
  */
-@end verbatim
+@end example
 
 @dfn{Subsystem description} is a short (one-line preferred) description of
 subsystem to which this file belongs. This line must be same for all files
@@ -700,26 +730,26 @@ information about licensing terms for this source file, about distribution
 permissions or restrictions, or to refer to a particular license text.
 
 The last line of the header is a substitution for source code system
-(e.g. @acronym{CVS}) information. @samp{$@asis{}Id: $} sequence will be
-substituted with actual module identification string while a file is
-committed into @acronym{CVS} repository.
+(e.g. @acronym{CVS}, @dfn{Subversion}) information. @samp{$@asis{}Id: $}
+sequence will be substituted with actual module identification string
+while a file is committed into repository.
 
 Note that doxygen-style comment and @-tags are used here.
 
-@verbatim
-/** @file
- * @brief ncr875 controller device driver
+@example
+/** @@file
+ * @@brief ncr875 controller device driver
  *
  * Chip-specific primitive implementation.
  *
- * Copyright (C) 1999 OKTET Labs, St.-Petersburg, Russia
+ * Copyright (C) 2004 OKTET Labs, St.-Petersburg, Russia
  *
- * @author Victor V. Vengerov <Victor.Vengerov@oktetlabs.ru>
- * @author Dmitry V. Semyonov <Dmitry.Semyonov@oktet.ru>
+ * @@author Victor V. Vengerov <Victor.Vengerov@@oktetlabs.ru>
+ * @@author Andrew Rybchenko <Andrew.Rybchenko@@oktetlabs.ru>
  *
  * $Id: $
  */
-@end verbatim
+@end example
 
 
 @section Generated file headers
@@ -728,14 +758,16 @@ Some of source files fed to compiler may be generated by other programs
 or scripts. Such programs or scripts must put special header at the beginning 
 of such files:
 
-@verbatim
+@example
 /*
  * This file is automatically generated by program <program>.
  * DO NOT EDIT IT!!!
  *
  * File generated at <date> <time>
  */
-@end verbatim
+@end example
+
+Format YYYY-MM-DD should be used for date specification.
 
 
 @section Header (@samp{.h}) files
@@ -759,20 +791,24 @@ definitions and declarations to the interface headers.
 Header file must be started with the same header as C source code file.
 The body of header file must be organized in the following way:
 
-@verbatim
+@example
 #ifndef __<subsystem_prefix>_<filename>_H__
 #define __<subsystem_prefix>_<filename>_H__
+
+#include <nesting_header.h>
+...
+
 #ifdef __cplusplus
-extern "C" {
+extern "C" @{
 #endif
 
 ...
 
 #ifdef __cplusplus
-}
+@}
 #endif
 #endif /* __<subsystem_prefix>_<filename>_H__ */
-@end verbatim
+@end example
 
 In this fragment @samp{<subsystem_prefix>} must be substituted with
 capitalized subsystem abbreviation, @samp{<filename>} must be
@@ -783,6 +819,9 @@ one.
 Conditionals @code{#ifdef __cplusplus} used to make possible usage of
 appropriate header in C++ program. These preprocessor conditionals may be
 omitted in internal headers, but are mandatory for interface headers.
+It is important to including nesting headers before
+@code{#ifdef __cplusplus} block in order not to affect symbols declared
+there.
 
 
 @chapter Function Definition Formatting
@@ -793,51 +832,63 @@ omitted in internal headers, but are mandatory for interface headers.
 It is required to put formal function header before each function definition.
 Function header have the following format:
 
-@verbatim
+@example
 /**
  * <function description>
  *
- * @param <param1>      <param1 description> [ (OUT) | (IN/OUT) ]
- * @param <param2>      <param2 description> [ (OUT) | (IN/OUT) ]
+ * @@param <param1>      <param1 description>
+ * @@param <param2>      <param2 description>
  * ...
  *
- * @return <return value description>
+ * @@return <return value description>
  *
- * @retval <retval1>    <retval1 specification>
- * @retval <retval2>    <retval2 specification>
+ * @@retval <retval1>    <retval1 specification>
+ * @@retval <retval2>    <retval2 specification>
  * ...
  *
- * @se <side effects description>
+ * @@se <side effects description>
  *
- * @sa <closely related functions and documentation references>
+ * @@sa <closely related functions and documentation references>
  *
- * @alg <algorithm description>
+ * @@alg <algorithm description>
  *
- * @bug <bug description>
+ * @@bug <bug description>
  *
- * @todo <todo description>
+ * @@todo <todo description>
  */
-@end verbatim
+@end example
 
 Not all parts must be presented in each function header.
 
 The only always required part is @samp{<function description>}. It
 should be started with upper-case letter, and finished with dot. It is
 recommended to use common style of the form 'Copy bytes' (which is
-opposite to 'Copies bytes') for documentation similarity.
+opposite to 'Copies bytes') for documentation similarity. If the
+function complies with some prototype, it should be stated in
+description.
 
 At the same time it is @emph{mandatory} to describe all function
 parameters and returned value(s). If a function does not return a value,
 @samp{@@return} part may be omitted, or <return value specification> may
-be @samp{N/A} (not applicable). If a value directly returned by a function
-lies within a limited set of constants, then each constant should be
-described using @samp{@@retval} tag.
+be @samp{N/A} (not applicable). All parameter descriptions in a
+particular function must start from the same case: either upper or lower.
+If the description of the parameter or returned value is complete
+English sentence or is followed by additional statements, it must be
+started from upper-case letter and finished with dot. Description of
+return value after @samp{@@return} tag must be started from upper-case
+letter.
+
+If a value directly returned by a function lies within a limited set of
+constants, then each constant should be described using @samp{@@retval}
+tag. Description of returned value after @samp{@@retval} tag must start
+from upper-case letter.
 
 If a parameter is used to deliver values out from a function, it is
-allowed to add @samp{(IN/OUT)} or @samp{(OUT)} (depending on whether
+allowed to add @code{[inout]} or @code{[out]} (depending on whether
 the parameter is used or not as input at the same time accordingly) hint
-to the end of parameter description. @samp{(IN)} is assumed by default,
-and should not be used.
+just after @code{@@param} without any space. If such hints are used,
+input parameters have to be marked using @samp{[in]}. Thus, in/out
+hints should be used for either all or none parameters.
 
 @samp{@@se} (side effects) part must be presented only when a function
 has non-obvious side effects. For example, if this function essentially
@@ -878,43 +929,43 @@ to have a line indented by 8 characters, and other one indented by 16.
 All functions must be defined in @acronym{ANSI} C format. Function definition
 must look like this:
 
-@verbatim
+@example
 /** 
  * Create object instance of class 'objclass' which designates to be
  * referred as a null object of this class. If 'name' is given
  * (not equal to NULL), register object instance with given name.
  *
- * @param  objclass     Class object identifier.
- * @param  name         Null object name, or NULL.
+ * @@param  objclass     Class object identifier.
+ * @@param  name         Null object name, or NULL.
  *
- * @return
+ * @@return
  *      Object identifier for null object of class 'objclass', or
  *      OBJID_NULL, if error occurred.
  */
 static objid
 object_create_null(objid objclass, char *name)
-{
+@{
     objid obj;
     
     obj = class_instantiate(objclass);
     if (obj == OBJID_NULL)
-    {
+    @{
         return OBJID_NULL;
-    }
+    @}
     if (name != NULL)
-    {
+    @{
         int rc;
         
         rc = object_register_with_name(obj, name);
         if (rc != OBJ_SUCCESSFUL)
-        {
+        @{
             object_delete_instance(obj);
             return OBJID_NULL;
-        }
-    }
+        @}
+    @}
     return obj;
-}
-@end verbatim
+@}
+@end example
 
 Please, pay your attention to the following topics:
 
@@ -937,14 +988,14 @@ $ grep ^object_create_null *
 If argument list can not fit in one line, this line can be split in the
 following way:
 
-@verbatim
+@example
 static objid
 datafile_encode(int in_file_desc, int out_file_desc, char *encoding_key,
                 int encoding_key_len, int control)
-{
+@{
     ...
-}
-@end verbatim
+@}
+@end example
 
 
 @section Considerations
@@ -1015,8 +1066,8 @@ possible digit suffixes.
 Names @code{i}, @code{j}, @code{k} must be used as names for loop variables.
 
 Names @code{n}, @code{m} must be used as a names for variables which contain
-a number of some entities. Variable name @code{l} may be used for length of
-something.
+a number of some entities. Variable name @code{l} (ell) may be used for
+length of something.
 
 Names @code{s} or @code{str} (only one of them in one function!) may be used
 as a pointer to character strings.
@@ -1059,7 +1110,7 @@ representing connection.
 
 @emph{Example:}
 
-@verbatim
+@example
     int i;
     
     ...
@@ -1067,17 +1118,17 @@ representing connection.
     p = &queue_pool[0];
     n = sizeof(queue_pool);
     if (n > max_queue_size)
-    {
+    @{
         n = max_queue_size;
-    }
+    @}
     for (i = 0; i < n; i++)
-    {
+    @{
         p->data = NULL;
         p->id = i;
         p->next = p + 1;
-        p++
-    }
-@end verbatim
+        p++;
+    @}
+@end example
 
 It is not allowed to have more than three variables with the same name and
 different suffixes.
@@ -1119,31 +1170,31 @@ letter following the @code{/*} sequence. See examples below.
 
 The @code{struct} declaration must look like this:
 
-@verbatim
+@example
 /** Node of the double-linked list */
-struct list_node {
+struct list_node @{
     struct list_node  *next;    /**< Next node in double-linked list */
     struct list_node  *prev;    /**< Previous node in double-linked list */
     int                size;    /**< Information field size */
     char               node[0]; /**< Information field designator */
-};
-@end verbatim
+@};
+@end example
 
 If @code{struct} declaration is used in a variable declaration or
 @code{typedef} declaration, @code{typedef} or variable specifiers must
 be placed before @code{struct} keyword on the same line, and identifier
 must be placed after close bracket on the same line:
 
-@verbatim
+@example
 /** NCR875 SCSI host adapter user-settable hardware parameters */
-typedef struct ncr875_hw_regs {
-    int diffScsi;  /**< Differential SCSI bus enable */
-    int TolerANT;  /**< TolerANT enable */
-    int slowCable; /**< Slow cable mode (Extra clock cycle of Data Setup) */
-    int burstLen;  /**< Maximum number of transfers performed per PCI bus
-                        ownership, legal values is 2,4,8,16,32,64,128 */
-} ncr875_hw_regs;
-@end verbatim
+typedef struct ncr875_hw_regs @{
+    int diff_scsi;  /**< Differential SCSI bus enable */
+    int tolerant;   /**< Tolerant enable */
+    int slow_cable; /**< Slow cable mode (Extra clock cycle of Data Setup) */
+    int burst_len;  /**< Maximum number of transfers performed per PCI bus
+                         ownership, legal values is 2,4,8,16,32,64,128 */
+@} ncr875_hw_regs;
+@end example
 
 In @code{typedef} declaration, it is recommended to give the same name to
 @code{struct} name in @code{struct} namespace and to @code{typedef} name.
@@ -1184,16 +1235,16 @@ declarations.
 
 The @code{enum} declaration must look like this:
 
-@verbatim
+@example
 /** LED status constants */
-enum led_status {
+enum led_status @{
     LED_STATUS_OFF   = 0, /**< LED is off */
     LED_STATUS_ON    = 1, /**< LED is on */
     LED_STATUS_FAIL  = 2, /**< LED is unfunctional */
-    LED_STATUS_MAINT = 4  /**< LED is now in maintenance mode; operations are
-                               limited */
-};
-@end verbatim
+    LED_STATUS_MAINT = 4, /**< LED is now in maintenance mode; operations
+                               are limited */
+@};
+@end example
 
 The same rules for typedef/variable definitions as for structures are applied.
 
@@ -1233,27 +1284,30 @@ Each variable declaration must be started on a separate line.
 Global-space variables definitions must be started at column 0.
 Local variables must be started at block indent level, same
 as for the statements in this block.
-@samp{*} specifiers must be placed near variable name.
+@samp{*} specifiers must be placed near variable (or function name in
+forward declaration) name.
 
 Variable declarations may be divided into blocks separated by empty line
 and block comment. The common formatting rules are applied inside one block.
 
-@verbatim
+@example
 /* Phase correction algorithm variables */
 static fixed16  phase_error; /**< Currently estimated phase error */
 static int      phcorr_num;  /**< Number of processed samples */
 static fixed16 *sample;      /**< Next sample pointer */
-@end verbatim
+
+static phase *phase_rotate(phase *cur, float angle);
+@end example
 
 Variable names in a block start at the same column. Variable comments
 start at the same column. If comment couldn't be fitted in one line, it may
 be split. Continuation line should begin at the same column where first 
 letter of comments after @code{/*} was placed.
 
-@verbatim
+@example
 static uint32     input_bit_number;   /**< Number of bits received from
                                            external interface */
-@end verbatim
+@end example
 
 If variable block has only one declaration inside, variable comment may be
 omitted.
@@ -1271,27 +1325,27 @@ When multiline string constant is used, it is recommended to insert
 
 @emph{Examples:}
 
-@verbatim
+@example
 /* Right: */
 void
 usage_information_print(void)
-{
+@{
     printf("check -- check C source code to the C Source Code Style "
            "conformance\n"
            "Usage:\n"
            "    check <filename>\n");
-}
+@}
 
 /* Wrong: */
 void
 usage_information_print(void)
-{
+@{
     printf("
 check -- check C source code to the C Source Code Style conformance
 Usage:
     check <filename>\n");
-}
-@end verbatim
+@}
+@end example
 
 If constant length suffix is used, the capital suffix letter must be used
 (use @code{0L}, not @code{0l}). Similarly, for floating point constants,
@@ -1345,20 +1399,20 @@ It is allowed to use embedded assignment statement if it make code simpler
 and better readable. Don't use embedded assignment in artificial places. For
 example,
 
-@verbatim
+@example
     x = x1 + w;
     pos = ofs + x;
-@end verbatim
+@end example
 
 should not be replaced by
 
-@verbatim
+@example
     pos = ofs + (x = x1 + w);
-@end verbatim
+@end example
 
 @emph{More examples:}
 
-@verbatim
+@example
     p = p->next;  /* Correct */
     n = - n;      /* Incorrect */
     ++ b;         /* Incorrect */
@@ -1367,7 +1421,7 @@ should not be replaced by
     scsi_freq = (freq_multiplier ? freq * 2 : freq);
     list = hash_tab[hash_func(key) % hash_mod];
     memcpy(dest, src, n);
-@end verbatim
+@end example
 
 It is recommended to insert additional unnecessary parenthesis to
 expression to make it more readable. It is recommended to assume only that
@@ -1395,15 +1449,15 @@ continue.
 
 @code{if} statement must look like this:
 
-@verbatim
+@example
     if (p != NULL)
-    {
+    @{
         if (p->flag & FEL_INACTIVE)
             continue;
         else
             p = p->next;
-    }
-@end verbatim
+    @}
+@end example
 
 It is recommended to enclose @code{if} branches into curly braces in
 each case, except it is a small simple statement. Particularly, it is
@@ -1415,43 +1469,42 @@ branch is enclosed.
 @code{if - else if - else if@dots{}}
 statements must be formatted like this:
 
-@verbatim
+@example
     if (strcmp(reply, "yes") == 0)
-    {
+    @{
         ...
-    }
+    @}
     else if (strcmp(reply, "no") == 0)
-    {
+    @{
         ...
-    }
+    @}
     else
-    {
+    @{
         ...
-    }
-@end verbatim
+    @}
+@end example
 
 
 @section @code{for} statement
 
 @code{for} statement may look like this:
 
-@verbatim
+@example
     for (i = 0; i < n; i++)
         x += buf[i];
-@end verbatim
+@end example
 
 Alternative form of @code{for} statement applied when components of
 @code{for} can not fit into the one 80-character line.
 
-@verbatim
+@example
     for (p = list->head, i = 0;
          p && !(element_is_invalid(p));
-         p = list_element_next(p))
-    {
+         p = list_element_next(p), i++)
+    @{
         list_element_register(p);
-        i++;
-    }
-@end verbatim
+    @}
+@end example
 
 It is recommended to enclose @code{for} body in curly braces in every case
 except when @code{for} components fit in one line and @code{for} body is
@@ -1462,13 +1515,13 @@ statement).
 @section @code{while} statement
 
 @code{while} statement must look like this:
-@verbatim
+@example
     while (p != NULL)
-    {
+    @{
         interp_evaluate_node(p);
         p = p->next;
-    }
-@end verbatim
+    @}
+@end example
 
 It is recommended to enclose @code{while} body in curly braces in every case
 except when @code{while} condition fits in one line and @code{while}
@@ -1480,20 +1533,20 @@ statement).
 
 @code{do} statement must look like this:
 
-@verbatim
-    do {
+@example
+    do @{
         entry_process(&n, entry);
-    } while (n > 0);
-@end verbatim
+    @} while (n > 0);
+@end example
 
 
 @section @code{switch} statement
 
 @code{switch} statement must look like this:
 
-@verbatim
+@example
     switch (action)
-    {
+    @{
         case ACTION_NOP:
         case ACTION_NEXT:
             break;
@@ -1509,21 +1562,21 @@ statement).
             break;
 
         case ACTION_CLONE:
-        {
+        @{
             int i;
             
             for (i = 0; i < type_num; i++)
-            {
+            @{
                 clone_type[i] = *type;
-            }
+            @}
             state = STATE_CLONED;
             break;
-        }
+        @}
 
         default:
             assert(0);
-    }
-@end verbatim
+    @}
+@end example
 
 @code{switch} branches must be separated by empty lines. Each @code{case}
 label must be placed on a separate line. You must enclose statements in
@@ -1531,8 +1584,9 @@ curly braces only if some local variables must be declared in block.
 
 It is recommended to finish each @code{switch} branch with @code{break}
 statement. If you really want to continue execution in the next @code{switch}
-branch, insert comment @code{/* FALLTHROUGH */} before empty line which
-separates two branches.
+branch, insert comment @code{/*@@fallthrough@@*/} before empty line which
+separates two branches (it is used by @dfn{Splint} to annotate
+suspicious places in code).
 
 The @code{default} case, if used, should be last and does not require a
 @code{break} if it is last. To make your code safer, it is recommended to add
@@ -1593,12 +1647,12 @@ parenthesis too.
 
 Lets consider the next code fragment:
 
-@verbatim
+@example
 #define DEBUG(s) \
     if (debug)                     \
-    {                              \
+    @{                              \
         printf("debug: %s\n", s);  \
-    }
+    @}
     
     ...
     
@@ -1606,38 +1660,38 @@ Lets consider the next code fragment:
         DEBUG("p is NULL");
     else
         ...
-@end verbatim
+@end example
 
 In this example, else branch of @code{if (p == NULL)} statement will become
 associated with @code{if} statement in @code{DEBUG} macro. To avoid this,
 all statement-like macros must be arounded by
 @code{do @{ @dots{} @} while (0)} statement:
 
-@verbatim
+@example
 #define DEBUG \
-    do {                               \
+    do @{                               \
         if (debug)                     \
-        {                              \
+        @{                              \
             printf("debug: %s\n", s);  \
-        }                              \
-    } while (0)
-@end verbatim
+        @}                              \
+    @} while (0)
+@end example
 
 Also, lets consider the following example:
 
-@verbatim
+@example
 #define INC(i) \
-    do {                                                \
+    do @{                                                \
         printf("Loop counter new value is %d\n", ++i);  \
-    } while (0)
+    @} while (0)
 
     ...
 
-    for (i = 0; i < 5; ({INC(i);}))
-    {
+    for (i = 0; i < 5; (@{INC(i);@}))
+    @{
         ...
-    }
-@end verbatim
+    @}
+@end example
 
 The example states how macros arounded by @code{do @{ @dots{} @} while (0)}
 statement may be used in @code{for()} statement components. The macro call
@@ -1674,7 +1728,7 @@ source file. Use @code{#if}/@code{#ifdef} to define macros that can be used
 uniformly in the code. For instance, a header file for checking memory
 allocation might look like:
 
-@verbatim
+@example
 #ifdef DEBUG
     extern void *mm_malloc(size_t bytes);
 #define MALLOC(size) (mm_malloc(size))
@@ -1682,7 +1736,7 @@ allocation might look like:
     extern void *malloc(size_t bytes);
 #define MALLOC(size) (malloc(size))
 #endif
-@end verbatim
+@end example
 
 It is recommended to use indentation rules for preprocessor conditions too.
 
@@ -1691,9 +1745,18 @@ Although, one of usage of conditional preprocessor directives is to handle
 differences between different machines or operating systems. OS type,
 CPU kind, board, implementation etc. dependencies via conditional
 compilation should be avoided in most cases. Use name of the feature or
-property instead of name of bearing entiry.
+property instead of name of bearing entity.
 
 You may exclude fragment of your code using @code{#if 0} directive.
+
+
+@chapter Safe programming
+
+
+It is @emph{highly} recommended to use @code{snprintf()} instead of
+@code{sprintf()}. If @code{sprintf()} is still used, it has to be
+guaranteed and explained in comment just before the usage why
+the buffer is sufficient.
 
 
 @chapter Warning messages
@@ -1723,7 +1786,5 @@ and headers which may be used in project, preprocessor variables and
 macros usage, include files organization etc.
 
 It is highly recommended to make those standards compliant to this one.
-
-@contents
 
 @bye
