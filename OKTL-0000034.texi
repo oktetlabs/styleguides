@@ -120,9 +120,9 @@ Draft
 @majorheading Contact Information
 
 @display
-Unit 3H, Universitetsky pr., 18/2, Petrodvorets, St.-Petersburg, Russia
+Unit 3H, Universitetsky pr., 18/2, Petrodvorets, St.-Petersburg, 198904 Russia
 Phone: +7(812) 428-6709
-Fax: +7(812) 428-8761
+Fax: +7(812) 784-6591
 @end display
 
 @noindent
