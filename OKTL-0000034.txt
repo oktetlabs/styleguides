@@ -847,6 +847,9 @@ It is _highly not recommended_ to pass or return structures to or from
 functions. Pass pointers instead and make a copy inside the function if
 it is really necessary.
 
+   If the function has no parameters, `void' must be used as the only
+item in the parameters list.
+
    It is required to define a function with `static' specifier if the
 function must be visible only inside a current module (file).
 
