@@ -5,7 +5,7 @@
 @c
 @c Copyright (C) 1999 Terkom, St.-Petersburg, Russia
 @c Copyright (C) 2003 OKTET Ltd., St.-Petersburg, Russia
-@c Copyright (C) 2004, 2005, 2006 OKTET Labs, St.-Petersburg, Russia
+@c Copyright (C) 2004-2012 OKTET Labs, St.-Petersburg, Russia
 @c
 @c Author: Andrew Rybchenko <Andrew.Rybchenko@oktetlabs.ru>
 @c Author: Dmitry V. Semyonov <Dmitry.Semyonov@oktet.ru>
@@ -28,7 +28,7 @@
 @set DATE   15 Jul 2006
 
 @c Comma-separated list of years to be used in copyright notices
-@set YEARS 1999, 2003, 2004, 2005, 2006
+@set YEARS 1999, 2003-2012
 
 
 @c -*%header%
@@ -55,7 +55,7 @@ Copyright @copyright{} 1999 Terkom, St.-Petersburg, Russia
 Copyright @copyright{} 2003 OKTET Ltd., St.-Petersburg, Russia
 
 @noindent
-Copyright @copyright{} 2004, 2005, 2006 OKTET Labs, St.-Petersburg, Russia
+Copyright @copyright{} 2004-2012 OKTET Labs, St.-Petersburg, Russia
 
 This document is the property of OKTET Labs. Nevertheless, there are no
 special restrictions regarding confidentiality which limit the audience
@@ -742,7 +742,7 @@ Note that doxygen-style comment and @-tags are used here.
  *
  * Chip-specific primitive implementation.
  *
- * Copyright (C) 2004 OKTET Labs, St.-Petersburg, Russia
+ * Copyright (C) 2012 OKTET Labs, St.-Petersburg, Russia
  *
  * @@author Victor V. Vengerov <Victor.Vengerov@@oktetlabs.ru>
  * @@author Andrew Rybchenko <Andrew.Rybchenko@@oktetlabs.ru>
