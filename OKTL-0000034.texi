@@ -1762,6 +1762,21 @@ guaranteed and explained in comment just before the usage why
 the buffer is sufficient.
 
 
+Return code of the non-void function calls should be checked. 
+The check may be skipped when following conditions are true:
+
+@itemize @bullet
+@item
+Recovery/cleanup is not possible in the case of error.
+@item
+Error is logged inside the function or error is expected in some scenarios
+or error definitely has no side effects.
+@end itemize
+
+It's not recommended to use (void)<function call> construction since
+it may make the code less readable. Provide the comment for non-obvious
+cases instead.
+
 @chapter Warning messages
 
 

@@ -606,7 +606,7 @@ committed into repository.
  *
  * Chip-specific primitive implementation.
  *
- * Copyright (C) 2004 OKTET Labs, St.-Petersburg, Russia
+ * Copyright (C) 2012 OKTET Labs, St.-Petersburg, Russia
  *
  * @author Victor V. Vengerov <Victor.Vengerov@oktetlabs.ru>
  * @author Andrew Rybchenko <Andrew.Rybchenko@oktetlabs.ru>
@@ -1556,6 +1556,18 @@ the feature or property instead of name of bearing entity.
 It is _highly_ recommended to use `snprintf()' instead of `sprintf()'.
 If `sprintf()' is still used, it has to be guaranteed and explained in
 comment just before the usage why the buffer is sufficient.
+
+   Return code of the non-void function calls should be checked.  The
+check may be skipped when following conditions are true:
+
+   * Recovery/cleanup is not possible in the case of error.
+
+   * Error is logged inside the function or error is expected in some
+     scenarios or error definitely has no side effects.
+
+   It's not recommended to use (void)<function call> construction since
+it may make the code less readable. Provide the comment for non-obvious
+cases instead.
 
 17 Warning messages
 *******************

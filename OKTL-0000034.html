@@ -3,7 +3,7 @@
 <title>C Source Code Style Guide</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="C Source Code Style Guide">
-<meta name="generator" content="makeinfo 4.8">
+<meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="top" href="#Top">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
 <!--
@@ -11,7 +11,7 @@ Copyright (C) 1999 Terkom, St.-Petersburg, Russia
 
 Copyright (C) 2003 OKTET Ltd., St.-Petersburg, Russia
 
-Copyright (C) 2004, 2005, 2006 OKTET Labs, St.-Petersburg, Russia
+Copyright (C) 2004-2012 OKTET Labs, St.-Petersburg, Russia
 
 This document is the property of OKTET Labs. Nevertheless, there are no
 special restrictions regarding confidentiality which limit the audience
@@ -65,7 +65,7 @@ or distribution of this memo.-->
 <li><a href="#TOC21">8.1 Order of file sections</a>
 <li><a href="#TOC22">8.2 Human-written file headers</a>
 <li><a href="#TOC23">8.3 Generated file headers</a>
-<li><a href="#TOC24">8.4 Header (`<samp><span class="samp">.h</span></samp>') files</a>
+<li><a href="#TOC24">8.4 Header (&lsquo;<samp><span class="samp">.h</span></samp>&rsquo;) files</a>
 </li></ul>
 <li><a name="toc_TOC25" href="#TOC25">9 Function Definition Formatting</a>
 <ul>
@@ -126,23 +126,23 @@ or distribution of this memo.-->
 <h2 class="chapter"><a name="TOC0"></a>1 Abbreviations</h2>
 
      <dl>
-<dt>`<samp><span class="samp">ANSI</span></samp>'<dd>American National Standards Institute
-<br><dt>`<samp><span class="samp">CR</span></samp>'<dd>Carriage Return
-<br><dt>`<samp><span class="samp">CVS</span></samp>'<dd>Concurrent Version System
-<br><dt>`<samp><span class="samp">LF</span></samp>'<dd>Line Feed
-<br><dt>`<samp><span class="samp">WRS</span></samp>'<dd>Wind River Systems
+<dt>&lsquo;<samp><span class="samp">ANSI</span></samp>&rsquo;<dd>American National Standards Institute
+<br><dt>&lsquo;<samp><span class="samp">CR</span></samp>&rsquo;<dd>Carriage Return
+<br><dt>&lsquo;<samp><span class="samp">CVS</span></samp>&rsquo;<dd>Concurrent Version System
+<br><dt>&lsquo;<samp><span class="samp">LF</span></samp>&rsquo;<dd>Line Feed
+<br><dt>&lsquo;<samp><span class="samp">WRS</span></samp>&rsquo;<dd>Wind River Systems
 </dl>
 
 <h2 class="chapter"><a name="TOC1"></a>2 Terminology</h2>
 
      <dl>
-<dt>`<samp><span class="samp">Doxygen</span></samp>'<dd>A documentation system for C++, C, and several other programming languages. 
+<dt>&lsquo;<samp><span class="samp">Doxygen</span></samp>&rsquo;<dd>A documentation system for C++, C, and several other programming languages. 
 See 'Doxygen manual' for more information. 
-<br><dt>`<samp><span class="samp">Splint</span></samp>'<dd>A tool for statically checking C programs. 
-<br><dt>`<samp><span class="samp">Subsystem</span></samp>'<dd>Functionally closed, alienable, possibly reusable, software component
+<br><dt>&lsquo;<samp><span class="samp">Splint</span></samp>&rsquo;<dd>A tool for statically checking C programs. 
+<br><dt>&lsquo;<samp><span class="samp">Subsystem</span></samp>&rsquo;<dd>Functionally closed, alienable, possibly reusable, software component
 with well defined external interfaces. It may be library, tool, device
 driver, part of OS, etc. 
-<br><dt>`<samp><span class="samp">Subversion</span></samp>'<dd>A free/open-source version control system designed to be the successor
+<br><dt>&lsquo;<samp><span class="samp">Subversion</span></samp>&rsquo;<dd>A free/open-source version control system designed to be the successor
 to <acronym>CVS</acronym>. 
 </dl>
 
@@ -235,11 +235,11 @@ file  length is not limited.
 
 <h3 class="section"><a name="TOC9"></a>5.4 Special Characters</h3>
 
-<p>Lines in source file are separated by character `<samp><span class="samp">LF</span></samp>' (hex code
-0x0a). It is not allowed to use <acronym>MS-DOS</acronym> standard `<samp><span class="samp">CR-LF</span></samp>'
+<p>Lines in source file are separated by character &lsquo;<samp><span class="samp">LF</span></samp>&rsquo; (hex code
+0x0a). It is not allowed to use <acronym>MS-DOS</acronym> standard &lsquo;<samp><span class="samp">CR-LF</span></samp>&rsquo;
 sequence for line delimiting.
 
-   <p>It is permitted (but not required) to insert `<samp><span class="samp">FF</span></samp>' character (Form
+   <p>It is permitted (but not required) to insert &lsquo;<samp><span class="samp">FF</span></samp>&rsquo; character (Form
 Feed, hex code 0x0c) to separate logically independent parts of source
 code  (functions or function groups, variable declaration groups, etc). 
 This character shall not be used inside function body.
@@ -248,7 +248,7 @@ This character shall not be used inside function body.
 constants or comments. For strings you may use escape sequences instead.
 
    <p>Do not forget to setup your text editor program so that it will insert
-appropriate number of spaces instead of `<samp><span class="samp">TAB</span></samp>' (hex code 0x09)
+appropriate number of spaces instead of &lsquo;<samp><span class="samp">TAB</span></samp>&rsquo; (hex code 0x09)
 character on &lt;TAB&gt; key pressing.
 
 <h3 class="section"><a name="TOC10"></a>5.5 Trigraphs</h3>
@@ -342,7 +342,7 @@ refer to strings, it is hard to anyone to remember which is which.
 </ul>
 
    <p>Words and abbreviations from non-English languages cannot be used to
-form identifiers. Use underscore character `<samp><span class="samp">_</span></samp>' to separate the
+form identifiers. Use underscore character &lsquo;<samp><span class="samp">_</span></samp>&rsquo; to separate the
 words. Do not fear to use long identifiers. In any case, an identifier
 <em>must not contain</em> pronouns, interjections, private names,
 nicknames, or place names.
@@ -373,8 +373,8 @@ in the header files which may be included only in particular subsystem and not
 exported to the outer world, static variables and functions). Do not prefix
 field names in structures and unions.
 
-   <p>It is recommended for uniformity to use `<samp><span class="samp">object + action +
-object/property</span></samp>' style while giving a name to a function. Besides, this
+   <p>It is recommended for uniformity to use &lsquo;<samp><span class="samp">object + action +
+object/property</span></samp>&rsquo; style while giving a name to a function. Besides, this
 style is convenient when module prefix is used in place of the first
 object. For example, <code>fat_get_cluster(), pkt_send_raw()</code>.
 
@@ -551,7 +551,7 @@ ones in this case.
 
 <h3 class="section"><a name="TOC22"></a>8.2 Human-written file headers</h3>
 
-<p>Each `<samp><span class="samp">.c</span></samp>' or `<samp><span class="samp">.h</span></samp>' files written by human, must have a formal
+<p>Each &lsquo;<samp><span class="samp">.c</span></samp>&rsquo; or &lsquo;<samp><span class="samp">.h</span></samp>&rsquo; files written by human, must have a formal
 header. This header starts at the first line of source file. A header
 has the following format:
 
@@ -577,25 +577,25 @@ of this subsystem.
 should be started with upper-case letter, and finished with dot.
 
    <p><dfn>Copyright notice</dfn> must provide information about copyright holder of
-this work. This line must consist of word `<samp><span class="samp">Copyright</span></samp>', copyright sign
-`<samp><span class="samp">(C)</span></samp>', organization name which holds copyright, and its location
-(city and country). It is allowed multiple `<samp><span class="samp">Copyright</span></samp>' sections if
+this work. This line must consist of word &lsquo;<samp><span class="samp">Copyright</span></samp>&rsquo;, copyright sign
+&lsquo;<samp><span class="samp">(C)</span></samp>&rsquo;, organization name which holds copyright, and its location
+(city and country). It is allowed multiple &lsquo;<samp><span class="samp">Copyright</span></samp>&rsquo; sections if
 your source contains fragments copyrighted by different organizations.
 
    <p><dfn>@author</dfn> section of the header must provide information about
 principal developer of this module. The section consists of the author's
 name (in English transcription) and e-mail address which may be used
 later to contact the author regarding to these sources. It is allowed to
-have multiple `<samp><span class="samp">@author</span></samp>' sections if principal developer has been
+have multiple &lsquo;<samp><span class="samp">@author</span></samp>&rsquo; sections if principal developer has been
 changed; put a name of the last principal developer first. OKTET Labs
 employees shall use &lt;Name.Surname@oktetlabs.ru&gt; form of e-mail address.
 
-   <p>Optional part `<samp><span class="samp">license term notice</span></samp>' may be added to provide
+   <p>Optional part &lsquo;<samp><span class="samp">license term notice</span></samp>&rsquo; may be added to provide
 information about licensing terms for this source file, about distribution
 permissions or restrictions, or to refer to a particular license text.
 
    <p>The last line of the header is a substitution for source code system
-(e.g. <acronym>CVS</acronym>, <dfn>Subversion</dfn>) information. `<samp><span class="samp">$Id: $</span></samp>'
+(e.g. <acronym>CVS</acronym>, <dfn>Subversion</dfn>) information. &lsquo;<samp><span class="samp">$Id: $</span></samp>&rsquo;
 sequence will be substituted with actual module identification string
 while a file is committed into repository.
 
@@ -606,7 +606,7 @@ while a file is committed into repository.
       *
       * Chip-specific primitive implementation.
       *
-      * Copyright (C) 2004 OKTET Labs, St.-Petersburg, Russia
+      * Copyright (C) 2012 OKTET Labs, St.-Petersburg, Russia
       *
       * @author Victor V. Vengerov &lt;Victor.Vengerov@oktetlabs.ru&gt;
       * @author Andrew Rybchenko &lt;Andrew.Rybchenko@oktetlabs.ru&gt;
@@ -629,9 +629,9 @@ of such files:
 </pre>
    <p>Format YYYY-MM-DD should be used for date specification.
 
-<h3 class="section"><a name="TOC24"></a>8.4 Header (`<samp><span class="samp">.h</span></samp>') files</h3>
+<h3 class="section"><a name="TOC24"></a>8.4 Header (&lsquo;<samp><span class="samp">.h</span></samp>&rsquo;) files</h3>
 
-<p>Header files are started with the same header as `<samp><span class="samp">.c</span></samp>' files. Header
+<p>Header files are started with the same header as &lsquo;<samp><span class="samp">.c</span></samp>&rsquo; files. Header
 files must include C variable and function declarations, common type
 definitions, preprocessor definitions, definitions of inline functions which
 may be used in more than one C module. Each module which requires
@@ -667,8 +667,8 @@ The body of header file must be organized in the following way:
      #endif
      #endif /* __&lt;subsystem_prefix&gt;_&lt;filename&gt;_H__ */
 </pre>
-   <p>In this fragment `<samp><span class="samp">&lt;subsystem_prefix&gt;</span></samp>' must be substituted with
-capitalized subsystem abbreviation, `<samp><span class="samp">&lt;filename&gt;</span></samp>' must be
+   <p>In this fragment &lsquo;<samp><span class="samp">&lt;subsystem_prefix&gt;</span></samp>&rsquo; must be substituted with
+capitalized subsystem abbreviation, &lsquo;<samp><span class="samp">&lt;filename&gt;</span></samp>&rsquo; must be
 substituted with capitalized form of header file name. If the filename
 already contains the subsystem prefix there is no need to add another
 one.
@@ -713,7 +713,7 @@ Function header have the following format:
 </pre>
    <p>Not all parts must be presented in each function header.
 
-   <p>The only always required part is `<samp><span class="samp">&lt;function description&gt;</span></samp>'. It
+   <p>The only always required part is &lsquo;<samp><span class="samp">&lt;function description&gt;</span></samp>&rsquo;. It
 should be started with upper-case letter, and finished with dot. It is
 recommended to use common style of the form 'Copy bytes' (which is
 opposite to 'Copies bytes') for documentation similarity. If the
@@ -722,40 +722,40 @@ description.
 
    <p>At the same time it is <em>mandatory</em> to describe all function
 parameters and returned value(s). If a function does not return a value,
-`<samp><span class="samp">@return</span></samp>' part may be omitted, or &lt;return value specification&gt; may
-be `<samp><span class="samp">N/A</span></samp>' (not applicable). All parameter descriptions in a
+&lsquo;<samp><span class="samp">@return</span></samp>&rsquo; part may be omitted, or &lt;return value specification&gt; may
+be &lsquo;<samp><span class="samp">N/A</span></samp>&rsquo; (not applicable). All parameter descriptions in a
 particular function must start from the same case: either upper or lower. 
 If the description of the parameter or returned value is complete
 English sentence or is followed by additional statements, it must be
 started from upper-case letter and finished with dot. Description of
-return value after `<samp><span class="samp">@return</span></samp>' tag must be started from upper-case
+return value after &lsquo;<samp><span class="samp">@return</span></samp>&rsquo; tag must be started from upper-case
 letter.
 
    <p>If a value directly returned by a function lies within a limited set of
-constants, then each constant should be described using `<samp><span class="samp">@retval</span></samp>'
-tag. Description of returned value after `<samp><span class="samp">@retval</span></samp>' tag must start
+constants, then each constant should be described using &lsquo;<samp><span class="samp">@retval</span></samp>&rsquo;
+tag. Description of returned value after &lsquo;<samp><span class="samp">@retval</span></samp>&rsquo; tag must start
 from upper-case letter.
 
    <p>If a parameter is used to deliver values out from a function, it is
 allowed to add <code>[inout]</code> or <code>[out]</code> (depending on whether
 the parameter is used or not as input at the same time accordingly) hint
 just after <code>@param</code> without any space. If such hints are used,
-input parameters have to be marked using `<samp><span class="samp">[in]</span></samp>'. Thus, in/out
+input parameters have to be marked using &lsquo;<samp><span class="samp">[in]</span></samp>&rsquo;. Thus, in/out
 hints should be used for either all or none parameters.
 
-   <p>`<samp><span class="samp">@se</span></samp>' (side effects) part must be presented only when a function
+   <p>&lsquo;<samp><span class="samp">@se</span></samp>&rsquo; (side effects) part must be presented only when a function
 has non-obvious side effects. For example, if this function essentially
 modifies common data structures, and it is not clear from its name, or a
 function prints something to standard output, changes state of some
 hardware, and so on.
 
-   <p>Use optional `<samp><span class="samp">@sa</span></samp>' (see also) part to give references to closely
+   <p>Use optional &lsquo;<samp><span class="samp">@sa</span></samp>&rsquo; (see also) part to give references to closely
 related functions and documentation blocks.
 
-   <p>Optional `<samp><span class="samp">@bug</span></samp>' and `<samp><span class="samp">@todo</span></samp>' sections may be used to identify
+   <p>Optional &lsquo;<samp><span class="samp">@bug</span></samp>&rsquo; and &lsquo;<samp><span class="samp">@todo</span></samp>&rsquo; sections may be used to identify
 found bugs or things that need to be done accordingly.
 
-   <p>`<samp><span class="samp">@alg</span></samp>' (algorithm) part must be provided only when it is not enough
+   <p>&lsquo;<samp><span class="samp">@alg</span></samp>&rsquo; (algorithm) part must be provided only when it is not enough
 to define <em>what</em> function does; it is necessary to explain <em>how</em>
 this achieved.
 
@@ -763,9 +763,9 @@ this achieved.
 
 <p>The function description as well as any of the sections beginning tags
 must be started from the 3rd column position (beginning with 0) just
-after the `<samp><span class="samp">' * '</span></samp>' sequence of characters.
+after the &lsquo;<samp><span class="samp">' * '</span></samp>&rsquo; sequence of characters.
 
-   <p>Use exactly one `<samp><span class="samp">SPACE</span></samp>' character between any of section beginning
+   <p>Use exactly one &lsquo;<samp><span class="samp">SPACE</span></samp>&rsquo; character between any of section beginning
 tags and start of section body, if the body begins on the same line with
 a tag.
 
@@ -1030,7 +1030,7 @@ must be placed after close bracket on the same line:
 
    <p>All field names must be started at the same position. The choice of the
 position is based on the maximum length of field type specifiers used in
-structure. Note that reference specifiers `<samp><span class="samp">*</span></samp>' must be coupled to field
+structure. Note that reference specifiers &lsquo;<samp><span class="samp">*</span></samp>&rsquo; must be coupled to field
 name, but placed at left from common field indentation level.
 
    <p>It is <em>highly not recommended</em> to join struct and variable
@@ -1104,7 +1104,7 @@ help you to avoid some errors.
 Global-space variables definitions must be started at column 0. 
 Local variables must be started at block indent level, same
 as for the statements in this block. 
-`<samp><span class="samp">*</span></samp>' specifiers must be placed near variable (or function name in
+&lsquo;<samp><span class="samp">*</span></samp>&rsquo; specifiers must be placed near variable (or function name in
 forward declaration) name.
 
    <p>Variable declarations may be divided into blocks separated by empty line
@@ -1135,7 +1135,7 @@ constants 0, 1, -1 and in some rare situations when direct constant usage
 may be more clear than identifier usage - for example bit masks like 0xff).
 
    <p>When multiline string constant is used, it is recommended to insert
-`<samp><span class="samp">\n</span></samp>' character explicitly and close quote at each line.
+&lsquo;<samp><span class="samp">\n</span></samp>&rsquo; character explicitly and close quote at each line.
 
    <p><em>Examples:</em>
 
@@ -1161,7 +1161,7 @@ may be more clear than identifier usage - for example bit masks like 0xff).
 </pre>
    <p>If constant length suffix is used, the capital suffix letter must be used
 (use <code>0L</code>, not <code>0l</code>). Similarly, for floating point constants,
-use capital exponent letter `<samp><span class="samp">E</span></samp>' (use <code>1.25E+35</code>, not
+use capital exponent letter &lsquo;<samp><span class="samp">E</span></samp>&rsquo; (use <code>1.25E+35</code>, not
 <code>1.25e+35</code>).
 
    <p>In hexadecimal constants, lower-case letters must be used (use
@@ -1169,27 +1169,27 @@ use capital exponent letter `<samp><span class="samp">E</span></samp>' (use <cod
 
 <h2 class="chapter"><a name="TOC45"></a>13 C Expressions</h2>
 
-<p>Unary operators `<samp><span class="samp">&amp;</span></samp>', `<samp><span class="samp">*</span></samp>', `<samp><span class="samp">+</span></samp>', `<samp><span class="samp">-</span></samp>', `<samp><span class="samp">~</span></samp>',
-`<samp><span class="samp">!</span></samp>', `<samp><span class="samp">++</span></samp>', `<samp><span class="samp">--</span></samp>' must be coupled with operands to which such
+<p>Unary operators &lsquo;<samp><span class="samp">&amp;</span></samp>&rsquo;, &lsquo;<samp><span class="samp">*</span></samp>&rsquo;, &lsquo;<samp><span class="samp">+</span></samp>&rsquo;, &lsquo;<samp><span class="samp">-</span></samp>&rsquo;, &lsquo;<samp><span class="samp">~</span></samp>&rsquo;,
+&lsquo;<samp><span class="samp">!</span></samp>&rsquo;, &lsquo;<samp><span class="samp">++</span></samp>&rsquo;, &lsquo;<samp><span class="samp">--</span></samp>&rsquo; must be coupled with operands to which such
 operators are applied.
 
    <p>Binary operators
-`<samp><span class="samp">*</span></samp>', `<samp><span class="samp">/</span></samp>', `<samp><span class="samp">%</span></samp>', `<samp><span class="samp">+</span></samp>',
-`<samp><span class="samp">-</span></samp>', `<samp><span class="samp">&gt;&gt;</span></samp>', `<samp><span class="samp">&lt;&lt;</span></samp>', `<samp><span class="samp">&lt;</span></samp>', `<samp><span class="samp">&gt;</span></samp>',
-`<samp><span class="samp">&lt;=</span></samp>', `<samp><span class="samp">&gt;=</span></samp>', `<samp><span class="samp">==</span></samp>', `<samp><span class="samp">!=</span></samp>', `<samp><span class="samp">&amp;</span></samp>', `<samp><span class="samp">^</span></samp>', `<samp><span class="samp">|</span></samp>',
-`<samp><span class="samp">&amp;&amp;</span></samp>', `<samp><span class="samp">||</span></samp>',
-`<samp><span class="samp">=</span></samp>', `<samp><span class="samp">*=</span></samp>', `<samp><span class="samp">/=</span></samp>', `<samp><span class="samp">%=</span></samp>', `<samp><span class="samp">+=</span></samp>', `<samp><span class="samp">-=</span></samp>', `<samp><span class="samp">&lt;&lt;=</span></samp>',
-`<samp><span class="samp">&gt;&gt;=</span></samp>', `<samp><span class="samp">&amp;=</span></samp>', `<samp><span class="samp">^=</span></samp>', `<samp><span class="samp">|=</span></samp>'
+&lsquo;<samp><span class="samp">*</span></samp>&rsquo;, &lsquo;<samp><span class="samp">/</span></samp>&rsquo;, &lsquo;<samp><span class="samp">%</span></samp>&rsquo;, &lsquo;<samp><span class="samp">+</span></samp>&rsquo;,
+&lsquo;<samp><span class="samp">-</span></samp>&rsquo;, &lsquo;<samp><span class="samp">&gt;&gt;</span></samp>&rsquo;, &lsquo;<samp><span class="samp">&lt;&lt;</span></samp>&rsquo;, &lsquo;<samp><span class="samp">&lt;</span></samp>&rsquo;, &lsquo;<samp><span class="samp">&gt;</span></samp>&rsquo;,
+&lsquo;<samp><span class="samp">&lt;=</span></samp>&rsquo;, &lsquo;<samp><span class="samp">&gt;=</span></samp>&rsquo;, &lsquo;<samp><span class="samp">==</span></samp>&rsquo;, &lsquo;<samp><span class="samp">!=</span></samp>&rsquo;, &lsquo;<samp><span class="samp">&amp;</span></samp>&rsquo;, &lsquo;<samp><span class="samp">^</span></samp>&rsquo;, &lsquo;<samp><span class="samp">|</span></samp>&rsquo;,
+&lsquo;<samp><span class="samp">&amp;&amp;</span></samp>&rsquo;, &lsquo;<samp><span class="samp">||</span></samp>&rsquo;,
+&lsquo;<samp><span class="samp">=</span></samp>&rsquo;, &lsquo;<samp><span class="samp">*=</span></samp>&rsquo;, &lsquo;<samp><span class="samp">/=</span></samp>&rsquo;, &lsquo;<samp><span class="samp">%=</span></samp>&rsquo;, &lsquo;<samp><span class="samp">+=</span></samp>&rsquo;, &lsquo;<samp><span class="samp">-=</span></samp>&rsquo;, &lsquo;<samp><span class="samp">&lt;&lt;=</span></samp>&rsquo;,
+&lsquo;<samp><span class="samp">&gt;&gt;=</span></samp>&rsquo;, &lsquo;<samp><span class="samp">&amp;=</span></samp>&rsquo;, &lsquo;<samp><span class="samp">^=</span></samp>&rsquo;, &lsquo;<samp><span class="samp">|=</span></samp>&rsquo;
 must be separated by one space at left and right.
 
-   <p>Operators `<samp><span class="samp">.</span></samp>' and `<samp><span class="samp">-&gt;</span></samp>' must be coupled with both operands.
+   <p>Operators &lsquo;<samp><span class="samp">.</span></samp>&rsquo; and &lsquo;<samp><span class="samp">-&gt;</span></samp>&rsquo; must be coupled with both operands.
 
-   <p>Operator `<samp><span class="samp">,</span></samp>' (comma) must be coupled to its left operand and separated
+   <p>Operator &lsquo;<samp><span class="samp">,</span></samp>&rsquo; (comma) must be coupled to its left operand and separated
 by one space character from the right operand.
 
-   <p>Operator `<samp><span class="samp">[]</span></samp>' must be coupled to the left and inner operands.
+   <p>Operator &lsquo;<samp><span class="samp">[]</span></samp>&rsquo; must be coupled to the left and inner operands.
 
-   <p>Syntactic components of conditional operator `<samp><span class="samp">a ? b : c</span></samp>'
+   <p>Syntactic components of conditional operator &lsquo;<samp><span class="samp">a ? b : c</span></samp>&rsquo;
 must be separated by one space character. It is recommended to enclose
 conditional operator into the parenthesis.
 
@@ -1200,7 +1200,7 @@ or function expression and left round bracket. Also, no delimiters
 must be inserted between open round bracket and first operand and between
 close round bracket and between last operand.
 
-   <p>`<samp><span class="samp">sizeof</span></samp>' operator must use syntax similar to function call.
+   <p>&lsquo;<samp><span class="samp">sizeof</span></samp>&rsquo; operator must use syntax similar to function call.
 
    <p>Round brackets of type cast operator must be coupled with type specifier and
 with operand.
@@ -1394,15 +1394,15 @@ deallocation function exists and may be used) <code>goto</code> must not be used
 <h3 class="section"><a name="TOC54"></a>15.1 Preprocessor directives formatting</h3>
 
 <p>Preprocessor directives must be started at column zero. It is not allowed
-to have spaces between `<samp><span class="samp">#</span></samp>' sign and directive name.
+to have spaces between &lsquo;<samp><span class="samp">#</span></samp>&rsquo; sign and directive name.
 
 <h3 class="section"><a name="TOC55"></a>15.2 <code>#include</code> usage</h3>
 
-<p>Use `<samp><span class="samp">&lt;...&gt;</span></samp>' with file name in <code>#include</code> to include
+<p>Use &lsquo;<samp><span class="samp">&lt;...&gt;</span></samp>&rsquo; with file name in <code>#include</code> to include
 <acronym>ANSI</acronym> C headers or header files provided by the target
 operating system.
 
-   <p>Use quotes `<samp><span class="samp">"..."</span></samp>' with file name to include other headers.
+   <p>Use quotes &lsquo;<samp><span class="samp">"..."</span></samp>&rsquo; with file name to include other headers.
 
 <h3 class="section"><a name="TOC56"></a>15.3 <code>#define</code> constant definitions</h3>
 
@@ -1524,6 +1524,19 @@ property instead of name of bearing entity.
 <code>sprintf()</code>. If <code>sprintf()</code> is still used, it has to be
 guaranteed and explained in comment just before the usage why
 the buffer is sufficient.
+
+   <p>Return code of the non-void function calls should be checked. 
+The check may be skipped when following conditions are true:
+
+     <ul>
+<li>Recovery/cleanup is not possible in the case of error. 
+<li>Error is logged inside the function or error is expected in some scenarios
+or error definitely has no side effects. 
+</ul>
+
+   <p>It's not recommended to use (void)&lt;function call&gt; construction since
+it may make the code less readable. Provide the comment for non-obvious
+cases instead.
 
 <h2 class="chapter"><a name="TOC60"></a>17 Warning messages</h2>
 
