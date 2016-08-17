@@ -1643,9 +1643,9 @@ use @code{#define} to define them.
 
 @section Macros
 
-It is required to around all macro parameters with parenthesis, because
+It is required to surround all macro parameters with parenthesis, because
 complex expressions can be used as macro parameters, and operator-precedence
-problems can arise. Body of function-like macros must be arounded with
+problems can arise. Body of function-like macros must be surrounded with
 parenthesis too.
 
 Lets consider the next code fragment:
@@ -1665,10 +1665,12 @@ Lets consider the next code fragment:
         ...
 @end example
 
-In this example, else branch of @code{if (p == NULL)} statement will become
-associated with @code{if} statement in @code{DEBUG} macro. To avoid this,
-all statement-like macros must be arounded by
-@code{do @{ @dots{} @} while (0)} statement:
+In this example the attempt to compile will result in syntax error, and
+curly braces around the whole macro body do not help in this case either.
+If you forget to put the semicolon after the macro call the else branch of
+@code{if (p == NULL)} statement will become associated with the @code{if}
+statement in @code{DEBUG} macro. To avoid this, all statement-like macros
+must be surrounded by @code{do @{ @dots{} @} while (0)} statement:
 
 @example
 #define DEBUG \
@@ -1696,16 +1698,16 @@ Also, lets consider the following example:
     @}
 @end example
 
-The example states how macros arounded by @code{do @{ @dots{} @} while (0)}
+The example states how macros surrounded by @code{do @{ @dots{} @} while (0)}
 statement may be used in @code{for()} statement components. The macro call
-is arounded by curly and, then, round brackets.
+is surrounded by curly and, then, round brackets.
 
 It is recommended to hold macros on one line if it is possible. If no,
 format macros as it is shown in a bad example above. Line up all
 continuation backslashes on right side of macro body. Check that backslash
-is a last character in this string. Do not put any code in first line where
-macros name and parameters given. Follow to the indentation rules in body of
-macros.
+is the last character in this string. Do not put any code in first line where
+macros name and parameters are given. Follow to the indentation rules in body
+of macros.
 
 Function-like macros must be commented like functions. Types of parameters
 should be stated in macro description.
