@@ -1,10 +1,27 @@
+PANDOC = pandoc
+PANDOC_OPTIONS = --toc -S
+
+.PHONY : all pdf html txt clean
+.SUFFIXES : .md .txt .html .pdf
+
+DOCID = OKTL-0000034
+
 all: pdf html txt
 
-pdf: OKTL-0000034.texi
-	texi2pdf OKTL-0000034.texi
+pdf: $(DOCID).pdf
 
-html: OKTL-0000034.texi
-	makeinfo --html --no-split --number-sections --commands-in-node-names OKTL-0000034.texi
+html: $(DOCID).html
 
-txt: OKTL-0000034.texi
-	makeinfo --plaintext -o OKTL-0000034.txt OKTL-0000034.texi
+txt: $(DOCID).txt
+
+.md.html:
+	$(PANDOC) -t html -s $(PANDOC_OPTIONS) -o $@ $<
+
+.md.txt:
+	$(PANDOC) -t plain $(PANDOC_OPTIONS) -o $@ $<
+
+.md.pdf:
+	$(PANDOC) $(PANDOC_OPTIONS) -o $@ $<
+
+clean :
+	rm -f $(DOCID).pdf $(DOCID).html $(DOCID).txt
