@@ -3,12 +3,12 @@ C Source Code Style Guide
 
 OKTET Labs.
 
-**Abstract**
+### Abstract
 
 This document describes the general formatting rules of C programming
 language constructs, naming conventions and coding style.
 
-**Copyright Notice**
+### Copyright Notice
 
 Copyright © 1999 Terkom, St.-Petersburg, Russia
 
@@ -20,23 +20,23 @@ This document is the property of OKTET Labs. Nevertheless, there are no
 special restrictions regarding confidentiality which limit the audience
 or distribution of this memo.
 
-**Audience**
+### Audience
 
 This document is intended for OKTET Labs C programmers, reviewers,
 testers and other persons involved in software development process.
 
 It is assumed that a reader is familiar with the C programming language.
 
-**Document status**
+### Document status
 
 Draft
 
-**Contact Information**
+### Contact Information
 
 Please, send your comments and notes about found errors, typos, and
 inconsistencies to <support@oktetlabs.ru>.
 
-**Revision History**
+### Revision History
 
     Date     Rev  Author              Changes
     ----------------------------------------------------------------------------
@@ -63,7 +63,7 @@ inconsistencies to <support@oktetlabs.ru>.
     2018
     ----------------------------------------------------------------------------
 
-**Issues**
+### Issues
 
 -   The document should be updated after more experience of Doxygen
     usage is achieved.
