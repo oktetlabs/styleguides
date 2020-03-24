@@ -3,6 +3,93 @@ C Source Code Style Guide
 
 OKTET Labs.
 
+## Table of Contents
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [C Source Code Style Guide](#c-source-code-style-guide)
+    - [Table of Contents](#table-of-contents)
+    - [Preamble](#preamble)
+        - [Abstract](#abstract)
+        - [Copyright Notice](#copyright-notice)
+        - [Audience](#audience)
+        - [Document status](#document-status)
+        - [Contact Information](#contact-information)
+        - [Revision History](#revision-history)
+        - [Issues](#issues)
+- [Abbreviations](#abbreviations)
+- [Terminology](#terminology)
+- [References](#references)
+- [Introduction](#introduction)
+    - [Contributors](#contributors)
+- [General](#general)
+    - [Style remarks](#style-remarks)
+    - [Text width](#text-width)
+    - [File length](#file-length)
+    - [Special Characters](#special-characters)
+    - [Trigraphs](#trigraphs)
+    - [Indentation](#indentation)
+    - [Vertical spacing](#vertical-spacing)
+- [Standards compliance](#standards-compliance)
+    - [POSIX programming environment](#posix-programming-environment)
+    - [C11 features](#c11-features)
+    - [GCC extensions](#gcc-extensions)
+    - [Compiler warnings](#compiler-warnings)
+- [Naming conventions](#naming-conventions)
+- [Conventional comments](#conventional-comments)
+    - [Comment designators](#comment-designators)
+    - [Language](#language)
+    - [Formatting conventions](#formatting-conventions)
+    - [Comments style](#comments-style)
+- [File layout](#file-layout)
+    - [Order of file sections](#order-of-file-sections)
+    - [Human-written file headers](#human-written-file-headers)
+    - [Generated file headers](#generated-file-headers)
+    - [Header (‘`.h`’) files](#header-h-files)
+- [Function Definition Formatting](#function-definition-formatting)
+    - [Function header](#function-header)
+        - [Indentation inside function header](#indentation-inside-function-header)
+    - [Function Formatting](#function-formatting)
+    - [Considerations](#considerations)
+    - [Function size](#function-size)
+    - [Parameters and local variables conventions](#parameters-and-local-variables-conventions)
+    - [Local variables naming conventions](#local-variables-naming-conventions)
+- [Types definitions formatting](#types-definitions-formatting)
+    - [`struct` declaration](#struct-declaration)
+        - [`struct` comments](#struct-comments)
+        - [`struct` formatting](#struct-formatting)
+        - [Bit fields](#bit-fields)
+    - [`union` declaration](#union-declaration)
+    - [`enum` declaration](#enum-declaration)
+        - [`enum` formatting conventions](#enum-formatting-conventions)
+        - [`enum` elements conventions](#enum-elements-conventions)
+    - [Type qualifiers](#type-qualifiers)
+- [Variable declaration formatting](#variable-declaration-formatting)
+- [Literals and constants](#literals-and-constants)
+- [C Expressions](#c-expressions)
+- [C Statements Formatting](#c-statements-formatting)
+    - [`if` statement](#if-statement)
+    - [`for` statement](#for-statement)
+    - [`while` statement](#while-statement)
+    - [`do` statement](#do-statement)
+    - [`switch` statement](#switch-statement)
+    - [`goto` statement](#goto-statement)
+- [Preprocessor usage](#preprocessor-usage)
+    - [Preprocessor directives formatting](#preprocessor-directives-formatting)
+    - [`#include` usage](#include-usage)
+    - [`#define` constant definitions](#define-constant-definitions)
+    - [Macros](#macros)
+    - [Conditional compilation](#conditional-compilation)
+- [Safe programming](#safe-programming)
+- [Project-Dependent Standards](#project-dependent-standards)
+
+<!-- markdown-toc end -->
+
+
+Preamble
+--------
+
 ### Abstract
 
 This document describes the general formatting rules of C programming
