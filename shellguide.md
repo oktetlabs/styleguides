@@ -6,15 +6,7 @@ See README.md for details.
 
 # Shell Style Guide
 
-<!-- The revision number is maintained manually.
-     The major number is:
-       1 = shell.xml
-       2 = shell.md
-     The major number is also hard-coded at the bottom of this file. -->
-
-Revision 2.02
-
-Authored, revised and maintained by many Googlers.
+Document is based on Google shell styleguide with some OKTET Labs-specific changes.
 
 ## Table of Contents
 
