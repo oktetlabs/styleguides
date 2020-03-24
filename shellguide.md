@@ -273,7 +273,7 @@ you're modifying, the following are required for any new code.
 
 ### Indentation
 
-Indent 2 spaces. No tabs.
+Indent 4 spaces. No tabs.
 
 Use blank lines between blocks to improve readability. Indentation is
 two spaces. Whatever you do, don't use tabs. For existing files, stay
@@ -323,9 +323,9 @@ command1 | command2
 
 # Long commands
 command1 \
-  | command2 \
-  | command3 \
-  | command4
+   | command2 \
+   | command3 \
+   | command4
 ```
 
 <a id="s5.4-loops"></a>
@@ -349,18 +349,18 @@ Example:
 # a local to avoid it leaking into the global environment:
 # local dir
 for dir in "${dirs_to_cleanup[@]}"; do
-  if [[ -d "${dir}/${ORACLE_SID}" ]]; then
-    log_date "Cleaning up old files in ${dir}/${ORACLE_SID}"
-    rm "${dir}/${ORACLE_SID}/"*
-    if (( $? != 0 )); then
-      error_message
+    if [[ -d "${dir}/${ORACLE_SID}" ]]; then
+        log_date "Cleaning up old files in ${dir}/${ORACLE_SID}"
+        rm "${dir}/${ORACLE_SID}/"*
+        if (( $? != 0 )); then
+            error_message
+        fi
+    else
+        mkdir -p "${dir}/${ORACLE_SID}"
+        if (( $? != 0 )); then
+            error_message
+        fi
     fi
-  else
-    mkdir -p "${dir}/${ORACLE_SID}"
-    if (( $? != 0 )); then
-      error_message
-    fi
-  fi
 done
 ```
 
@@ -382,17 +382,17 @@ parenthesis. Avoid the `;&` and `;;&` notations.
 
 ```shell
 case "${expression}" in
-  a)
-    variable="…"
-    some_command "${variable}" "${other_expr}" …
-    ;;
-  absolute)
-    actions="relative"
-    another_command "${actions}" "${other_expr}" …
-    ;;
-  *)
-    error "Unexpected expression '${expression}'"
-    ;;
+    a)
+        variable="…"
+        some_command "${variable}" "${other_expr}" …
+        ;;
+    absolute)
+        actions="relative"
+        another_command "${actions}" "${other_expr}" …
+        ;;
+    *)l
+        error "Unexpected expression '${expression}'"
+        ;;
 esac
 ```
 
@@ -410,13 +410,13 @@ aflag=''
 bflag=''
 files=''
 while getopts 'abf:v' flag; do
-  case "${flag}" in
-    a) aflag='true' ;;
-    b) bflag='true' ;;
-    f) files="${OPTARG}" ;;
-    v) verbose='true' ;;
-    *) error "Unexpected option ${flag}" ;;
-  esac
+    case "${flag}" in
+        a) aflag='true' ;;
+        b) bflag='true' ;;
+        f) files="${OPTARG}" ;;
+        v) verbose='true' ;;
+        *) error "Unexpected option ${flag}" ;;
+    esac
 done
 ```
 
@@ -458,7 +458,7 @@ They are listed in order of precedence.
     # Preferred style for other variables:
     echo "PATH=${PATH}, PWD=${PWD}, mine=${some_var}"
     while read -r f; do
-      echo "file=${f}"
+        echo "file=${f}"
     done < <(find /tmp)
     ```
 
@@ -519,7 +519,7 @@ mybinary "${FLAGS[@]}"
 
 # It's ok to not quote internal integer variables.
 if (( $# > 3 )); then
-  echo "ppid=${PPID}"
+    echo "ppid=${PPID}"
 fi
 
 # "never quote literal integers"
@@ -617,12 +617,12 @@ while `[ … ]` does not.
 # the alnum character class followed by the string name.
 # Note that the RHS should not be quoted here.
 if [[ "filename" =~ ^[[:alnum:]]+name ]]; then
-  echo "Match"
+    echo "Match"
 fi
 
 # This matches the exact pattern "f*" (Does not match in this case)
 if [[ "filename" == "f*" ]]; then
-  echo "Match"
+    echo "Match"
 fi
 ```
 
@@ -630,7 +630,7 @@ fi
 # This gives a "too many arguments" error as f* is expanded to the
 # contents of the current directory
 if [ "filename" == f* ]; then
-  echo "Match"
+    echo "Match"
 fi
 ```
 
@@ -649,25 +649,25 @@ strings or empty strings rather than filler characters.
 ```shell
 # Do this:
 if [[ "${my_var}" == "some_string" ]]; then
-  do_something
+    do_something
 fi
 
 # -z (string length is zero) and -n (string length is not zero) are
 # preferred over testing for an empty string
 if [[ -z "${my_var}" ]]; then
-  do_something
+    do_something
 fi
 
 # This is OK (ensure quotes on the empty side), but not preferred:
 if [[ "${my_var}" == "" ]]; then
-  do_something
+    do_something
 fi
 ```
 
 ```shell
 # Not this:
 if [[ "${my_var}X" == "some_stringX" ]]; then
-  do_something
+    do_something
 fi
 ```
 
@@ -677,14 +677,14 @@ To avoid confusion about what you're testing for, explicitly use
 ```shell
 # Use this
 if [[ -n "${my_var}" ]]; then
-  do_something
+    do_something
 fi
 ```
 
 ```shell
 # Instead of this
 if [[ "${my_var}" ]]; then
-  do_something
+    do_something
 fi
 ```
 
@@ -699,28 +699,28 @@ numerical comparison.
 ```shell
 # Use this
 if [[ "${my_var}" == "val" ]]; then
-  do_something
+    do_something
 fi
 
 if (( my_var > 3 )); then
-  do_something
+    do_something
 fi
 
 if [[ "${my_var}" -gt 3 ]]; then
-  do_something
+    do_something
 fi
 ```
 
 ```shell
 # Instead of this
 if [[ "${my_var}" = "val" ]]; then
-  do_something
+    do_something
 fi
 
 # Probably unintended lexicographical comparison.
 if [[ "${my_var}" > 3 ]]; then
-  # True for 4, false for 22.
-  do_something
+    # True for 4, false for 22.
+    do_something
 fi
 ```
 
@@ -855,9 +855,9 @@ hard to track down.
 ```shell
 last_line='NULL'
 your_command | while read -r line; do
-  if [[ -n "${line}" ]]; then
-    last_line="${line}"
-  fi
+    if [[ -n "${line}" ]]; then
+        last_line="${line}"
+    fi
 done
 
 # This will always output 'NULL'!
@@ -871,9 +871,9 @@ other command) in a subshell.
 ```shell
 last_line='NULL'
 while read line; do
-  if [[ -n "${line}" ]]; then
-    last_line="${line}"
-  fi
+    if [[ -n "${line}" ]]; then
+        last_line="${line}"
+    fi
 done < <(your_command)
 
 # This will output the last non-empty line from your_command
@@ -890,9 +890,9 @@ rather than after.
 last_line='NULL'
 readarray -t lines < <(your_command)
 for line in "${lines[@]}"; do
-  if [[ -n "${line}" ]]; then
-    last_line="${line}"
-  fi
+    if [[ -n "${line}" ]]; then
+      last_line="${line}"
+    fi
 done
 echo "${last_line}"
 ```
@@ -932,7 +932,7 @@ echo "$(( 2 + 2 )) is 4!?"
 
 # When performing arithmetic comparisons for testing
 if (( a < b )); then
-  …
+    …
 fi
 
 # Some calculation assigned to a variable.
@@ -1010,12 +1010,12 @@ function name and the parenthesis.
 ```shell
 # Single function
 my_func() {
-  …
+    …
 }
 
 # Part of a package
 mypackage::my_func() {
-  …
+    …
 }
 ```
 
@@ -1034,7 +1034,7 @@ you're looping through.
 
 ```shell
 for zone in "${zones[@]}"; do
-  something_with "${zone}"
+    something_with "${zone}"
 done
 ```
 
@@ -1064,9 +1064,9 @@ recommended instead of the equivalent `declare` commands.
 ```shell
 VERBOSE='false'
 while getopts 'v' flag; do
-  case "${flag}" in
-    v) VERBOSE='true' ;;
-  esac
+    case "${flag}" in
+        v) VERBOSE='true' ;;
+    esac
 done
 readonly VERBOSE
 ```
@@ -1095,9 +1095,9 @@ be read-only, make this explicit.
 ```shell
 zip_version="$(dpkg --status zip | grep Version: | cut -d ' ' -f 2)"
 if [[ -z "${zip_version}" ]]; then
-  error_message
+    error_message
 else
-  readonly zip_version
+    readonly zip_version
 fi
 ```
 
@@ -1120,25 +1120,25 @@ command substitution.
 
 ```shell
 my_func2() {
-  local name="$1"
-
-  # Separate lines for declaration and assignment:
-  local my_var
-  my_var="$(my_func)"
-  (( $? == 0 )) || return
-
-  …
+    local name="$1"
+  
+    # Separate lines for declaration and assignment:
+    local my_var
+    my_var="$(my_func)"
+    (( $? == 0 )) || return
+  
+    …
 }
 ```
 
 ```shell
 my_func2() {
-  # DO NOT do this:
-  # $? will always be zero, as it contains the exit code of 'local', not my_func
-  local my_var="$(my_func)"
-  (( $? == 0 )) || return
-
-  …
+    # DO NOT do this:
+    # $? will always be zero, as it contains the exit code of 'local', not my_func
+    local my_var="$(my_func)"
+    (( $? == 0 )) || return
+  
+    …
 }
 ```
 
@@ -1192,15 +1192,15 @@ Example:
 
 ```shell
 if ! mv "${file_list[@]}" "${dest_dir}/"; then
-  echo "Unable to move ${file_list[*]} to ${dest_dir}" >&2
-  exit 1
+    echo "Unable to move ${file_list[*]} to ${dest_dir}" >&2
+    exit 1
 fi
 
 # Or
 mv "${file_list[@]}" "${dest_dir}/"
 if (( $? != 0 )); then
-  echo "Unable to move ${file_list[*]} to ${dest_dir}" >&2
-  exit 1
+    echo "Unable to move ${file_list[*]} to ${dest_dir}" >&2
+    exit 1
 fi
 ```
 
@@ -1212,7 +1212,7 @@ following is acceptable:
 ```shell
 tar -cf - ./* | ( cd "${dir}" && tar -xf - )
 if (( PIPESTATUS[0] != 0 || PIPESTATUS[1] != 0 )); then
-  echo "Unable to tar files to ${dir}" >&2
+    echo "Unable to tar files to ${dir}" >&2
 fi
 ```
 
@@ -1227,10 +1227,10 @@ wipe out `PIPESTATUS`).
 tar -cf - ./* | ( cd "${DIR}" && tar -xf - )
 return_codes=( "${PIPESTATUS[@]}" )
 if (( return_codes[0] != 0 )); then
-  do_something
+    do_something
 fi
 if (( return_codes[1] != 0 )); then
-  do_something_else
+    do_something_else
 fi
 ```
 
