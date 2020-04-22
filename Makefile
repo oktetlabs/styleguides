@@ -16,7 +16,8 @@ EXPORTED_DOCS=\
  $(SOURCE_DOCS:.md=.docx) \
  $(SOURCE_DOCS:.md=.rtf) \
  $(SOURCE_DOCS:.md=.odt) \
- $(SOURCE_DOCS:.md=.epub)
+ $(SOURCE_DOCS:.md=.epub) \
+ $(SOURCE_DOCS:.md=.txt) \
 
 RM=/bin/rm
 
@@ -31,6 +32,7 @@ PANDOC_DOCX_OPTIONS=
 PANDOC_RTF_OPTIONS=
 PANDOC_ODT_OPTIONS=
 PANDOC_EPUB_OPTIONS=--to epub3
+PANDOC_TEXT_OPTIONS=--to plain
 
 
 # Pattern-matching Rules
@@ -52,6 +54,9 @@ PANDOC_EPUB_OPTIONS=--to epub3
 
 %.epub : %.md
 	$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_EPUB_OPTIONS) -o $@ $<
+
+%.txt : %.md
+	$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_TEXT_OPTIONS) -o $@ $<
 
 
 # Targets and dependencies
