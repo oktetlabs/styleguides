@@ -382,7 +382,7 @@ case "${expression}" in
         actions="relative"
         another_command "${actions}" "${other_expr}" …
         ;;
-    *)l
+    *)
         error "Unexpected expression '${expression}'"
         ;;
 esac
