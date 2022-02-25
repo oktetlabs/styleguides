@@ -81,32 +81,8 @@ tool (`pip install flynt`) to do your code conversion.
 
 ### pylint
 
-As we're using slightly modified google standard. Config file should allow basic
-"good" short names.
-
-```text
-[BASIC]
-# Good variable names w
-good-names=k, kv, ex, e
-```
-
-otherwise you'll get warnings for code like
-
-```python
-
-for k, element in my_dict.items():
-    print(f'{k}: {element})
-```
-
-or code (questionalble since we don't specify exact exception that we catch)
-
-```python
-try:
-    foo()
-except Exeption as e:
-    print(f'got {e}')
-    sys.exit(1)
-```
+Please take the config in the current directory (pylintrc file) and place it
+into `.pylintrc`.
 
 ### mypy
 
