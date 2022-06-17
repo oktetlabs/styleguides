@@ -1059,7 +1059,7 @@ Description of returned value after ‘`@retval`’ tag must start from
 upper-case letter.
 
 If a parameter is used to deliver values out from a function, it is
-allowed to add `[inout]` or `[out]` (depending on whether the parameter
+allowed to add `[in,out]` or `[out]` (depending on whether the parameter
 is used or not as input at the same time accordingly) hint just after
 `@param` without any space. If such hints are used, input parameters
 have to be marked using ‘`[in]`’. Thus, in/out hints should be used for
