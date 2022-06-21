@@ -1431,33 +1431,111 @@ avoid some errors.
 Variable declaration formatting
 ===============================
 
-Each variable declaration must be started on a separate line.
-Global-space variables definitions must be started at column 0. Local
-variables must be started at block indent level, same as for the
-statements in this block. `*` specifiers must be placed near variable
-(or function name in forward declaration) name.
+Each variable declaration must be on a separate line.
+Global-space variables definitions must start at column 0. Local
+variable definitions must start at the block indent level, same as for the
+statements in this block. `*` specifiers must adjoin to variable names
+(or function names in forward declarations), not to their types:
 
-Variable declarations may be divided into blocks separated by empty line
-and block comment. The common formatting rules are applied inside one
-block.
+    /* Correct: */
+    int *iptr;
+    char **strptr;
+    const char * const *cstrptr;
+    int *(*funptr)(int *arg);
+    extern int *function(int arg);
 
-    /* Phase correction algorithm variables */
-    static fixed16  phase_error; /**< Currently estimated phase error */
-    static int      phcorr_num;  /**< Number of processed samples */
-    static fixed16 *sample;      /**< Next sample pointer */
+    /* Incorrect: */
+    int* iptr;
+    char** strptr;
+    const char* const* cstrptr;
+    int* (*funptr)(int* arg);
+    extern int* function(int arg);
 
-    static phase *phase_rotate(phase *cur, float angle);
+In the previous versions of the Guide it was required that the names and
+descriptions of variables be aligned on the same column for each logical block.
+This is a very unfortunate requirement, because when a change
+breaks the alignment, additional changes in unrelated lines are needed
+to restore it, thus clobbering the commit and confusing `git blame`.
+Therefore such block alignment is now strongly **discouraged**, however
+it is tolerated in the legacy code.
 
-Variable names in a block start at the same column. Variable comments
-start at the same column. If comment couldn’t be fitted in one line, it
-may be split. Continuation line should begin at the same column where
-first letter of comments after `/*` was placed.
+As a rule of thumb, local variables should not have any descriptions at all,
+because Doxygen can't handle them anyway and their purpose should be evident
+from their names and the context. If they still need some comments, those
+must be plain C comments, not the Doxygen ones.
 
-    static uint32     input_bit_number;   /**< Number of bits received from
-                                               external interface */
+Global variables shall be documented in the same way as other global objects.
+However, please keep in mind that a group of tightly-coupled global variables
+is usually a very bad coding practice. In most cases the preferred way is to
+define a structure and use a single variable of that structure type.
 
-If variable block has only one declaration inside, variable comment may
-be omitted.
+So, the following sample from the previous version is invalid:
+
+```
+/* Wrong, old code: */
+/* Phase correction algorithm variables */
+static fixed16  phase_error; /**< Currently estimated phase error */
+static int      phcorr_num;  /**< Number of processed samples */
+static fixed16 *sample;      /**< Next sample pointer */
+
+static uint32     input_bit_number;   /**< Number of bits received from
+                                           external interface */
+```
+
+If a block of tightly coupled variables need a common description, then
+Doxygen member groups may be used:
+
+```
+/**
+ * @name Phase correction algorithm variables.
+ *
+ * Here may come some more details on the algorithm and the role
+ * of individual variables.
+ * @{
+ */
+static fixed16 phase_error;
+static int phcorr_num;
+static fixed16 *sample;
+/**@}*/
+```
+
+If individual variables still need descriptions, use normal
+Doxygen pre-object description:
+
+```
+/** Currently estimated phase error */
+static fixed16 phase_error;
+/** Number of processed samples */
+static int phcorr_num;
+/** Next sample pointer */
+static fixed16 *sample;
+
+/** Number of bits received from external interface */
+static uint32 input_bit_number;
+```
+
+But in most cases the preferred way would be something like:
+
+```
+/** Phase correction algorithm state */
+typedef struct phase_correction_state {
+    /** Currently estimated phase error */
+    fixed16 phase_error;
+    /** Number of processed samples */
+    int phcorr_num;
+    /** Next sample pointer */
+    fixed16 *sample;
+} phase_correction_state;
+
+/** Current phase correction state */
+static phase_correction_state phase_state;
+
+/** Number of bits received from external interface */
+static uint32 input_bit_number;
+```
+
+Logical groups of tightly coupled variables shall be
+separated by a blank line, as in examples above.
 
 Literals and constants
 ======================
