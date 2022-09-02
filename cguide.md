@@ -1616,6 +1616,76 @@ static uint32 input_bit_number;
 Logical groups of tightly coupled variables shall be
 separated by a blank line, as in examples above.
 
+Variable declarations should not normally be mixed with the code. That is,
+variables should always be declared on a file level or at the very beginning of
+a block, not inside blocks. Unlike in C++, in plain C mixing declarations and
+code gives no benefits and is usually a sign that a function should be split.
+
+For example:
+
+```
+/* Wrong */
+int
+some_function(int arg)
+{
+    int var1;
+
+    if (arg > 0)
+        var1 = another_function(arg);
+    else
+        var1 = DEFAULT_VALUE;
+    int var2 = another_function(var1);
+    /* more code to follow */
+}
+
+/* Ok */
+int
+some_function(int arg)
+{
+    int var1;
+    int var2;
+
+    if (arg > 0)
+        var1 = another_function(arg);
+    else
+        var1 = DEFAULT_VALUE;
+    var2 = another_function(var1);
+    /* more code to follow */
+}
+
+/* Ok as well, var2 is defined at the beginning of an inner scope */
+int
+some_function(int arg)
+{
+    int var1;
+    int var2;
+
+    if (arg > 0)
+    {
+        int var2;
+
+        var1 = another_function(arg);
+        var2 = another_function(var1);
+        /* more code to follow */
+    }
+}
+```
+
+The code before declarations may be tolerated in case of debug log macros
+and the like, which must be executed before anything else:
+
+```
+int
+some_function(int arg)
+{
+    DEBUG_ENTRY(arg);
+    int var1 = another_function(arg);
+    int var2 = another_function(var1);
+
+    /* more code */
+}
+```
+
 Literals and constants
 ======================
 
