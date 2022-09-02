@@ -63,7 +63,7 @@ OKTET Labs.
     - [`union` declaration](#union-declaration)
     - [`enum` declaration](#enum-declaration)
         - [`enum` formatting conventions](#enum-formatting-conventions)
-        - [`enum` elements conventions](#enum-elements-conventions)
+        - [`enum` member conventions](#enum-member-conventions)
     - [Type qualifiers](#type-qualifiers)
 - [Variable declaration formatting](#variable-declaration-formatting)
 - [Literals and constants](#literals-and-constants)
@@ -1317,24 +1317,68 @@ Usually understanding of data structures used in program is a key to
 understanding of a whole system. Please, write accurate and detailed
 comments for structure declarations.
 
-Comments for structure fields must be placed in the same line where a
-field is declared. All comments must be indented to the same level. It
-is allowed (but not recommended) to shift comments to the right from
-common level if some field names are longer than others and such shifts
-allow to avoid splitting comments to several lines. If comment is split
-a new line must be indented to the level of first comment letter
-following the `/*` sequence. See examples below.
+Descriptions for structure fields may be formatted either as normal
+pre-object Doxygen comments or as post-object ones (that is,
+starting with `/**<`). In the latter case they should be placed on the
+same line as the field itself. Post-object descriptions inside
+a structure shall be aligned. Pre-object descriptions shall be indented
+at the same level as the field and otherwise follow the rules for
+other types of Doxygen comments.
+
+Multi-line post-object comments are strongly **discouraged**, though
+tolerated in the old code. It's better not to mix pre- and post-object
+comments within the same structure.
 
 ### `struct` formatting
 
-The `struct` declaration must look like this:
+The `struct` declaration must look like this
+(post-object style for field descriptions):
 
     /** Node of the double-linked list */
     struct list_node {
         struct list_node  *next;    /**< Next node in double-linked list */
         struct list_node  *prev;    /**< Previous node in double-linked list */
         int                size;    /**< Information field size */
-        char               node[0]; /**< Information field designator */
+        char               node[];  /**< Information field designator */
+    };
+
+Alternatively it may look like this
+(pre-object style for field descriptions):
+
+    /** Node of the double-linked list */
+    struct list_node {
+        /** Next node in double-linked list */
+        struct list_node *next;
+        /** Previous node in double-linked list */
+        struct list_node *prev;
+
+        /** Information field size */
+        int size;
+        /** Information field designator */
+        char node[];
+    };
+
+Blank lines may be inserted between struct members to improve
+readability or to separate logical groups of fields.
+Doxygen member groups may also be used for that purpose:
+
+    /** Node of the double-linked list */
+    struct list_node {
+        /** @name Chain pointers */
+        /**@{*/
+        /** Next node in double-linked list */
+        struct list_node *next;
+        /** Previous node in double-linked list */
+        struct list_node *prev;
+        /**@}*/
+
+        /** @name Payload */
+        /**@{*/
+        /** Information field size */
+        int size;
+        /** Information field designator */
+        char node[];
+        /**@}*/
     };
 
 If `struct` declaration is used in a variable declaration or `typedef`
@@ -1344,20 +1388,30 @@ close bracket on the same line:
 
     /** NCR875 SCSI host adapter user-settable hardware parameters */
     typedef struct ncr875_hw_regs {
-        int diff_scsi;  /**< Differential SCSI bus enable */
-        int tolerant;   /**< Tolerant enable */
-        int slow_cable; /**< Slow cable mode (Extra clock cycle of Data Setup) */
-        int burst_len;  /**< Maximum number of transfers performed per PCI bus
-                             ownership, legal values is 2,4,8,16,32,64,128 */
+        /** Differential SCSI bus enable */
+        int diff_scsi;
+        /** Tolerant enable */
+        int tolerant;
+        /** Slow cable mode (Extra clock cycle of Data Setup) */
+        int slow_cable;
+
+        /**
+         * Maximum number of transfers performed per PCI bus
+         * ownership, legal values is 2,4,8,16,32,64,128
+         */
+        int burst_len;
     } ncr875_hw_regs;
+
+Note the formatting of a multi-line comment in the previous example.
 
 In `typedef` declaration, it is recommended to give the same name to
 `struct` name in `struct` namespace and to `typedef` name.
 
-All field names must be started at the same position. The choice of the
-position is based on the maximum length of field type specifiers used in
-structure. Note that reference specifiers `*` must be coupled to field
-name, but placed at left from common field indentation level.
+The member names should be aligned if they are followed by post-object comments
+which are themselves aligned. Otherwise they need not be aligned, just
+as variable names. If a field has a pointer type then `*`s must be adjoint
+to the field name, but they must be placed to the left of the alignment
+column, as in the first example above.
 
 It is *highly not recommended* to join struct and variable declaration.
 Declare types and variables separately.
@@ -1378,7 +1432,7 @@ way, or define structure of data which will be sent over network.
 `union` declaration
 -------------------
 
-All conventions provided for struct formatting are applied to `union`
+All conventions provided for struct formatting apply to `union`
 declarations.
 
 `enum` declaration
@@ -1386,31 +1440,56 @@ declarations.
 
 ### `enum` formatting conventions
 
+Basically, the same rules apply here as for struct/union definitions.
+
 The `enum` declaration must look like this:
 
-    /** LED status constants */
-    enum led_status {
-        LED_STATUS_OFF   = 0, /**< LED is off */
-        LED_STATUS_ON    = 1, /**< LED is on */
-        LED_STATUS_FAIL  = 2, /**< LED is unfunctional */
-        LED_STATUS_MAINT = 4, /**< LED is now in maintenance mode; operations
-                                   are limited */
-    };
+```
+/** LED status constants */
+enum led_status {
+    LED_STATUS_OFF = 0,   /**< LED is off */
+    LED_STATUS_ON = 1,    /**< LED is off */
+    LED_STATUS_FAIL = 2,  /**< LED is non-functional */
+    LED_STATUS_MAINT = 4, /**< LED is now in maintenance mode */
+};
+```
 
-The same rules for typedef/variable definitions as for structures are
-applied.
+Or alternatively with post-object comments, if you need multi-line descriptions:
 
-Each `enum` component must occupy a separate line.
+```
+/** LED status constants */
+enum led_status {
+    /** LED is off */
+    LED_STATUS_OFF = 0,
+    /** LED is off */
+    LED_STATUS_ON = 1,
+    /** LED is non-functional */
+    LED_STATUS_FAIL = 2,
 
-### `enum` elements conventions
+    /**
+     * LED is now in maintenance mode;
+     * operations are limited
+     */
+    LED_STATUS_MAINT = 4,
+};
+```
 
-`enum` members must be prefixed with some abbreviation common for all
+However it is recommended to keep the enum member descriptions short,
+use the first variant and provide extra details in the description of `enum`
+itself.
+
+Each `enum` member must be on a separate line.
+
+### `enum` member conventions
+
+`enum` member names must be prefixed with some abbreviation common for all
 members.
 
 It is necessary to give a value for each member, if this value is
 specified externally (in manual, data sheet, technical specification,
 etc). Otherwise it is recommended not to assign values, or assign a
-value to the first element only.
+value to the first element only. Aligning enum assignments on a `=`
+character is not needed, though tolerated in the old code.
 
 Type qualifiers
 ---------------
