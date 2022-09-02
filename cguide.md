@@ -875,18 +875,13 @@ Each `.c` or `.h` files written by human, must have a formal header.
 This header starts at the first line of source file. A header has the
 following format:
 
+    /* SPDX-License-Identifier: <identifier> */
+    /* <copyright notice> */
+    /* <license terms (optional)> */
     /** @file
      * @brief <subsystem description>
      *
      * <module description>
-     * 
-     * <copyright notice>
-     *
-     * @author <author name> <<author e-mail>>
-     *
-     * <license term notice>
-     * 
-     * $Id: $
      */
 
 Subsystem description is a short (one-line preferred) description of
@@ -897,42 +892,36 @@ Module description is a short description of a source file. It should be
 started with upper-case letter, and finished with dot.
 
 Copyright notice must provide information about copyright holder of this
-work. This line must consist of word `Copyright`, copyright sign
-`(C)`, organization name which holds copyright, and its location (city
-and country). It is allowed multiple `Copyright` sections if your
-source contains fragments copyrighted by different organizations.
+work. This line must consist of the word `Copyright`, copyright sign
+`(C)`, the year when the file is created, and the name of the organization
+which holds the rights. Multiple `Copyright` statements are allowed and
+required if the source contains portions copyrighted by different entities.
 
-@author section of the header must provide information about principal
-developer of this module. The section consists of the author’s name (in
-English transcription) and e-mail address which may be used later to
-contact the author regarding to these sources. It is allowed to have
-multiple `@author` sections if principal developer has been changed;
-put a name of the last principal developer first. OKTET Labs employees
-shall use \<Name.Surname@oktetlabs.ru\> form of e-mail address.
+For the code owned by OKTET Labs, the copyright notice must read as:
 
-Optional part `license term notice` may be added to provide
+    Copyright (C) <year> OKTET Labs Ltd. All rights reserved.
+
+Previous versions of the Guidelines mandated the use of the `@author`
+keyword to indicate actual code authors/contributors. This is now
+strongly **discouraged**, since this information is almost impossible
+to keep up to date in the sources, but it can easily be obtained from
+a version control system.
+
+The optional license term notice may be added to provide
 information about licensing terms for this source file, about
 distribution permissions or restrictions, or to refer to a particular
-license text.
+license text. However, for open-source products a non-Doxygen comment
+shall be provided at the top of file, bearing an accurate
+`SPDX-License-Identifier`.
 
-The last line of the header is a substitution for source code system
-(e.g. CVS, Subversion) information. `$Id: $` sequence will be
-substituted with actual module identification string while a file is
-committed into repository.
+Example:
 
-Note that doxygen-style comment and tags are used here.
-
+    /* SPDX-License-Identifier: GPL-2.0-or-later */
+    /* Copyright (C) 2022 OKTET Labs Ltd. All rights reserved. */
     /** @file
      * @brief ncr875 controller device driver
      *
      * Chip-specific primitive implementation.
-     *
-     * Copyright (C) 2012 OKTET Labs, St.-Petersburg, Russia
-     *
-     * @author Victor V. Vengerov <Victor.Vengerov@oktetlabs.ru>
-     * @author Andrew Rybchenko <Andrew.Rybchenko@oktetlabs.ru>
-     *
-     * $Id: $
      */
 
 Generated file headers
