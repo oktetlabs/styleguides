@@ -48,6 +48,7 @@ OKTET Labs.
     - [Human-written file headers](#human-written-file-headers)
     - [Generated file headers](#generated-file-headers)
     - [Header (`.h`) files](#header-h-files)
+    - [Declarations in headers](#declarations-in-headers)
 - [Function Definition Formatting](#function-definition-formatting)
     - [Function header](#function-header)
         - [Indentation inside function header](#indentation-inside-function-header)
@@ -1002,6 +1003,19 @@ appropriate header in C++ program. These preprocessor conditionals may
 be omitted in internal headers, but are mandatory for interface headers.
 It is important to including nesting headers before `#ifdef __cplusplus`
 block in order not to affect symbols declared there.
+
+Declarations in headers
+-----------------------
+
+All declarations that are not definitions in headers must have an explicit
+`extern` linkage. That is, all functions that are not declared `static inline`
+and all variables in headers must have an `extern` keyword. Global declarations
+without an explicit linkage specifier and no initializer or function body are
+called "tentative definitions", that is, they may be treated by the linker as
+definitions or as forward declarations depending on the context and that may
+lead to undefined behaviour of the linker (see ISO C standard, section 6.9
+for details).
+
 
 Function Definition Formatting
 ==============================
