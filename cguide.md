@@ -32,6 +32,7 @@ OKTET Labs.
     - [Indentation](#indentation)
     - [Vertical spacing](#vertical-spacing)
     - [Trailing whitespace](#trailing-whitespace)
+    - [General punctuation rules](#general-punctuation-rules)
 - [Standards compliance](#standards-compliance)
     - [POSIX programming environment](#posix-programming-environment)
     - [C11 features](#c11-features)
@@ -382,6 +383,47 @@ There should no trailing whitespace. There are many ways this could be ensured:
 - `git diff --check`
 - the default Git pre-commit hook does the above check automatically
 - specific projects may have additional hooks or check scripts
+
+General punctuation rules
+-------------------------
+
+If a description is a complete sentence, it must start with an upper-case letter
+and end with a dot. If a description is just a nominal phrase (e.g. it describes
+an object and has no finite verb form), which is common for parameter
+descriptions and other enumeration-like entities, then it must start with
+a lower-case letter (save for acronyms, of course) and have no punctuation sign
+at the end. In a list of desciptions all of them shall be either sentences or
+nominal phrases. Of course, if a description consists of several sentences, they
+all must be formatted as sentences.
+
+```
+/* Good */
+/** The description of an enum. */
+typedef enum some_enum {
+    SOME_ENUM_ITEM_1, /**< first item */
+    SOME_ENUM_ITEM_2, /**< second item */
+} some_enum;
+
+/* Acceptable */
+/** The description of an enum. */
+typedef enum some_enum {
+    SOME_ENUM_ITEM_1, /**< First item. */
+    SOME_ENUM_ITEM_2, /**< Second item. */
+} some_enum;
+
+/* Wrong */
+/** The description of an enum (no dot) */
+typedef enum some_enum {
+    SOME_ENUM_ITEM_1, /**< First item. */
+    SOME_ENUM_ITEM_2, /**< second item (differs from the first) */
+} some_enum;
+```
+
+Rules for formatting specific kinds of entities may pose additional requirements
+on the form of their descriptions, see below.
+
+Brief descriptions of top-level Doxygen comments shall always end with a dot,
+because otherwise Doxygen may get confused.
 
 Standards compliance
 ====================
@@ -904,8 +946,8 @@ Subsystem description is a short (one-line preferred) description of
 subsystem to which this file belongs. This line must be same for all
 files of this subsystem.
 
-Module description is a short description of a source file. It should be
-started with upper-case letter, and finished with dot.
+Module description is a short description of a source file. It should
+start with an upper-case letter, and end with a dot.
 
 Copyright notice must provide information about copyright holder of this
 work. This line must consist of the word `Copyright`, copyright sign
@@ -1055,7 +1097,7 @@ definition. Function header have the following format:
 Not all parts must be presented in each function header.
 
 The only always required part is `<function description>`. It should
-be started with upper-case letter, and finished with dot. It is
+start with an upper-case letter and end with a dot. It is
 recommended to use common style of the form ’Copy bytes’ (which is
 opposite to ’Copies bytes’) for documentation similarity. If the
 function complies with some prototype, it should be stated in
@@ -1064,17 +1106,24 @@ description.
 At the same time it is *mandatory* to describe all function parameters
 and returned value(s). If a function does not return a value,
 `@return` part may be omitted, or \<return value specification\> may
-be `N/A` (not applicable). All parameter descriptions in a particular
-function must start from the same case: either upper or lower. If the
-description of the parameter or returned value is complete English
-sentence or is followed by additional statements, it must be started
-from upper-case letter and finished with dot. Description of return
-value after `@return` tag must be started from upper-case letter.
+be `N/A` (not applicable).
+
+All parameter descriptions shall be either sentences or nominal phrases,
+i.e. they shall either start with an upper case letter and end with a dot
+or start with a lower-case letter and have no dot at the end.
+The preferred form for a parameter description is a nominal phrase, since
+a parameter is an object. If a parameter description consists of
+several sentences, they all must be formatted as sentences. However,
+it is recommended to keep parameter descriptions short and move additional
+details to `@note` sections in the function description.
+
+The description of a return value after `@return` tag must have the same
+form as parameter descriptions (i.e. either a sentence or a nominal phrase).
 
 If a value directly returned by a function lies within a limited set of
 constants, then each constant should be described using `@retval` tag.
-Description of returned value after `@retval` tag must start from
-upper-case letter.
+The description of a specific returned value after `@retval` tag must be
+a sentence, starting with an upper-case letter and ending with a dot.
 
 If a parameter is used to deliver values out from a function, it is
 allowed to add `[in,out]` or `[out]` (depending on whether the parameter
@@ -1347,32 +1396,36 @@ Multi-line post-object comments are strongly **discouraged**, though
 tolerated in the old code. It's better not to mix pre- and post-object
 comments within the same structure.
 
+Post-object member descriptions may be either sentences or nominal phrases,
+i.e. either starting with an upper case and ending with a dot or starting
+with a lower case and ending with no dot. The second form is preferrable.
+
 ### `struct` formatting
 
 The `struct` declaration must look like this
 (post-object style for field descriptions):
 
-    /** Node of the double-linked list */
+    /** Node of the double-linked list. */
     struct list_node {
-        struct list_node  *next;    /**< Next node in double-linked list */
-        struct list_node  *prev;    /**< Previous node in double-linked list */
-        int                size;    /**< Information field size */
-        char               node[];  /**< Information field designator */
+        struct list_node  *next;    /**< next node in double-linked list */
+        struct list_node  *prev;    /**< previous node in double-linked list */
+        int                size;    /**< information field size */
+        char               node[];  /**< information field designator */
     };
 
 Alternatively it may look like this
 (pre-object style for field descriptions):
 
-    /** Node of the double-linked list */
+    /** Node of the double-linked list. */
     struct list_node {
-        /** Next node in double-linked list */
+        /** Next node in double-linked list. */
         struct list_node *next;
-        /** Previous node in double-linked list */
+        /** Previous node in double-linked list. */
         struct list_node *prev;
 
-        /** Information field size */
+        /** Information field size. */
         int size;
-        /** Information field designator */
+        /** Information field designator. */
         char node[];
     };
 
@@ -1380,21 +1433,21 @@ Blank lines may be inserted between struct members to improve
 readability or to separate logical groups of fields.
 Doxygen member groups may also be used for that purpose:
 
-    /** Node of the double-linked list */
+    /** Node of the double-linked list. */
     struct list_node {
-        /** @name Chain pointers */
+        /** @name Chain pointers. */
         /**@{*/
-        /** Next node in double-linked list */
+        /** Next node in double-linked list. */
         struct list_node *next;
-        /** Previous node in double-linked list */
+        /** Previous node in double-linked list. */
         struct list_node *prev;
         /**@}*/
 
-        /** @name Payload */
+        /** @name Payload. */
         /**@{*/
-        /** Information field size */
+        /** Information field size. */
         int size;
-        /** Information field designator */
+        /** Information field designator. */
         char node[];
         /**@}*/
     };
@@ -1404,18 +1457,18 @@ declaration, `typedef` or variable specifiers must be placed before
 `struct` keyword on the same line, and identifier must be placed after
 close bracket on the same line:
 
-    /** NCR875 SCSI host adapter user-settable hardware parameters */
+    /** NCR875 SCSI host adapter user-settable hardware parameters. */
     typedef struct ncr875_hw_regs {
-        /** Differential SCSI bus enable */
+        /** Differential SCSI bus enable. */
         int diff_scsi;
-        /** Tolerant enable */
+        /** Tolerant enable. */
         int tolerant;
-        /** Slow cable mode (Extra clock cycle of Data Setup) */
+        /** Slow cable mode (Extra clock cycle of Data Setup). */
         int slow_cable;
 
         /**
          * Maximum number of transfers performed per PCI bus
-         * ownership, legal values is 2,4,8,16,32,64,128
+         * ownership, legal values is 2,4,8,16,32,64,128.
          */
         int burst_len;
     } ncr875_hw_regs;
@@ -1463,7 +1516,7 @@ Basically, the same rules apply here as for struct/union definitions.
 The `enum` declaration must look like this:
 
 ```
-/** LED status constants */
+/** LED status constants. */
 enum led_status {
     LED_STATUS_OFF = 0,   /**< LED is off */
     LED_STATUS_ON = 1,    /**< LED is off */
@@ -1475,18 +1528,18 @@ enum led_status {
 Or alternatively with post-object comments, if you need multi-line descriptions:
 
 ```
-/** LED status constants */
+/** LED status constants. */
 enum led_status {
-    /** LED is off */
+    /** LED is off. */
     LED_STATUS_OFF = 0,
-    /** LED is off */
+    /** LED is off. */
     LED_STATUS_ON = 1,
-    /** LED is non-functional */
+    /** LED is non-functional. */
     LED_STATUS_FAIL = 2,
 
     /**
      * LED is now in maintenance mode;
-     * operations are limited
+     * operations are limited.
      */
     LED_STATUS_MAINT = 4,
 };
@@ -1600,34 +1653,34 @@ If individual variables still need descriptions, use normal
 Doxygen pre-object description:
 
 ```
-/** Currently estimated phase error */
+/** Currently estimated phase error. */
 static fixed16 phase_error;
-/** Number of processed samples */
+/** Number of processed samples. */
 static int phcorr_num;
-/** Next sample pointer */
+/** Next sample pointer. */
 static fixed16 *sample;
 
-/** Number of bits received from external interface */
+/** Number of bits received from external interface. */
 static uint32 input_bit_number;
 ```
 
 But in most cases the preferred way would be something like:
 
 ```
-/** Phase correction algorithm state */
+/** Phase correction algorithm state. */
 typedef struct phase_correction_state {
-    /** Currently estimated phase error */
+    /** Currently estimated phase error. */
     fixed16 phase_error;
-    /** Number of processed samples */
+    /** Number of processed samples. */
     int phcorr_num;
-    /** Next sample pointer */
+    /** Next sample pointer. */
     fixed16 *sample;
 } phase_correction_state;
 
-/** Current phase correction state */
+/** Current phase correction state. */
 static phase_correction_state phase_state;
 
-/** Number of bits received from external interface */
+/** Number of bits received from external interface. */
 static uint32 input_bit_number;
 ```
 
