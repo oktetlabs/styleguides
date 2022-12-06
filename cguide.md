@@ -31,6 +31,7 @@ OKTET Labs.
     - [Trigraphs](#trigraphs)
     - [Indentation](#indentation)
     - [Vertical spacing](#vertical-spacing)
+    - [Trailing whitespace](#trailing-whitespace)
 - [Standards compliance](#standards-compliance)
     - [POSIX programming environment](#posix-programming-environment)
     - [C11 features](#c11-features)
@@ -366,6 +367,18 @@ Vertical spacing
 
 -   Curvy braces ({ and }) always (except `do...while` loop) get their
     own line.
+
+Trailing whitespace
+-------------------
+
+There should no trailing whitespace. There are many ways this could be ensured:
+- many code editors can be configured to highlight them
+  (e.g. `show-trailing-whitespace` option in Emacs or
+  `let c_space_errors = 1` in Vim)
+- Reviewboard does highlight them
+- `git diff --check`
+- the default Git pre-commit hook does the above check automatically
+- specific projects may have additional hooks or check scripts
 
 Standards compliance
 ====================
