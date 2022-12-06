@@ -83,6 +83,7 @@ OKTET Labs.
     - [`#define` constant definitions](#define-constant-definitions)
     - [Macros](#macros)
     - [Scoped macros](#scoped-macros)
+    - [Macro argument names](#macro-argument-names)
     - [Conditional compilation](#conditional-compilation)
 - [Safe programming](#safe-programming)
 - [Project-Dependent Standards](#project-dependent-standards)
@@ -521,12 +522,12 @@ Here is a list of C11 features with comments:
 
         #include <assert.h>
         #if !defined(static_assert)
-        #define static_assert(_x) ((void)0)
+        #define static_assert(x_) ((void)0)
         #endif
 
   There is a well-known pretty portable trick to achieve almost the same effect as `static_assert`, namely:
 
-        #define static_assert(_expr) ((void)sizeof(char[(_expr) ? 1 : -1]))
+        #define static_assert(expr_) ((void)sizeof(char[(expr_) ? 1 : -1]))
 
 - `alignof` and `alignas` constructions allow to determine the alignment of a certain type/object and to
   cause a type/object to have the same alignment as another type/object. These may be used if really necessary,
@@ -2008,10 +2009,10 @@ must be surrounded with parenthesis too.
 
 Lets consider the next code fragment:
 
-    #define DEBUG(s) \
-        if (debug)                     \
-        {                              \
-            printf("debug: %s\n", s);  \
+    #define DEBUG(s_) \
+        if (debug)                      \
+        {                               \
+            printf("debug: %s\n", s_);  \
         }
         
         ...
@@ -2028,19 +2029,19 @@ branch of `if (p == NULL)` statement will become associated with the
 `if` statement in `DEBUG` macro. To avoid this, all statement-like
 macros must be surrounded by `do { ... } while (0)` statement:
 
-    #define DEBUG \
+    #define DEBUG(s_) \
         do {                               \
             if (debug)                     \
             {                              \
-                printf("debug: %s\n", s);  \
+                printf("debug: %s\n", s_); \
             }                              \
         } while (0)
 
 Also, lets consider the following example:
 
-    #define INC(i) \
-        do {                                                \
-            printf("Loop counter new value is %d\n", ++i);  \
+    #define INC(i_) \
+        do {                                                 \
+            printf("Loop counter new value is %d\n", ++i_);  \
         } while (0)
 
         ...
@@ -2114,6 +2115,28 @@ function(int arg)
 }
 ```
 
+Macro argument names
+--------------------
+
+Macro argument names shall end with an underscore to minimize possible
+name clashes. The same applies to local variables defined inside a macro
+body. See macro examples in the previous sections. Macro arguments shall
+be in lower case just as function parameter names.
+
+Historically, there is a great inconsistency in our code base regarding
+the form of macro argument names. At least the following variants have
+been observed in the wild:
+- no underscores: `#define MACRO(arg)`
+- leading underscore `#define MACRO(_arg)`
+- trailing underscore `#define MACRO(arg_)`
+- enclosing underscores `#define MACRO(_arg_)`
+
+The second variant is the most common, however, it was not chosen because
+it technically violates the ISO C standard that reserve all identifiers
+starting with underscore and proclaim using them in an application undefined
+behaviour.
+
+
 Conditional compilation
 -----------------------
 
@@ -2134,10 +2157,10 @@ might look like:
 
     #ifdef DEBUG
         extern void *mm_malloc(size_t bytes);
-    #define MALLOC(size) (mm_malloc(size))
+    #define MALLOC(size_) (mm_malloc(size_))
     #else
         extern void *malloc(size_t bytes);
-    #define MALLOC(size) (malloc(size))
+    #define MALLOC(size_) (malloc(size_))
     #endif
 
 It is recommended to use indentation rules for preprocessor conditions
