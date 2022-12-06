@@ -82,6 +82,7 @@ OKTET Labs.
     - [`#include` usage](#include-usage)
     - [`#define` constant definitions](#define-constant-definitions)
     - [Macros](#macros)
+    - [Scoped macros](#scoped-macros)
     - [Conditional compilation](#conditional-compilation)
 - [Safe programming](#safe-programming)
 - [Project-Dependent Standards](#project-dependent-standards)
@@ -2085,6 +2086,33 @@ effects and especially if they try to mimic some standard function/macro:
     /* Not ok, since the arguments have to be side-effect free */
     #define min(x_, y_) ((x_) < (y_) ? (x_) : (y_))
 
+Scoped macros
+-------------
+
+C does not have true local macros. However, they can be simulated by
+using `#undef`. Thus, if a macro is used solely inside a block, e.g.
+inside a function body, it must be declared inside the block at its
+beginning and undefined at the end. The same applies to macros that
+are used just in a part of the source file: they must be defined
+close to their first usage and then undefined. The directives must
+still start at the first column, even inside blocks:
+
+
+```
+int
+function(int arg)
+{
+#define CHECK_RC(expr_) \
+    do {                   \
+        int rc_ = (expr_); \
+                           \
+        if ((rc_) != 0)    \
+            return (rc_);  \
+    } while (0)
+    /* the code */
+#undef CHECK_RC
+}
+```
 
 Conditional compilation
 -----------------------
