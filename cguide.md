@@ -1472,7 +1472,7 @@ Each `enum` member must be on a separate line.
 ### `enum` member conventions
 
 `enum` member names must be prefixed with some abbreviation common for all
-members.
+members. `enum` member names must be upper-case.
 
 It is necessary to give a value for each member, if this value is
 specified externally (in manual, data sheet, technical specification,
@@ -2040,6 +2040,24 @@ It’s recommented to use inline functions instead of function-like
 macros, if it is applicable. Compiler can help to avoid some errors and
 its output in the case of compilation errors more friendly, if inline
 function is used.
+
+Macro names must be upper case. However, it is allowed to have lower-case
+names for function-like macros if these macros do not cause any macro adverse
+effects and especially if they try to mimic some standard function/macro:
+
+    /* Ok */
+    #define my_assert(expr_) \
+        do {                                          \
+            if (!(expr_))                             \
+            {                                         \
+                ERROR("Assertion %s failed", #expr_); \
+                abort();                              \
+            }                                         \
+        } while (0)
+
+    /* Not ok, since the arguments have to be side-effect free */
+    #define min(x_, y_) ((x_) < (y_) ? (x_) : (y_))
+
 
 Conditional compilation
 -----------------------
