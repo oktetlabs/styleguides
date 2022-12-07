@@ -46,7 +46,7 @@ OKTET Labs.
     - [Order of file sections](#order-of-file-sections)
     - [Human-written file headers](#human-written-file-headers)
     - [Generated file headers](#generated-file-headers)
-    - [Header (‘`.h`’) files](#header-h-files)
+    - [Header (`.h`) files](#header-h-files)
 - [Function Definition Formatting](#function-definition-formatting)
     - [Function header](#function-header)
         - [Indentation inside function header](#indentation-inside-function-header)
@@ -158,37 +158,37 @@ inconsistencies to <support@oktetlabs.ru>.
 Abbreviations
 =============
 
-‘`ISO`’
+`ISO`
 :   International Organization for Standardization
 
-‘`CR`’
+`CR`
 :   Carriage Return
 
-‘`CVS`’
+`CVS`
 :   Concurrent Version System
 
-‘`LF`’
+`LF`
 :   Line Feed
 
-‘`WRS`’
+`WRS`
 :   Wind River Systems
 
 Terminology
 ===========
 
-‘`Doxygen`’
+`Doxygen`
 :   A documentation system for C++, C, and several other programming
     languages. See ’Doxygen manual’ for more information.
 
-‘`Splint`’
+`Splint`
 :   A tool for statically checking C programs.
 
-‘`Subsystem`’
+`Subsystem`
 :   Functionally closed, alienable, possibly reusable, software
     component with well defined external interfaces. It may be library,
     tool, device driver, part of OS, etc.
 
-‘`Subversion`’
+`Subversion`
 :   A free/open-source version control system designed to be the
     successor to CVS.
 
@@ -297,11 +297,11 @@ file length is not limited.
 Special Characters
 ------------------
 
-Lines in source file are separated by character ‘`LF`’ (hex code 0x0a).
-It is not allowed to use MS-DOS standard ‘`CR-LF`’ sequence for line
+Lines in source file are separated by character `LF` (hex code 0x0a).
+It is not allowed to use MS-DOS standard `CR-LF` sequence for line
 delimiting.
 
-It is permitted (but not required) to insert ‘`FF`’ character (Form
+It is permitted (but not required) to insert `FF` character (Form
 Feed, hex code 0x0c) to separate logically independent parts of source
 code (functions or function groups, variable declaration groups, etc).
 This character shall not be used inside function body.
@@ -310,7 +310,7 @@ It is prohibited to use control characters immediately in string
 constants or comments. For strings you may use escape sequences instead.
 
 Do not forget to setup your text editor program so that it will insert
-appropriate number of spaces instead of ‘`TAB`’ (hex code 0x09)
+appropriate number of spaces instead of `TAB` (hex code 0x09)
 character on TAB key pressing.
 
 Trigraphs
@@ -650,7 +650,7 @@ Here is the check list for names:
     information.
 
 Words and abbreviations from non-English languages cannot be used to
-form identifiers. Use underscore character ‘`_`’ to separate the words.
+form identifiers. Use underscore character `_` to separate the words.
 Do not fear to use long identifiers. In any case, an identifier *must
 not contain* pronouns, interjections, private names, nicknames, or place
 names.
@@ -682,8 +682,8 @@ in particular subsystem and not exported to the outer world, static
 variables and functions). Do not prefix field names in structures and
 unions.
 
-It is recommended for uniformity to use ‘`object + action +
-object/property`’ style while giving a name to a function. Besides, this
+It is recommended for uniformity to use `object + action +
+object/property` style while giving a name to a function. Besides, this
 style is convenient when module prefix is used in place of the first
 object. For example, `fat_get_cluster(), pkt_send_raw()`.
 
@@ -871,7 +871,7 @@ ones in this case.
 Human-written file headers
 --------------------------
 
-Each ‘`.c`’ or ‘`.h`’ files written by human, must have a formal header.
+Each `.c` or `.h` files written by human, must have a formal header.
 This header starts at the first line of source file. A header has the
 following format:
 
@@ -897,26 +897,26 @@ Module description is a short description of a source file. It should be
 started with upper-case letter, and finished with dot.
 
 Copyright notice must provide information about copyright holder of this
-work. This line must consist of word ‘`Copyright`’, copyright sign
-‘`(C)`’, organization name which holds copyright, and its location (city
-and country). It is allowed multiple ‘`Copyright`’ sections if your
+work. This line must consist of word `Copyright`, copyright sign
+`(C)`, organization name which holds copyright, and its location (city
+and country). It is allowed multiple `Copyright` sections if your
 source contains fragments copyrighted by different organizations.
 
 @author section of the header must provide information about principal
 developer of this module. The section consists of the author’s name (in
 English transcription) and e-mail address which may be used later to
 contact the author regarding to these sources. It is allowed to have
-multiple ‘`@author`’ sections if principal developer has been changed;
+multiple `@author` sections if principal developer has been changed;
 put a name of the last principal developer first. OKTET Labs employees
 shall use \<Name.Surname@oktetlabs.ru\> form of e-mail address.
 
-Optional part ‘`license term notice`’ may be added to provide
+Optional part `license term notice` may be added to provide
 information about licensing terms for this source file, about
 distribution permissions or restrictions, or to refer to a particular
 license text.
 
 The last line of the header is a substitution for source code system
-(e.g. CVS, Subversion) information. ‘`$Id: $`’ sequence will be
+(e.g. CVS, Subversion) information. `$Id: $` sequence will be
 substituted with actual module identification string while a file is
 committed into repository.
 
@@ -951,10 +951,10 @@ beginning of such files:
 
 Format YYYY-MM-DD should be used for date specification.
 
-Header (‘`.h`’) files
+Header (`.h`) files
 ---------------------
 
-Header files are started with the same header as ‘`.c`’ files. Header
+Header files are started with the same header as `.c` files. Header
 files must include C variable and function declarations, common type
 definitions, preprocessor definitions, definitions of inline functions
 which may be used in more than one C module. Each module which requires
@@ -990,8 +990,8 @@ The body of header file must be organized in the following way:
     #endif
     #endif /* __<subsystem_prefix>_<filename>_H__ */
 
-In this fragment ‘`<subsystem_prefix>`’ must be substituted with
-capitalized subsystem abbreviation, ‘`<filename>`’ must be substituted
+In this fragment `<subsystem_prefix>` must be substituted with
+capitalized subsystem abbreviation, `<filename>` must be substituted
 with capitalized form of header file name. If the filename already
 contains the subsystem prefix there is no need to add another one.
 
@@ -1036,7 +1036,7 @@ definition. Function header have the following format:
 
 Not all parts must be presented in each function header.
 
-The only always required part is ‘`<function description>`’. It should
+The only always required part is `<function description>`. It should
 be started with upper-case letter, and finished with dot. It is
 recommended to use common style of the form ’Copy bytes’ (which is
 opposite to ’Copies bytes’) for documentation similarity. If the
@@ -1045,39 +1045,39 @@ description.
 
 At the same time it is *mandatory* to describe all function parameters
 and returned value(s). If a function does not return a value,
-‘`@return`’ part may be omitted, or \<return value specification\> may
-be ‘`N/A`’ (not applicable). All parameter descriptions in a particular
+`@return` part may be omitted, or \<return value specification\> may
+be `N/A` (not applicable). All parameter descriptions in a particular
 function must start from the same case: either upper or lower. If the
 description of the parameter or returned value is complete English
 sentence or is followed by additional statements, it must be started
 from upper-case letter and finished with dot. Description of return
-value after ‘`@return`’ tag must be started from upper-case letter.
+value after `@return` tag must be started from upper-case letter.
 
 If a value directly returned by a function lies within a limited set of
-constants, then each constant should be described using ‘`@retval`’ tag.
-Description of returned value after ‘`@retval`’ tag must start from
+constants, then each constant should be described using `@retval` tag.
+Description of returned value after `@retval` tag must start from
 upper-case letter.
 
 If a parameter is used to deliver values out from a function, it is
 allowed to add `[in,out]` or `[out]` (depending on whether the parameter
 is used or not as input at the same time accordingly) hint just after
 `@param` without any space. If such hints are used, input parameters
-have to be marked using ‘`[in]`’. Thus, in/out hints should be used for
+have to be marked using `[in]`. Thus, in/out hints should be used for
 either all or none parameters.
 
-‘`@se`’ (side effects) part must be presented only when a function has
+`@se` (side effects) part must be presented only when a function has
 non-obvious side effects. For example, if this function essentially
 modifies common data structures, and it is not clear from its name, or a
 function prints something to standard output, changes state of some
 hardware, and so on.
 
-Use optional ‘`@sa`’ (see also) part to give references to closely
+Use optional `@sa` (see also) part to give references to closely
 related functions and documentation blocks.
 
-Optional ‘`@bug`’ and ‘`@todo`’ sections may be used to identify found
+Optional `@bug` and `@todo` sections may be used to identify found
 bugs or things that need to be done accordingly.
 
-‘`@alg`’ (algorithm) part must be provided only when it is not enough to
+`@alg` (algorithm) part must be provided only when it is not enough to
 define *what* function does; it is necessary to explain *how* this
 achieved.
 
@@ -1085,9 +1085,9 @@ achieved.
 
 The function description as well as any of the sections beginning tags
 must be started from the 3rd column position (beginning with 0) just
-after the ‘`' * '`’ sequence of characters.
+after the `' * '` sequence of characters.
 
-Use exactly one ‘`SPACE`’ character between any of section beginning
+Use exactly one `SPACE` character between any of section beginning
 tags and start of section body, if the body begins on the same line with
 a tag.
 
@@ -1356,7 +1356,7 @@ In `typedef` declaration, it is recommended to give the same name to
 
 All field names must be started at the same position. The choice of the
 position is based on the maximum length of field type specifiers used in
-structure. Note that reference specifiers ‘`*`’ must be coupled to field
+structure. Note that reference specifiers `*` must be coupled to field
 name, but placed at left from common field indentation level.
 
 It is *highly not recommended* to join struct and variable declaration.
@@ -1434,7 +1434,7 @@ Variable declaration formatting
 Each variable declaration must be started on a separate line.
 Global-space variables definitions must be started at column 0. Local
 variables must be started at block indent level, same as for the
-statements in this block. ‘`*`’ specifiers must be placed near variable
+statements in this block. `*` specifiers must be placed near variable
 (or function name in forward declaration) name.
 
 Variable declarations may be divided into blocks separated by empty line
@@ -1468,7 +1468,7 @@ usage may be more clear than identifier usage - for example bit masks
 like 0xff).
 
 When multiline string constant is used, it is recommended to insert
-‘`\n`’ character explicitly and close quote at each line.
+`\n` character explicitly and close quote at each line.
 
 *Examples:*
 
@@ -1494,7 +1494,7 @@ When multiline string constant is used, it is recommended to insert
 
 If constant length suffix is used, the capital suffix letter must be
 used (use `0L`, not `0l`). Similarly, for floating point constants, use
-capital exponent letter ‘`E`’ (use `1.25E+35`, not `1.25e+35`).
+capital exponent letter `E` (use `1.25E+35`, not `1.25e+35`).
 
 In hexadecimal constants, lower-case letters must be used (use
 `0xdeadbeef`, not `0xDEADBEEF`).
@@ -1502,23 +1502,23 @@ In hexadecimal constants, lower-case letters must be used (use
 C Expressions
 =============
 
-Unary operators ‘`&`’, ‘`*`’, ‘`+`’, ‘`-`’, ‘`~`’, ‘`!`’, ‘`++`’, ‘`--`’
+Unary operators `&`, `*`, `+`, `-`, `~`, `!`, `++`, `--`
 must be coupled with operands to which such operators are applied.
 
-Binary operators ‘`*`’, ‘`/`’, ‘`%`’, ‘`+`’, ‘`-`’, ‘`>>`’, ‘`<<`’,
-‘`<`’, ‘`>`’, ‘`<=`’, ‘`>=`’, ‘`==`’, ‘`!=`’, ‘`&`’, ‘`^`’, ‘`|`’,
-‘`&&`’, ‘`||`’, ‘`=`’, ‘`*=`’, ‘`/=`’, ‘`%=`’, ‘`+=`’, ‘`-=`’, ‘`<<=`’,
-‘`>>=`’, ‘`&=`’, ‘`^=`’, ‘`|=`’ must be separated by one space at left
+Binary operators `*`, `/`, `%`, `+`, `-`, `>>`, `<<`,
+`<`, `>`, `<=`, `>=`, `==`, `!=`, `&`, `^`, `|`,
+`&&`, `||`, `=`, `*=`, `/=`, `%=`, `+=`, `-=`, `<<=`,
+`>>=`, `&=`, `^=`, `|=` must be separated by one space at left
 and right.
 
-Operators ‘`.`’ and ‘`->`’ must be coupled with both operands.
+Operators `.` and `->` must be coupled with both operands.
 
-Operator ‘`,`’ (comma) must be coupled to its left operand and separated
+Operator `,` (comma) must be coupled to its left operand and separated
 by one space character from the right operand.
 
-Operator ‘`[]`’ must be coupled to the left and inner operands.
+Operator `[]` must be coupled to the left and inner operands.
 
-Syntactic components of conditional operator ‘`a ? b : c`’ must be
+Syntactic components of conditional operator `a ? b : c` must be
 separated by one space character. It is recommended to enclose
 conditional operator into the parenthesis.
 
@@ -1529,7 +1529,7 @@ function expression and left round bracket. Also, no delimiters must be
 inserted between open round bracket and first operand and between close
 round bracket and between last operand.
 
-‘`sizeof`’ operator must use syntax similar to function call.
+`sizeof` operator must use syntax similar to function call.
 
 Round brackets of type cast operator must be coupled with type specifier
 and with operand.
@@ -1597,7 +1597,7 @@ when this branch contains nested `if` statements. Also, it is
 recommended to enclose branch in curly braces if the other branch is
 enclosed.
 
-`if - else if - else if…` statements must be formatted like this:
+`if - else if - else if...` statements must be formatted like this:
 
         if (strcmp(reply, "yes") == 0)
         {
@@ -1731,15 +1731,15 @@ Preprocessor directives formatting
 ----------------------------------
 
 Preprocessor directives must be started at column zero. It is not
-allowed to have spaces between ‘`#`’ sign and directive name.
+allowed to have spaces between `#` sign and directive name.
 
 `#include` usage
 ----------------
 
-Use ‘`<…>`’ with file name in `#include` to include ISO C headers or
+Use `<...>` with file name in `#include` to include ISO C headers or
 header files provided by the target operating system.
 
-Use quotes ‘`"…"`’ with file name to include other headers.
+Use quotes `"..."` with file name to include other headers.
 
 `#define` constant definitions
 ------------------------------
@@ -1782,7 +1782,7 @@ curly braces around the whole macro body do not help in this case
 either. If you forget to put the semicolon after the macro call the else
 branch of `if (p == NULL)` statement will become associated with the
 `if` statement in `DEBUG` macro. To avoid this, all statement-like
-macros must be surrounded by `do { … } while (0)` statement:
+macros must be surrounded by `do { ... } while (0)` statement:
 
     #define DEBUG \
         do {                               \
@@ -1806,7 +1806,7 @@ Also, lets consider the following example:
             ...
         }
 
-The example states how macros surrounded by `do { … } while (0)`
+The example states how macros surrounded by `do { ... } while (0)`
 statement may be used in `for()` statement components. The macro call is
 surrounded by curly and, then, round brackets.
 
