@@ -106,7 +106,7 @@ Copyright © 1999 Terkom, St.-Petersburg, Russia
 
 Copyright © 2003 OKTET Ltd., St.-Petersburg, Russia
 
-Copyright © 2004-2020 OKTET Labs, St.-Petersburg, Russia
+Copyright © 2004-2022 OKTET Labs, St.-Petersburg, Russia
 
 This document is the property of OKTET Labs. Nevertheless, there are no
 special restrictions regarding confidentiality which limit the audience
