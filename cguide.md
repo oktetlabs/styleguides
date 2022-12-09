@@ -121,7 +121,7 @@ It is assumed that a reader is familiar with the C programming language.
 
 ### Document status
 
-Draft
+Approved
 
 ### Contact Information
 
@@ -155,10 +155,9 @@ inconsistencies to <support@oktetlabs.ru>.
     2018
     ----------------------------------------------------------------------------
 
-### Issues
+Later changes may be tracked in Git history.
 
--   The document should be updated after more experience of Doxygen
-    usage is achieved.
+### Issues
 
 Abbreviations
 =============
@@ -192,10 +191,6 @@ Terminology
 :   Functionally closed, alienable, possibly reusable, software
     component with well defined external interfaces. It may be library,
     tool, device driver, part of OS, etc.
-
-`Subversion`
-:   A free/open-source version control system designed to be the
-    successor to CVS.
 
 References
 ==========
