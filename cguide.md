@@ -361,7 +361,7 @@ Vertical spacing
 
 -   It is not recommended to put more than one declaration to the line.
     (It is allowed to put two-three declarations of tightly-related
-    variables in one line to emphasize their relationship).
+    variables in one line to emphasise their relationship).
 
 -   It is *highly not recommended* to put more than one statement on a
     line. (It is allowed to put two-three very simple and
@@ -392,7 +392,7 @@ and end with a dot. If a description is just a nominal phrase (e.g. it describes
 an object and has no finite verb form), which is common for parameter
 descriptions and other enumeration-like entities, then it must start with
 a lower-case letter (save for acronyms, of course) and have no punctuation sign
-at the end. In a list of desciptions all of them shall be either sentences or
+at the end. In a list of descriptions all of them shall be either sentences or
 nominal phrases. Of course, if a description consists of several sentences, they
 all must be formatted as sentences.
 
@@ -442,7 +442,7 @@ Here are some interesting features from C99 that may be used to improve code qua
 
 -   **Compound literals.** These are the method of constructing structure/union and array
     objects on the fly. Technically they are equivalent to temporary variables of a given
-    types, which means that the adress of it may be taken and e. g. passed to a function.
+    types, which means that the address of it may be taken and e. g. passed to a function.
     This makes it very convenient to use with functions that take structure/union pointers
     as arguments.
 -   **Named initialisers.** These can be used in three way:
@@ -491,12 +491,12 @@ like `-std=gnu99`:
             unsigned n_elem;
             datatype elems[]
         } *pkt;
-        size = sizeof(struct pkt_s) - pkt->n_elem * sizeof(*pkt->elems);
+        size = sizeof(struct pkt_s) + pkt->n_elem * sizeof(*pkt->elems);
 
    Note that a variable, even a local one, cannot be declared with a type that contains the last flexible
    member.
 
-   GCC supported this feature before C99 in a slighly different way, namely allowing the last array field in
+   GCC supported this feature before C99 in a slightly different way, namely allowing the last array field in
    a struct to have zero size (that is, it would be `datatype elems[0]`, not `datatype elems[]`.
 
    Unfortunately, it is known that some versions of GCC do have a bug causing the size of a structure
@@ -559,7 +559,7 @@ Here is a list of C11 features with comments:
         #define noreturn
         #endif
 
-- `static_assert` may be used for statically-checked assertions. This macro may be available even in non-C99 mode,
+- `static_assert` may be used for statically-checked assertions. This macro may be available even in non-C11 mode,
   so at least the following should used somewhere in the headers:
 
         #include <assert.h>
@@ -581,7 +581,7 @@ Here is a list of C11 features with comments:
   regarded as ill-designed
 - Unicode character support (`<uchar.h>`, also introduced between C99 and C11) may be used if you know what are
   doing (most probably you don't need it)
-- `_Generic` type dispatching. It's a feature for math library writers and as such such should not be used by
+- `_Generic` type dispatching. It's a feature for math library writers and as such should not be used by
   application programmers.
 - Anonymous struct/unions. Contrary to a popular belief, they are **not** part of the C99 standard. They are, however,
   part of C++, therefore they have long been supported by various compilers as an extension. Anonymous structs are
@@ -604,7 +604,7 @@ be used.
 
 - **Attributes.** GCC attributes should be used wherever necessary, however the main problem with them is that
   different versions of GCC/clang on different platform support different sets of attributes, sometimes with
-  slighltly different semantics. To make things worse, there is no definitively list that would show which
+  slightly different semantics. To make things worse, there is no definitively list that would show which
   attributes are supported by which compilers. Therefore the preferred way is to use them through conditionally
   defined macro wrappers, like:
 
@@ -951,7 +951,7 @@ start with an upper-case letter, and end with a dot.
 
 Copyright notice must provide information about copyright holder of this
 work. This line must consist of the word `Copyright`, copyright sign
-`(C)`, the year when the file is created, and the name of the organization
+`(C)`, the year when the file is created, and the name of the organisation
 which holds the rights. Multiple `Copyright` statements are allowed and
 required if the source contains portions copyrighted by different entities.
 
@@ -977,7 +977,7 @@ Example:
     /* SPDX-License-Identifier: GPL-2.0-or-later */
     /* Copyright (C) 2022 OKTET Labs Ltd. All rights reserved. */
     /** @file
-     * @brief ncr875 controller device driver
+     * @brief ncr875 controller device driver.
      *
      * Chip-specific primitive implementation.
      */
@@ -1018,7 +1018,7 @@ not to mix these two kinds of header files. Do not include internal
 definitions and declarations to the interface headers.
 
 Header file must be started with the same header as C source code file.
-The body of header file must be organized in the following way:
+The body of header file must be organised in the following way:
 
     #ifndef __<subsystem_prefix>_<filename>_H__
     #define __<subsystem_prefix>_<filename>_H__
@@ -1038,8 +1038,8 @@ The body of header file must be organized in the following way:
     #endif /* __<subsystem_prefix>_<filename>_H__ */
 
 In this fragment `<subsystem_prefix>` must be substituted with
-capitalized subsystem abbreviation, `<filename>` must be substituted
-with capitalized form of header file name. If the filename already
+capitalised subsystem abbreviation, `<filename>` must be substituted
+with capitalised form of header file name. If the filename already
 contains the subsystem prefix there is no need to add another one.
 
 Conditionals `#ifdef __cplusplus` used to make possible usage of
@@ -1054,7 +1054,7 @@ Declarations in headers
 All declarations that are not definitions in headers must have an explicit
 `extern` linkage. That is, all functions that are not declared `static inline`
 and all variables in headers must have an `extern` keyword. Global declarations
-without an explicit linkage specifier and no initializer or function body are
+without an explicit linkage specifier and no initialiser or function body are
 called "tentative definitions", that is, they may be treated by the linker as
 definitions or as forward declarations depending on the context and that may
 lead to undefined behaviour of the linker (see ISO C standard, section 6.9
@@ -1170,7 +1170,7 @@ Function Formatting
 All functions must be defined in ISO C format. Function definition must
 look like this:
 
-    /** 
+    /**
      * Create object instance of class 'objclass' which designates to be
      * referred as a null object of this class. If 'name' is given
      * (not equal to NULL), register object instance with given name.
@@ -1310,7 +1310,7 @@ Name `fd` may be used to refer to a file descriptor variable.
 Name `f` may be used for a file descriptor or `FILE` variable associated
 with file (*not* socket or device).
 
-Name `fn` may be used for a string constanting the file name.
+Name `fn` may be used for a string containing the file name.
 
 Names `p`, `q` must be used as a pointer to some data element
 (structures, elements of array, etc). It is acceptable to use `p` and
@@ -1398,7 +1398,7 @@ comments within the same structure.
 
 Post-object member descriptions may be either sentences or nominal phrases,
 i.e. either starting with an upper case and ending with a dot or starting
-with a lower case and ending with no dot. The second form is preferrable.
+with a lower case and ending with no dot. The second form is preferable.
 
 ### `struct` formatting
 
@@ -1480,7 +1480,7 @@ In `typedef` declaration, it is recommended to give the same name to
 
 The member names should be aligned if they are followed by post-object comments
 which are themselves aligned. Otherwise they need not be aligned, just
-as variable names. If a field has a pointer type then `*`s must be adjoint
+as variable names. If a field has a pointer type then `*`s must adjoin
 to the field name, but they must be placed to the left of the alignment
 column, as in the first example above.
 
@@ -2118,7 +2118,7 @@ indentation rules in body of macros.
 Function-like macros must be commented like functions. Types of
 parameters should be stated in macro description.
 
-It’s recommented to use inline functions instead of function-like
+It’s recommended to use inline functions instead of function-like
 macros, if it is applicable. Compiler can help to avoid some errors and
 its output in the case of compilation errors more friendly, if inline
 function is used.
@@ -2171,7 +2171,7 @@ function(int arg)
 Macro argument names
 --------------------
 
-Macro argument names shall end with an underscore to minimize possible
+Macro argument names shall end with an underscore to minimise possible
 name clashes. The same applies to local variables defined inside a macro
 body. See macro examples in the previous sections. Macro arguments shall
 be in lower case just as function parameter names.
@@ -2194,7 +2194,7 @@ Conditional compilation
 -----------------------
 
 Conditional compilation is useful for making your code portable by
-handling different machines and OS behavior. Also, it is useful for
+handling different machines and OS behaviour. Also, it is useful for
 debugging and for setting certain options at compile time. Be careful:
 various controls may easily combine in unforeseen ways. Check for error
 condition combination or absence or incorrect value of some preprocessor
@@ -2255,7 +2255,7 @@ those given here. It is good and recommended practice to define on a
 per-project basis additional naming conventions, including common prefix
 conventions, rules for function or data structures grouping,
 restrictions to libraries and headers which may be used in project,
-preprocessor variables and macros usage, include files organization etc.
+preprocessor variables and macros usage, include files organisation etc.
 
 It is highly recommended to make those standards compliant to this one.
 
