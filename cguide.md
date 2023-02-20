@@ -58,6 +58,7 @@ OKTET Labs.
     - [Function size](#function-size)
     - [Parameters and local variables conventions](#parameters-and-local-variables-conventions)
     - [Local variables naming conventions](#local-variables-naming-conventions)
+    - [Inline functions](#inline-functions)
 - [Types definitions formatting](#types-definitions-formatting)
     - [`struct` declaration](#struct-declaration)
         - [`struct` comments](#struct-comments)
@@ -1360,6 +1361,35 @@ Comments for local variables are necessary only when it is really
 necessary. You must comment non-obvious variables in long functions
 only. It is not necessary to comment variables which are used in clear
 way, for example loop counters, etc.
+
+Inline functions
+----------------
+
+Contrary to a popular belief, `inline` keyword has (almost) nothing
+to do with optimizations for modern compilers: a function with an `inline`
+specifier is not necessarily inlined and a function without it may well
+be inlined.
+
+Therefore, `inline` keyword is essentially a no-op for static functions
+declared in a C source. Moreover, the compiler does not have access to
+the body of a function defined in another compilation unit, so an `inline`
+for a public function is also essentially a no-op (`extern inline` functions
+are defined by the C standard, but it's an obscure feature which tends to be
+misimplemented by compilers). Thus the only sensible context for `inline`
+is for functions _defined_ (not just declared) in C headers, together with
+`static` storage class specifier. The use of `static` alone in a header would
+usually result in a compiler warning about a static function being not used.
+
+Inline functions are safer than macros, but still they should not be abused:
+- putting a function definition in a header reveals unnecessary implementation
+  details
+- it makes the header lengthy and harder to skim through
+
+Variadic functions are never inlined (at least GCC states so), so they should
+not be made inline.
+
+An inline function should not have local `static` variables, since such
+variables would be cloned in each module where the function is used.
 
 Types definitions formatting
 ============================
