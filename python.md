@@ -25,8 +25,10 @@ Python version depends on the system you're targeting. Keep in mind that:
 - with the RHEL7 exception you MUST NOT rely on non-standard python
   interpreters, i.e. if target distro alloows `python3.9` you MUST NOT assume
   you will manage to install `python3.11` unless it's explicitly approved;
-- you MUST NOT rely on packages that can't be installed via pip OR your distro
-  (`apt/dnf/yum`) OR bundled with your scripts.
+- you MUST NOT rely on packages that can't be installed via `pip` OR your distro
+  (`apt/dnf/yum`) OR bundled with your scripts;
+- you SHOULD use `python -m pip install` instead of simply `pip install`,
+  where `python` is certain Python interpreter version you intend to use.
 
 ## Coding style
 
@@ -42,29 +44,14 @@ standard. Running formatter on your formatted code should have zero diff.
 ### YAPF
 
 We use yapf in it's default configuration. It's at least 0.30 and can be
-installed via pip.
+installed via `pip`.
 
 https://github.com/google/yapf is the tool.
 
 We have slightly different config:
 
-```text
-[yapf]
-align_closing_bracket_with_visual_indent = false
-based_on_style = google
-blank_line_before_nested_class_or_def = true
-blank_lines_between_top_level_imports_and_variables = 2
-coalesce_brackets = true
-column_limit = 96
-continuation_indent_width = 4
-dedent_closing_brackets = false
-force_multiline_dict = true
-indent_closing_brackets = false
-spaces_before_comment = 4
-split_before_first_argument = false
-split_before_logical_operator = true
-split_complex_comprehension = true
-```
+- look for table **\[yapf\]** at [setup.cfg](./python/setup.cfg);
+- or look for table **\[tool.yapf\]** at [pyproject.toml](./python/pyproject.toml)
 
 ### f-strings
 
@@ -81,26 +68,15 @@ tool (`pip install flynt`) to do your code conversion.
 
 ### pylint
 
-Please take the config in the current directory (pylintrc file) and place it
-into `.pylintrc`.
+Please take this config [pylintrc](./python/pylintrc) and place it into `.pylintrc`.
 
 ### mypy
 
 If writing on python3 you MUST use type annotation and you MUST have a clean
 mypy run with the below config:
 
-```text
-[mypy]
-check_untyped_defs = True
-disallow_untyped_defs = True
-disallow_incomplete_defs = True
-disallow_untyped_decorators = True
-disallow_any_unimported = True
-warn_return_any = True
-warn_unused_ignores = True
-no_implicit_optional = True
-show_error_codes = True
-```
+- look for table **\[mypy\]** at [setup.cfg](./python/setup.cfg);
+- or look for table **\[tool.mypy\]** at [pyproject.toml](./python/pyproject.toml)
 
 The `setup.cfg` file must be placed at the top level of your repo so all tools
 see it and handle correctly. Invocation should include:
@@ -117,11 +93,20 @@ automatically by the IDE.
 
 ### VSCode
 
+Usually VSCode project config file is `.vscode/settings.json`.
+
 ```json
     "python.linting.mypyEnabled": true,
-    "python.formatting.provider": "yapf",
     "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "yapf",
+    "python.formatting.yapfArgs": [
+        "--style",
+        "{based_on_style = google, ...}"
+    ],
+    "editor.formatOnSave": true
 ```
+
+Note that `yapfArgs` must contain all YAPF style settings described above.
 
 ### VIM
 
@@ -131,7 +116,8 @@ automatically by the IDE.
 
 Project should have:
 
-- `setup.cfg` having the above config sections,
+- [setup.cfg](./python/setup.cfg) or [pyproject.toml](./python/pyproject.toml)
+  having the above config sections,
 - `scripts/pyformat` and `scripts/pycheck` that are doing the right thing for
   those who want to invoke them by hands or for all patches in the patch series.
 
