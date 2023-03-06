@@ -23,7 +23,7 @@ Python version depends on the system you're targeting. Keep in mind that:
 - RHEL7.4 which is default for some enterprises does not allow to install
   anything but 3.6;
 - with the RHEL7 exception you MUST NOT rely on non-standard python
-  interpreters, i.e. if target distro alloows `python3.9` you MUST NOT assume
+  interpreters, i.e. if target distro allows `python3.9` you MUST NOT assume
   you will manage to install `python3.11` unless it's explicitly approved;
 - you MUST NOT rely on packages that can't be installed via `pip` OR your distro
   (`apt/dnf/yum`) OR bundled with your scripts;
@@ -68,7 +68,8 @@ tool (`pip install flynt`) to do your code conversion.
 
 ### pylint
 
-Please take this config [pylintrc](./python/pylintrc) and place it into `.pylintrc`.
+Please take this config [pylintrc](./python/pylintrc) and place it into the
+project workspace folder.
 
 ### mypy
 
@@ -99,14 +100,19 @@ Usually VSCode project config file is `.vscode/settings.json`.
     "python.linting.mypyEnabled": true,
     "python.linting.pylintEnabled": true,
     "python.formatting.provider": "yapf",
-    "python.formatting.yapfArgs": [
-        "--style",
-        "{based_on_style = google, ...}"
-    ],
-    "editor.formatOnSave": true
+
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.rulers": [100],
+    },
 ```
 
-Note that `yapfArgs` must contain all YAPF style settings described above.
+Notes:
+
+- You may find extension Pylance quite helpful;
+- There is no need to install extensions Pylint, Mypy, and YAPF - VSCode can find
+  appropriate tools installed in virtual environment;
+- All `pylintrc`, `setup.cfg` (or `pyproject.toml`) affect linting and formatting.
 
 ### VIM
 
@@ -116,10 +122,10 @@ Note that `yapfArgs` must contain all YAPF style settings described above.
 
 Project should have:
 
-- [setup.cfg](./python/setup.cfg) or [pyproject.toml](./python/pyproject.toml)
-  having the above config sections,
+- [pylintrc](./python/pylintrc);
+- [setup.cfg](./python/setup.cfg) or [pyproject.toml](./python/pyproject.toml).
 - `scripts/pyformat` and `scripts/pycheck` that are doing the right thing for
   those who want to invoke them by hands or for all patches in the patch series.
 
-pyformat should apply all agreed formatters. pycheck should apply all agreed
+`pyformat` should apply all agreed formatters. `pycheck` should apply all agreed
 linters.
