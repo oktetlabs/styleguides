@@ -50,8 +50,8 @@ https://github.com/google/yapf is the tool.
 
 We have slightly different config:
 
-- look for table **\[yapf\]** at [setup.cfg](./python/setup.cfg);
-- or look for table **\[tool.yapf\]** at [pyproject.toml](./python/pyproject.toml)
+- look for table **\[yapf\]** at [setup.cfg](https://github.com/oktetlabs/qa-tools/blob/main/python/setup.cfg);
+- or look for table **\[tool.yapf\]** at [pyproject.toml](https://github.com/oktetlabs/qa-tools/blob/main/python/pyproject.toml)
 
 ### f-strings
 
@@ -68,16 +68,16 @@ tool (`pip install flynt`) to do your code conversion.
 
 ### pylint
 
-Please take this config [pylintrc](./python/pylintrc) and place it into the
-project workspace folder.
+Please take this config [pylintrc](https://github.com/oktetlabs/qa-tools/blob/main/python/pylintrc)
+and place it into the project workspace folder.
 
 ### mypy
 
 If writing on python3 you MUST use type annotation and you MUST have a clean
 mypy run with the below config:
 
-- look for table **\[mypy\]** at [setup.cfg](./python/setup.cfg);
-- or look for table **\[tool.mypy\]** at [pyproject.toml](./python/pyproject.toml)
+- look for table **\[mypy\]** at [setup.cfg](https://github.com/oktetlabs/qa-tools/blob/main/python/setup.cfg);
+- or look for table **\[tool.mypy\]** at [pyproject.toml](https://github.com/oktetlabs/qa-tools/blob/main/python/pyproject.toml)
 
 The `setup.cfg` file must be placed at the top level of your repo so all tools
 see it and handle correctly. Invocation should include:
@@ -122,8 +122,9 @@ Notes:
 
 Project should have:
 
-- [pylintrc](./python/pylintrc);
-- [setup.cfg](./python/setup.cfg) or [pyproject.toml](./python/pyproject.toml).
+- [pylintrc](https://github.com/oktetlabs/qa-tools/blob/main/python/pylintrc);
+- [setup.cfg](https://github.com/oktetlabs/qa-tools/blob/main/python/setup.cfg) or
+  [pyproject.toml](https://github.com/oktetlabs/qa-tools/blob/main/python/pyproject.toml).
 - `scripts/pyformat` and `scripts/pycheck` that are doing the right thing for
   those who want to invoke them by hands or for all patches in the patch series.
 
