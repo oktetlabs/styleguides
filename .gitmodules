@@ -1,0 +1,3 @@
+[submodule "qa-tools"]
+	path = qa-tools
+	url = ../qa-tools
